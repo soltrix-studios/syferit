@@ -1,0 +1,32 @@
+{
+  "name": "@syferit/electron",
+  "version": "0.4.5",
+  "description": "Electron ASAR & IPC boundary protection adapter for Syferit",
+  "author": "Soltrix Studios",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "node -e \"fs.rmSync('dist', { recursive: true, force: true })\""
+  },
+  "dependencies": {
+    "@syferit/core": "^0.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soltrix-studios/syferit.git",
+    "directory": "packages/electron"
+  },
+  "homepage": "https://syferit.soltrixstudios.com"
+}

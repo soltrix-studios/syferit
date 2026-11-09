@@ -1,0 +1,39 @@
+{
+  "name": "@syferit/cli",
+  "version": "0.4.5",
+  "description": "Universal command-line tool for Syferit code protection",
+  "author": "Soltrix Studios",
+  "license": "Apache-2.0",
+  "type": "module",
+  "bin": {
+    "syferit": "dist/bin.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "node -e \"fs.rmSync('dist', { recursive: true, force: true })\""
+  },
+  "dependencies": {
+    "@syferit/core": "^0.4.5",
+    "@syferit/wasm": "^0.4.5",
+    "@syferit/llvm": "^0.4.5",
+    "@syferit/python": "^0.4.5",
+    "commander": "^13.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soltrix-studios/syferit.git",
+    "directory": "packages/cli"
+  },
+  "homepage": "https://syferit.soltrixstudios.com"
+}
