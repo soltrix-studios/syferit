@@ -1,0 +1,41 @@
+{
+  "name": "@syferit/vite-plugin",
+  "version": "1.0.0",
+  "description": "Zero-config Vite and Rollup plugin for Syferit code protection",
+  "author": "Soltrix Studios",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "node -e \"fs.rmSync('dist', { recursive: true, force: true })\""
+  },
+  "dependencies": {
+    "@syferit/core": "^1.0.0",
+    "@syferit/wasm": "^1.0.0"
+  },
+  "peerDependencies": {
+    "vite": "^4.0.0 || ^5.0.0 || ^6.0.0"
+  },
+  "devDependencies": {
+    "vite": "^6.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soltrix-studios/syferit.git",
+    "directory": "packages/vite-plugin"
+  },
+  "homepage": "https://syferit.soltrixstudios.com",
+  "files": [
+    "dist",
+    "README.md"
+  ]
+}

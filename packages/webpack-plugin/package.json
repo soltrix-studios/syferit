@@ -1,0 +1,47 @@
+{
+  "name": "@syferit/webpack-plugin",
+  "version": "1.0.0",
+  "description": "Syferit adversarial code protection plugin for Webpack 5",
+  "author": "Soltrix Studios",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "node -e \"fs.rmSync('dist', { recursive: true, force: true })\""
+  },
+  "dependencies": {
+    "@syferit/core": "^1.0.0",
+    "@syferit/wasm": "^1.0.0"
+  },
+  "peerDependencies": {
+    "webpack": "^5.0.0"
+  },
+  "peerDependenciesMeta": {
+    "webpack": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "webpack": "^5.98.0",
+    "webpack-sources": "^3.2.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soltrix-studios/syferit.git",
+    "directory": "packages/webpack-plugin"
+  },
+  "homepage": "https://syferit.soltrixstudios.com",
+  "files": [
+    "dist",
+    "README.md"
+  ]
+}
