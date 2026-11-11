@@ -1,0 +1,37 @@
+{
+  "name": "@syferit/benchmarks",
+  "version": "1.0.1",
+  "description": "Counter-REA adversarial benchmark harness and token burn simulation",
+  "author": "Soltrix Studios",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "node -e \"fs.rmSync('dist', { recursive: true, force: true })\""
+  },
+  "dependencies": {
+    "@syferit/core": "^1.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soltrix-studios/syferit.git",
+    "directory": "packages/benchmarks"
+  },
+  "homepage": "https://syferit.soltrixstudios.com",
+  "files": [
+    "dist",
+    "README.md"
+  ]
+}
