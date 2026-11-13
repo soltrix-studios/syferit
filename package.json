@@ -1,0 +1,28 @@
+{
+  "name": "syferit-monorepo",
+  "version": "1.0.2",
+  "private": true,
+  "description": "Syferit: Symbolic Feistel & Residue Integrity Transformer by Soltrix Studios",
+  "author": "Soltrix Studios",
+  "license": "Apache-2.0",
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run --workspace=@syferit/core build && npm run --workspace=@syferit/wasm build && npm run --workspace=@syferit/llvm build && npm run --workspace=@syferit/python build && npm run --workspace=@syferit/webpack-plugin build && npm run --workspaces --if-present build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc -b --dry",
+    "clean": "npm run --workspaces --if-present clean"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3",
+    "vitest": "^5.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soltrix-studios/syferit.git"
+  },
+  "homepage": "https://syferit.soltrixstudios.com"
+}
