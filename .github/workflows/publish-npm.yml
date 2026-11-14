@@ -1,0 +1,54 @@
+name: Publish to npm via OIDC Trusted Publishing
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish-npm:
+    name: Publish @syferit/* with Cryptographic Provenance
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Public Distribution
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22 & npm OIDC
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Ensure latest npm CLI for OIDC Trusted Publishing
+        run: npm install -g npm@latest
+
+      - name: Publish All Packages in Dependency Order
+        run: |
+          PACKAGES=(
+            "core"
+            "wasm"
+            "llvm"
+            "python"
+            "webpack-plugin"
+            "vite-plugin"
+            "next"
+            "cli"
+            "electron"
+            "benchmarks"
+          )
+          for PKG in "${PACKAGES[@]}"; do
+            cd "${GITHUB_WORKSPACE}/packages/${PKG}"
+            PKG_NAME=$(node -p "require('./package.json').name")
+            PKG_VER=$(node -p "require('./package.json').version")
+            if npm view "${PKG_NAME}@${PKG_VER}" version >/dev/null 2>&1; then
+              echo "Skipping ${PKG_NAME}@${PKG_VER} (already published on npm)"
+            else
+              echo "Publishing ${PKG_NAME}@${PKG_VER} with OIDC provenance..."
+              npm publish --provenance --access public
+            fi
+          done
