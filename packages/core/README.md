@@ -1,13 +1,13 @@
 <p align="center">
   <a href="https://syferit.soltrixstudios.com">
-    <img src="../../assets/icon.png" alt="Syferit Logo" width="80" height="80" />
+    <img src="https://syferit.soltrixstudios.com/icon.png" alt="Syferit Logo" width="80" height="80" />
   </a>
 </p>
 
 <h1 align="center">@syferit/core</h1>
 
 <p align="center">
-  <strong>Core AST Transformation &amp; Logic Entanglement Engine</strong><br>
+  <strong>Core AST Transformation, RNS-ARX Entanglement &amp; Polymorphic Micro-VM Engine (v2.0.0)</strong><br>
   <em>&ldquo;Don&apos;t Just Ship it. Syferit.&rdquo;</em>
 </p>
 
@@ -24,20 +24,30 @@ npm i @syferit/core
 ## Quickstart
 
 ```typescript
-import { protect } from '@syferit/core';
+import { protect, SyferitEngine } from '@syferit/core';
 
 const result = protect('function verifyLicense(key) { return key === 0x4B3A; }', {
+  preset: 'v2-quantum-rns',
   domainProfile: 'security'
 });
 
 console.log(result.code);
+
+// Reusable engine instance
+const engine = new SyferitEngine({
+  preset: 'v2-quantum-rns',
+  rnsArxEntanglement: true,
+  dynamicDispatch: true,
+  domainProfile: 'fintech'
+});
+const hardened = engine.transform(sourceCode, 'pricing.ts');
 ```
 
 ## Features
 
-- **Adversarial Resilience:** Specifically designed to defeat autonomous AI reverse-engineering agents, LLM-assisted decompilers, and MCP bridge tools.
-- **Provable Equivalence:** Retains 100% deterministic execution behavior while maximizing structural and algorithmic entropy.
-- **Zero Runtime Dependencies:** Lean and production-ready for mission-critical deployments.
+- **v2.0 RNS-ARX & Point-Function Branching:** Splits secret constants across non-linear modular channels and defeats SMT solvers (Microsoft Z3, Bitwuzla).
+- **Polymorphic Micro-VM & Cyclic Control Flow:** Compiles sensitive values into per-build synthetic bytecode with zero static call edges.
+- **100% Functional Equivalence & Zero Runtime Dependencies:** Executes 100% locally at build time with sub-millisecond hot-path overhead.
 
 ## Documentation & Support
 

@@ -40,7 +40,7 @@ syferit protect ./src -o ./dist --preset maximum
 | :--- | :--- | :--- |
 | `target` or `-t, --target` | Path to `.py` file or directory to protect | *(Required)* |
 | `-o, --out, --output` | Destination output file or directory | *(In-place overwrite)* |
-| `--preset` | Defense intensity: `standard`, `hardened`, or `maximum` | `'hardened'` |
+| `--preset` | Defense intensity: `standard`, `hardened`, `maximum`, or `v2-quantum-rns` | `'hardened'` |
 | `-d, --domain, -p, --profile` | Anti-fingerprinting domain dictionary: `saas`, `fintech`, `security`, `gaming` | `'saas'` |
 | `-s, --seed` | Deterministic seed integer or string (for reproducible builds) | *(Auto-generated UUIDv4)* |
 

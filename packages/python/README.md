@@ -1,13 +1,13 @@
 <p align="center">
   <a href="https://syferit.soltrixstudios.com">
-    <img src="../../assets/icon.png" alt="Syferit Logo" width="80" height="80" />
+    <img src="https://syferit.soltrixstudios.com/icon.png" alt="Syferit Logo" width="80" height="80" />
   </a>
 </p>
 
 <h1 align="center">@syferit/python</h1>
 
 <p align="center">
-  <strong>Adversarial Python 3 AST &amp; Bytecode Defense Engine</strong><br>
+  <strong>Python 3 Code Defense &amp; Dynamic S-Box Keystream Engine (v2.0.0)</strong><br>
   <em>&ldquo;Don&apos;t Just Ship it. Syferit.&rdquo;</em>
 </p>
 
@@ -18,27 +18,28 @@
 ## Installation
 
 ```bash
-npm i @syferit/python
+npm i -D @syferit/python
 ```
 
 ## Quickstart
 
 ```typescript
-import { PythonTransformer } from '@syferit/python';
+import { protectPython, PythonTransformer } from '@syferit/python';
 
 const transformer = new PythonTransformer({
-  dispatchFlattening: true,
-  entangleArithmetic: true
+  preset: 'v2-quantum-rns',
+  domainProfile: 'security',
+  encryptStrings: true
 });
 
-const protectedPy = transformer.transform(rawPythonCode);
+const result = transformer.transform(rawPythonCode);
+console.log(result.code);
 ```
 
 ## Features
 
-- **Adversarial Resilience:** Specifically designed to defeat autonomous AI reverse-engineering agents, LLM-assisted decompilers, and MCP bridge tools.
-- **Provable Equivalence:** Retains 100% deterministic execution behavior while maximizing structural and algorithmic entropy.
-- **Zero Runtime Dependencies:** Lean and production-ready for mission-critical deployments.
+- **32-Bit RNS Tuples & 4-Round ARX Mixing:** Eliminates plaintext secrets from Python source and compiled `.pyc` `co_consts` tables.
+- **Zero Runtime Dependencies:** Hardened modules run natively across Python 3.9–3.13 with standard library built-ins only.
 
 ## Documentation & Support
 

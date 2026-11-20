@@ -1,13 +1,13 @@
 <p align="center">
   <a href="https://syferit.soltrixstudios.com">
-    <img src="../../assets/icon.png" alt="Syferit Logo" width="80" height="80" />
+    <img src="https://syferit.soltrixstudios.com/icon.png" alt="Syferit Logo" width="80" height="80" />
   </a>
 </p>
 
 <h1 align="center">@syferit/electron</h1>
 
 <p align="center">
-  <strong>Desktop App Defense, ASAR Hardening &amp; IPC Decoy Boundaries</strong><br>
+  <strong>Desktop App Defense, ASAR Hardening &amp; IPC Decoy Boundaries (v2.0.0)</strong><br>
   <em>&ldquo;Don&apos;t Just Ship it. Syferit.&rdquo;</em>
 </p>
 
@@ -18,26 +18,29 @@
 ## Installation
 
 ```bash
-npm i @syferit/electron
+npm i -D @syferit/electron
 ```
 
 ## Quickstart
 
 ```typescript
-import { hardenElectronIPC } from '@syferit/electron';
+import { protectElectronApp } from '@syferit/electron';
 
-// Inside your main/preload script:
-hardenElectronIPC({
-  tamperResponse: 'terminate',
-  poisonChannels: true
+const summary = protectElectronApp({
+  appDir: './build/unpacked-app',
+  hardenIpc: true,
+  preset: 'v2-quantum-rns',
+  domainProfile: 'security'
 });
+
+console.log(`Hardened ${summary.filesTransformed} Electron files.`);
 ```
 
 ## Features
 
-- **Adversarial Resilience:** Specifically designed to defeat autonomous AI reverse-engineering agents, LLM-assisted decompilers, and MCP bridge tools.
-- **Provable Equivalence:** Retains 100% deterministic execution behavior while maximizing structural and algorithmic entropy.
-- **Zero Runtime Dependencies:** Lean and production-ready for mission-critical deployments.
+- **Active IPC Honeypots & ASAR Hardening:** Protects Electron main, preload, and renderer scripts before packaging into `app.asar`.
+- **v2.0 SMT-Hard Guards:** Combines RNS-ARX entanglement with anti-hook IPC tampering boundaries.
+- **Zero Runtime Dependencies:** Compiles cleanly into production bundles without runtime packages.
 
 ## Documentation & Support
 

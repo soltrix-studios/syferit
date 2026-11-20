@@ -9,12 +9,25 @@ export interface SyferitWebpackPluginOptions extends SyferitOptions {
   test?: AssetFilter;
 
   exclude?: AssetFilter;
+
+  quiet?: boolean;
 }
 
+const SYFERIT_BANNER = `
+   ▄████████ ▄██   ▄      ▄████████    ▄████████    ▄████████  ▄█      ███     
+  ███    ███ ███   ██▄   ███    ███   ███    ███   ███    ███ ███  ▀█████████▄ 
+  ███    █▀  ███▄▄▄███   ███    █▀    ███    █▀    ███    ███ ███▌    ▀███▀▀██ 
+  ███        ▀▀▀▀▀▀███  ▄███▄▄▄      ▄███▄▄▄      ▄███▄▄▄▄██▀ ███▌     ███   ▀ 
+▀███████████ ▄██   ███ ▀▀███▀▀▀     ▀▀███▀▀▀     ▀▀███▀▀▀▀▀   ███▌     ███     
+         ███ ███   ███   ███          ███    █▄  ▀███████████ ███      ███     
+   ▄█    ███ ███   ███   ███          ███    ███   ███    ███ ███      ███     
+ ▄████████▀   ▀█████▀    ███          ██████████   ███    ███ █▀      ▄████▀   
+`;
 
 export class SyferitWebpackPlugin {
   private options: SyferitWebpackPluginOptions;
   private engine: SyferitEngine;
+  private static bannerPrinted = false;
 
   constructor(options: SyferitWebpackPluginOptions = {}) {
     this.options = options;
@@ -44,10 +57,33 @@ export class SyferitWebpackPlugin {
           stage
         },
         async (assets: Record<string, any>) => {
-          for (const [pathname, asset] of Object.entries(assets)) {
-            if (!this.shouldProcessAsset(pathname)) {
-              continue;
-            }
+          const assetEntries = Object.entries(assets).filter(([pathname]) => this.shouldProcessAsset(pathname));
+          if (assetEntries.length === 0) {
+            return;
+          }
+
+          if (!this.options.quiet && !SyferitWebpackPlugin.bannerPrinted) {
+            SyferitWebpackPlugin.bannerPrinted = true;
+            const preset = (this.options.preset ?? 'hardened').padEnd(16, ' ');
+            const profile = (this.options.domainProfile ?? 'saas').padEnd(10, ' ');
+            console.log(SYFERIT_BANNER);
+            console.log('  ╔═══════════════════════════════════════════════════════════════════════════╗');
+            console.log('  ║  SYFERIT v2.0.0 — Symbolic Feistel & Residue Integrity Transformer        ║');
+            console.log('  ║  "Don\'t Just Ship it. Syferit."  │  Soltrix Studios Code Defense Engine   ║');
+            console.log('  ╠═══════════════════════════════════════════════════════════════════════════╣');
+            console.log(`  ║  ▸ Preset  : ${preset}    │  ▸ Profile : ${profile}                ║`);
+            console.log('  ║  ▸ Bundler : Webpack 5 / Next.js │  ▸ Mode    : Production Hardening      ║');
+            console.log('  ╚═══════════════════════════════════════════════════════════════════════════╝');
+          }
+
+          let idx = 0;
+          const total = assetEntries.length;
+          const batchStart = Date.now();
+          let hardenedCount = 0;
+
+          for (const [pathname, asset] of assetEntries) {
+            idx++;
+            const t0 = Date.now();
 
             try {
               const rawSource = asset.source();
@@ -67,7 +103,11 @@ export class SyferitWebpackPlugin {
                 });
 
                 if (result.sectionsProtected > 0) {
+                  hardenedCount++;
                   compilation.updateAsset(pathname, new RawSource(Buffer.from(result.binary)));
+                  if (!this.options.quiet) {
+                    console.log(`  [${String(idx).padStart(2, '0')}/${String(total).padStart(2, '0')}] 🛡️  WASM   → ${pathname} (Hardened | ${Date.now() - t0}ms)`);
+                  }
                 }
                 continue;
               }
@@ -76,13 +116,21 @@ export class SyferitWebpackPlugin {
               const result = this.engine.transform(sourceCode, pathname);
 
               if (result.transformedCount > 0) {
+                hardenedCount++;
                 compilation.updateAsset(pathname, new RawSource(result.code));
+                if (!this.options.quiet) {
+                  console.log(`  [${String(idx).padStart(2, '0')}/${String(total).padStart(2, '0')}] 🛡️  Chunk  → ${pathname} (Hardened | ${Date.now() - t0}ms)`);
+                }
               }
             } catch (err: any) {
               compilation.errors.push(
                 new Error(`[SyferitWebpackPlugin] Failed to protect asset "${pathname}": ${err.message}`)
               );
             }
+          }
+
+          if (!this.options.quiet && hardenedCount > 0) {
+            console.log(`  ✔ Syferit hardened ${hardenedCount}/${total} bundler chunks in ${Date.now() - batchStart}ms\n`);
           }
         }
       );

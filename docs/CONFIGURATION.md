@@ -11,13 +11,14 @@ import type { SyferitOptions } from '@syferit/core';
 
 const config: SyferitOptions = {
   mode: 'production',
-  preset: 'hardened',
+  preset: 'v2-quantum-rns',
   domainProfile: 'saas',
   seed: null,
   entanglementIntensity: 1.0,
   architecturalGaslighting: true,
   electronIpcPoisoning: false,
-  dynamicDispatch: true
+  dynamicDispatch: true,
+  rnsArxEntanglement: true
 };
 ```
 
@@ -26,12 +27,18 @@ const config: SyferitOptions = {
 ## Detailed Option Descriptions
 
 ### `preset`
-* **Type:** `'standard' | 'hardened' | 'maximum'`
+* **Type:** `'standard' | 'hardened' | 'maximum' | 'v2-quantum-rns'`
 * **Default:** `'hardened'`
 * **Description:** Selects the preset balance between transformation speed, execution performance, and anti-analysis resilience:
   * `'standard'`: Basic logic entanglement, dynamic dispatch, and runtime integrity checks. Ideal for fast local development testing and lightweight scripts.
-  * `'hardened'`: Full logic entanglement, top-level literal/dictionary/array entanglement, decoy dead-code paths, and domain identifier synthesis. (Default for production builds).
-  * `'maximum'`: Full logic entanglement, aggressive multi-round state scrambling, top-level entanglement, and comprehensive anti-tamper traps. Best for sensitive financial, licensing, or IP-heavy proprietary modules.
+  * `'hardened'`: Full logic entanglement, non-linear residue constant splitting, top-level literal/dictionary/array entanglement, decoy dead-code paths, and domain identifier synthesis. (Default for production builds).
+  * `'maximum'`: Full logic entanglement, aggressive multi-round state scrambling, top-level entanglement, and comprehensive anti-tamper protections.
+  * `'v2-quantum-rns'` *(New in v2.0)*: Maximum v2.0 protection activating non-linear residue entanglement, cryptographic point-function branching (resistant to SMT solvers like Z3 and Bitwuzla), polymorphic Micro-VM virtualization, cyclic state-machine dispatchers, and temporal environment attestation.
+
+### `rnsArxEntanglement`
+* **Type:** `boolean`
+* **Default:** `true` (for `'hardened'`, `'maximum'`, and `'v2-quantum-rns'`)
+* **Description:** Enables Syferit v2.0 non-linear residue constant splitting, cryptographic point-function branch gates, and polymorphic Micro-VM constant virtualization.
 
 ### `mode`
 * **Type:** `'development' | 'production'`

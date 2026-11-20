@@ -23,6 +23,8 @@ export function withSyferit(
         config.plugins.push(
           new SyferitWebpackPlugin({
             mode: 'production',
+            preset: syferitOptions.preset,
+            rnsArxEntanglement: syferitOptions.rnsArxEntanglement,
             domainProfile: syferitOptions.domainProfile ?? 'saas',
             seed: syferitOptions.seed ?? null,
             entanglementIntensity: syferitOptions.entanglementIntensity ?? 1.0,

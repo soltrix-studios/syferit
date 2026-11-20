@@ -5,6 +5,8 @@ export interface BenchmarkMetrics {
   tokenBurnMultiplier: number;
   decoyEdgesInjected: number;
   legalInoculationPresent: boolean;
+  rnsArxEntangled: boolean;
+  estimatedSmtCnfClauses: number;
   tamperResistanceScore: number;
 }
 export declare function evaluateCodeResilience(sourceCode: string, seed?: number): BenchmarkMetrics;

@@ -1,24 +1,24 @@
 <p align="center">
   <a href="https://syferit.soltrixstudios.com">
-    <img src="../../assets/icon.png" alt="Syferit Logo" width="80" height="80" />
+    <img src="https://syferit.soltrixstudios.com/icon.png" alt="Syferit Logo" width="80" height="80" />
   </a>
 </p>
 
 <h1 align="center">@syferit/next</h1>
 
 <p align="center">
-  <strong>Next.js Compiler Adapter for Client-Side Bundle Defense</strong><br>
+  <strong>Next.js Compiler Adapter for Client-Side Bundle Defense (v2.0.0)</strong><br>
   <em>&ldquo;Don&apos;t Just Ship it. Syferit.&rdquo;</em>
 </p>
 
-> Next.js configuration adapter for Syferit AST hardening across client bundles and server actions. Part of the **[Syferit](https://syferit.soltrixstudios.com)** code defense framework by **[Soltrix Studios](https://soltrixstudios.com)**.
+> Next.js configuration adapter for Syferit AST hardening across client bundles without touching Server Components (RSC) or SSR. Part of the **[Syferit](https://syferit.soltrixstudios.com)** code defense framework by **[Soltrix Studios](https://soltrixstudios.com)**.
 
 ---
 
 ## Installation
 
 ```bash
-npm i @syferit/next
+npm i -D @syferit/next @syferit/webpack-plugin
 ```
 
 ## Quickstart
@@ -33,7 +33,9 @@ const nextConfig = {
 };
 
 export default withSyferit(nextConfig, {
-  preset: 'hardened'
+  preset: 'v2-quantum-rns',
+  domainProfile: 'saas',
+  exclude: [/node_modules/, /vendor/]
 });
 ```
 
@@ -55,9 +57,8 @@ For Next.js 15+ (where Turbopack is the default development engine), configure y
 
 ## Features
 
-- **Adversarial Resilience:** Specifically designed to defeat autonomous AI reverse-engineering agents, LLM-assisted decompilers, and MCP bridge tools.
-- **Provable Equivalence:** Retains 100% deterministic execution behavior while maximizing structural and algorithmic entropy.
-- **Zero Runtime Dependencies:** Lean and production-ready for mission-critical deployments.
+- **SEO, SSR & Core Web Vitals Safe:** Concentrates v2.0 hardening strictly on client-side chunks while leaving Server Components (RSC), HTML, and structured Schema.org JSON-LD untouched.
+- **Zero Runtime Dependencies:** Sub-millisecond execution with 100% functional equivalence.
 
 ## Documentation & Support
 

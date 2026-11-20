@@ -1,13 +1,13 @@
 <p align="center">
   <a href="https://syferit.soltrixstudios.com">
-    <img src="../../assets/icon.png" alt="Syferit Logo" width="80" height="80" />
+    <img src="https://syferit.soltrixstudios.com/icon.png" alt="Syferit Logo" width="80" height="80" />
   </a>
 </p>
 
 <h1 align="center">@syferit/vite-plugin</h1>
 
 <p align="center">
-  <strong>Zero-Config Build Plugin for Vite, Nuxt, Svelte, and Astro</strong><br>
+  <strong>Zero-Config Build Plugin for Vite, Nuxt, Svelte, and Astro (v2.0.0)</strong><br>
   <em>&ldquo;Don&apos;t Just Ship it. Syferit.&rdquo;</em>
 </p>
 
@@ -31,8 +31,10 @@ import { syferit } from '@syferit/vite-plugin';
 export default defineConfig({
   plugins: [
     syferit({
-      preset: 'hardened',
-      dynamicDispatcher: true
+      mode: 'production',
+      preset: 'v2-quantum-rns',
+      dynamicDispatch: true,
+      domainProfile: 'saas'
     })
   ]
 });
@@ -40,9 +42,9 @@ export default defineConfig({
 
 ## Features
 
-- **Adversarial Resilience:** Specifically designed to defeat autonomous AI reverse-engineering agents, LLM-assisted decompilers, and MCP bridge tools.
-- **Provable Equivalence:** Retains 100% deterministic execution behavior while maximizing structural and algorithmic entropy.
-- **Zero Runtime Dependencies:** Lean and production-ready for mission-critical deployments.
+- **v2.0 RNS-ARX & Micro-VM Hardening:** Automatically protects emitted JS/TS chunks and `.wasm` assets during `vite build` with live terminal progress receipts.
+- **Instant Dev HMR:** Automatically bypasses transformations in development mode (`vite dev`).
+- **Zero Runtime Dependencies:** Ships compiled code with 100% deterministic equivalence.
 
 ## Documentation & Support
 

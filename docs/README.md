@@ -42,8 +42,8 @@ While traditional obfuscators focus on making code difficult for humans to read,
 5. [WebAssembly Protection Guide](./WEBASSEMBLY.md)  
    Comprehensive binary protection for compiled C++, Rust, and Go WebAssembly modules.
 
-6. [Native C, C++, Rust & LLVM Protection Guide](./NATIVE_AND_LLVM.md)  
-   Source, LLVM IR, and native compiler pass protection for desktop, mobile, and systems applications.
+6. [Native C, C++, Rust, C#, Mobile & LLVM Protection Guide](./NATIVE_AND_LLVM.md)  
+   Source, LLVM IR, and native compiler pass protection for desktop, .NET/Unity, mobile (Android, iOS, Flutter), and systems applications.
 
 7. [Python 3 Protection Guide](./PYTHON.md)  
    Source and runtime protection for Python 3 applications, AI/ML pipelines, and backend services.

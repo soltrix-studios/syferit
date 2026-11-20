@@ -1,22 +1,34 @@
 <p align="center">
   <a href="https://syferit.soltrixstudios.com">
-    <img src="../../assets/icon.png" alt="Syferit Logo" width="80" height="80" />
+    <img src="https://syferit.soltrixstudios.com/icon.png" alt="Syferit Logo" width="80" height="80" />
   </a>
 </p>
 
 <h1 align="center">@syferit/cli</h1>
 
 <p align="center">
-  <strong>Universal Binary &amp; Source Code Hardener</strong><br>
+  <strong>Universal Binary &amp; 15+ Language Code Defense Hardener (v2.0.0)</strong><br>
   <em>&ldquo;Don&apos;t Just Ship it. Syferit.&rdquo;</em>
 </p>
 
-> Command-line tool for protecting JavaScript, TypeScript, WebAssembly, and native binaries with Syferit. Part of the **[Syferit](https://syferit.soltrixstudios.com)** code defense framework by **[Soltrix Studios](https://soltrixstudios.com)**.
+> Command-line tool for protecting Web (JS/TS), Mobile (Kotlin, Java, Swift, Dart), C# (.NET/Unity), WebAssembly, Python 3, C/C++, Rust, and LLVM IR. Part of the **[Syferit](https://syferit.soltrixstudios.com)** framework by **[Soltrix Studios](https://soltrixstudios.com)**.
 
 ---
 
 ## Installation
 
+### Option 1: Standalone Zero-Node Native Binaries (No Node.js Required)
+```powershell
+# Windows (PowerShell — downloads syferit.exe & registers PATH automatically)
+irm https://syferit.soltrixstudios.com/install.ps1 | iex
+```
+```bash
+# macOS & Linux (downloads syferit binary & registers PATH automatically)
+curl -fsSL https://syferit.soltrixstudios.com/install.sh | sh
+```
+Or download `syferit.exe`, `syferit-linux-x64`, or `syferit-macos-arm64` directly from [GitHub Releases](https://github.com/soltrix-studios/syferit/releases/latest) (verified via `SHA256SUMS.txt`).
+
+### Option 2: npm / npx
 ```bash
 npm i -g @syferit/cli
 ```
@@ -24,44 +36,41 @@ npm i -g @syferit/cli
 ## Quickstart
 
 ```bash
-# Protect a directory with hardened defense (default preset)
-syferit protect ./dist --out ./dist-protected
+# Create starter syferit.config.json
+syferit init
 
-# Target flag syntax with maximum defense preset
-syferit protect -t ./dist -o ./dist-protected --preset maximum
+# Preview matched files safely without writing changes
+syferit protect ./dist --dry-run
 
-# Protect with specific domain profile (saas, fintech, security, gaming)
-syferit protect ./dist -d fintech --preset hardened
+# Protect a directory with v2.0 Quantum RNS-ARX preset
+syferit protect ./dist --out ./dist-protected --preset v2-quantum-rns
 
-# Protect a single file in-place
-syferit protect ./dist/app.js --preset maximum
+# Protect C# (.NET/Unity), Android (Kotlin/Java), iOS (Swift), or Flutter (Dart)
+syferit protect ./Assets/Scripts -o ./Assets/Scripts-Protected --preset v2-quantum-rns
+
+# Exclude third-party vendor libraries or minified bundles
+syferit protect ./src -o ./build -e vendor "*.min.js" --preset v2-quantum-rns
+
+# Guided PATH registration (for manually downloaded binaries) & seamless upgrade
+syferit setup
+syferit upgrade
 ```
 
 ## CLI Reference
 
-### Options & Flags
-
-| Flag | Description | Default |
+| Command / Flag | Description | Default |
 | :--- | :--- | :--- |
-| `[target]` | Positional target path to file or directory to protect | *(Optional if `-t` used)* |
-| `-t, --target <path>` | Explicit path to target file or directory | *(Optional if positional used)* |
-| `-o, --out <path>` | Destination output path (in-place overwrite if omitted) | *(In-place)* |
-| `--output <path>` | Long alias for `-o, --out` | *(In-place)* |
-| `--preset <preset>` | Protection level: `standard`, `hardened`, or `maximum` | `'hardened'` |
-| `-d, --domain <domain>` | Domain dictionary profile: `saas`, `fintech`, `security`, `gaming` | `'saas'` |
-| `-p, --profile <profile>` | Alias for `-d, --domain` (smart auto-routes if preset name given) | `'saas'` |
-| `-s, --seed <seed>` | Deterministic seed for reproducible polymorphism | *(Auto-generated UUIDv4)* |
-| `-v, --version` | Output the current Syferit version | N/A |
-| `-h, --help` | Display CLI help and flag usage | N/A |
-
-> [!TIP]
-> **Smart Collision Avoidance:** If you pass `-p standard` or `-p maximum` (thinking `-p` was preset), Syferit automatically detects the preset value and routes it to `--preset` without error.
-
-## Features
-
-- **Adversarial Resilience:** Specifically designed to defeat autonomous AI reverse-engineering agents, LLM-assisted decompilers, and MCP bridge tools.
-- **Provable Equivalence:** Retains 100% deterministic execution behavior while maximizing structural and algorithmic entropy.
-- **Zero Runtime Dependencies:** Lean and production-ready for mission-critical deployments.
+| `protect [target]`, `-t, --target <path>` | File or directory to protect (defaults to `syferit.config.json` target) | *(Required)* |
+| `-o, --out, --output <path>` | Destination output path (in-place overwrite if omitted) | *(In-place)* |
+| `--preset <preset>` | Defense preset: `standard`, `hardened`, `maximum`, or `v2-quantum-rns` | `'hardened'` |
+| `-d, --domain, -p, --profile <profile>` | Domain profile: `saas`, `fintech`, `security`, `gaming` | `'saas'` |
+| `-s, --seed <seed>` | Deterministic seed for reproducible builds | *(CSPRNG UUIDv4)* |
+| `-e, --exclude <patterns...>` | Exclude folder/glob patterns (skips `node_modules`, `obj`, `target`, `.venv` automatically) | `[]` |
+| `--dry-run` | Preview matched files without modifying any files | `false` |
+| `-q, --quiet` | Suppress terminal banner and progress stream | `false` |
+| `init [-f, --force]` | Generate a starter `syferit.config.json` configuration file | `false` |
+| `setup [-y, --yes]` | Install standalone binary to `~/.syferit/bin` and register system `PATH` | Interactive |
+| `upgrade [--check]` | Seamlessly self-update to the latest release | In-place |
 
 ## Documentation & Support
 

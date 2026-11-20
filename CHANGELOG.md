@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0] - 2026-11-20
+
+### Milestone
+- **Syferit v2.0.0 Production Release:**
+  - Introduces the v2.0 Non-Linear Residue Entanglement & Cryptographic Point-Function Engine alongside Polymorphic Micro-VM Virtualization, Cyclic Control-Flow State Machines, C# (.NET/Unity) & Mobile (Android, iOS, Flutter) defense, and True Zero-Node SEA Executables.
+  - Specifically engineered to resist both autonomous AI reverse-engineering agents (`morluto/rea`) and human symbolic analysis / SMT constraint solvers (Microsoft Z3, Bitwuzla) while maintaining 100% deterministic equivalence across **55 / 55 automated tests (14 test suites)**.
+
+### Added
+- **Non-Linear Residue Entanglement & Point-Function Branching (`--preset v2-quantum-rns`):**
+  - Upgrades constant and branch protection across `@syferit/core`, `@syferit/wasm`, `@syferit/llvm`, and `@syferit/python` to shatter 32-bit values across non-linear mathematical rings and multi-round cryptographic point functions, eliminating linear algebraic invertibility.
+- **Polymorphic Micro-VM Virtualization & Cyclic Control-Flow (`@syferit/core`):**
+  - Compiles critical numeric operations into per-build synthetic bytecode evaluated by an inline polymorphic stack micro-interpreter, paired with cyclic state-machine call dispatchers.
+- **C# (.NET / Unity) & Mobile Protection (`@syferit/llvm`, `@syferit/cli`):**
+  - Added source-level RNS-ARX protection and trade-secret enclave binding for C# (`.cs`), Android Kotlin (`.kt`) & Java (`.java`), iOS Swift (`.swift`) & Objective-C (`.m`/`.mm`), and Flutter Dart (`.dart`).
+- **Dynamic Environment & Temporal Attestation:**
+  - Adds runtime monotonic execution verification and tamper-coupled state derivation to defend against interactive single-step debugging and memory patching.
+- **True Zero-Node SEA Executables (`npm run build:binaries`) & Developer Workflow:**
+  - Packages `@syferit/cli` into standalone Single Executable Applications (`syferit.exe`, `syferit-linux-x64`, `syferit-macos-arm64`) requiring zero Node.js installation, accompanied by `SHA256SUMS.txt`.
+  - Added 1-line installers (`install.ps1` / `install.sh`), guided PATH setup (`syferit setup` + double-click interactive prompt), silent 24h update notifier & `syferit upgrade`, starter config generator (`syferit init`), `--dry-run`, `-e/--exclude`, smart build-dir auto-ignores, and live ASCII banner/progress receipts.
+
 ## [1.0.1] - 2026-11-12
 
 ### Fixed

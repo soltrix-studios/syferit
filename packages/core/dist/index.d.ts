@@ -1,5 +1,8 @@
 // [Protected by Soltrix Studios | Syferit Code Defense Engine | https://syferit.soltrixstudios.com]
+export type ProtectionPreset = 'standard' | 'hardened' | 'maximum' | 'v2-quantum-rns';
 export interface SyferitOptions {
+  preset?: ProtectionPreset;
+  rnsArxEntanglement?: boolean;
   seed?: number | string | null;
   mode?: 'development' | 'production';
   domainProfile?: 'saas' | 'fintech' | 'security' | 'gaming';

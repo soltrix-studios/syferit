@@ -1,13 +1,13 @@
 <p align="center">
   <a href="https://syferit.soltrixstudios.com">
-    <img src="../../assets/icon.png" alt="Syferit Logo" width="80" height="80" />
+    <img src="https://syferit.soltrixstudios.com/icon.png" alt="Syferit Logo" width="80" height="80" />
   </a>
 </p>
 
 <h1 align="center">@syferit/benchmarks</h1>
 
 <p align="center">
-  <strong>Performance Benchmarking &amp; Adversarial AI Resilience Suite</strong><br>
+  <strong>Token Burn Multiplier (TBM) &amp; SMT Solver Hardness Evaluation Suite (v2.0.0)</strong><br>
   <em>&ldquo;Don&apos;t Just Ship it. Syferit.&rdquo;</em>
 </p>
 
@@ -18,25 +18,27 @@
 ## Installation
 
 ```bash
-npm i @syferit/benchmarks
+npm i -D @syferit/benchmarks
 ```
 
 ## Quickstart
 
 ```typescript
-import { runBenchmarkSuite } from '@syferit/benchmarks';
+import { evaluateCodeResilience } from '@syferit/benchmarks';
 
-runBenchmarkSuite({
-  target: './dist/app.js',
-  samples: 100
-}).then(metrics => console.log(metrics));
+const metrics = evaluateCodeResilience(sourceCode, 2026);
+console.log({
+  tokenBurnMultiplier: metrics.tokenBurnMultiplier,
+  rnsArxEntangled: metrics.rnsArxEntangled,
+  estimatedSmtCnfClauses: metrics.estimatedSmtCnfClauses,
+  tamperResistanceScore: metrics.tamperResistanceScore
+});
 ```
 
 ## Features
 
-- **Adversarial Resilience:** Specifically designed to defeat autonomous AI reverse-engineering agents, LLM-assisted decompilers, and MCP bridge tools.
-- **Provable Equivalence:** Retains 100% deterministic execution behavior while maximizing structural and algorithmic entropy.
-- **Zero Runtime Dependencies:** Lean and production-ready for mission-critical deployments.
+- **Empirical SMT & Token Burn Metrics:** Quantifies context-window saturation (`tokenBurnMultiplier`), RNS-ARX entanglement, CNF clause explosion estimates, and tamper resilience scores.
+- **Zero Runtime Overhead:** Runs deterministically offline on any target JavaScript or TypeScript module.
 
 ## Documentation & Support
 

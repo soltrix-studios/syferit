@@ -1,6 +1,6 @@
 {
   "name": "@syferit/next",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "Zero-friction Next.js adapter for Syferit adversarial code protection",
   "author": "Soltrix Studios",
   "license": "Apache-2.0",
@@ -19,8 +19,8 @@
     "clean": "node -e \"fs.rmSync('dist', { recursive: true, force: true })\""
   },
   "dependencies": {
-    "@syferit/core": "^1.0.2",
-    "@syferit/webpack-plugin": "^1.0.2"
+    "@syferit/core": "^2.0.0",
+    "@syferit/webpack-plugin": "^2.0.0"
   },
   "peerDependencies": {
     "next": ">=13.0.0"

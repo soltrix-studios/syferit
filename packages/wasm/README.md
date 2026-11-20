@@ -1,13 +1,13 @@
 <p align="center">
   <a href="https://syferit.soltrixstudios.com">
-    <img src="../../assets/icon.png" alt="Syferit Logo" width="80" height="80" />
+    <img src="https://syferit.soltrixstudios.com/icon.png" alt="Syferit Logo" width="80" height="80" />
   </a>
 </p>
 
 <h1 align="center">@syferit/wasm</h1>
 
 <p align="center">
-  <strong>WebAssembly Binary Transformer &amp; Section Hardener</strong><br>
+  <strong>WebAssembly Binary Hardener &amp; RNS-ARX Bytecode Transformer (v2.0.0)</strong><br>
   <em>&ldquo;Don&apos;t Just Ship it. Syferit.&rdquo;</em>
 </p>
 
@@ -18,30 +18,29 @@
 ## Installation
 
 ```bash
-npm i @syferit/wasm
+npm i -D @syferit/wasm
 ```
 
 ## Quickstart
 
 ```typescript
-import { WasmTransformer } from '@syferit/wasm';
-import fs from 'fs';
+import fs from 'node:fs';
+import { protectWasm, SyferitWasmEngine } from '@syferit/wasm';
 
-const wasmBytes = fs.readFileSync('module.wasm');
-const transformer = new WasmTransformer({
-  opaquePredicates: true,
-  scrambleSignatures: true
+const wasmBytes = new Uint8Array(fs.readFileSync('module.wasm'));
+const result = protectWasm(wasmBytes, {
+  domainProfile: 'fintech',
+  poisonWATDisassembly: true,
+  scrambleCustomSections: true
 });
 
-const protectedWasm = transformer.transform(wasmBytes);
-fs.writeFileSync('module.protected.wasm', protectedWasm);
+fs.writeFileSync('module.protected.wasm', result.binary);
 ```
 
 ## Features
 
-- **Adversarial Resilience:** Specifically designed to defeat autonomous AI reverse-engineering agents, LLM-assisted decompilers, and MCP bridge tools.
-- **Provable Equivalence:** Retains 100% deterministic execution behavior while maximizing structural and algorithmic entropy.
-- **Zero Runtime Dependencies:** Lean and production-ready for mission-critical deployments.
+- **W3C Spec-Compliant Hardening:** Injects `i32.rem_u` RNS decomposition, `i32.rotl` ARX keyframes, and scrubs debug custom sections (`name`, `producers`).
+- **Neutralizes Decompilers:** Breaks WABT (`wasm-decompile`, `wasm2wat`) and Ghidra WASM reconstruction with zero runtime dependencies.
 
 ## Documentation & Support
 

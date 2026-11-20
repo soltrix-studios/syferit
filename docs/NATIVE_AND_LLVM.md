@@ -1,6 +1,6 @@
-# Native C, C++, Rust & LLVM Protection Guide
+# Native C, C++, Rust, C#, Mobile (Android / iOS / Flutter) & LLVM Protection Guide
 
-Syferit provides comprehensive protection for native compiled software (`.c`, `.cpp`, `.rs`, and `.ll` LLVM Intermediate Representation) alongside web and WebAssembly applications.
+Syferit provides comprehensive protection for native, managed, and mobile compiled software (`.c`, `.cpp`, `.rs`, `.cs` C# / .NET / Unity, `.kt` Kotlin, `.java` Java, `.swift` Swift, `.dart` Flutter/Dart, and `.ll` LLVM Intermediate Representation) alongside web and WebAssembly applications.
 
 ---
 
@@ -37,6 +37,14 @@ npx @syferit/cli protect ./src/engine.cpp --out ./build/engine.protected.cpp
 
 # Protect a Rust module
 npx @syferit/cli protect ./src/lib.rs --out ./build/lib.protected.rs
+
+# Protect a C# (.NET / Unity) source file
+syferit protect ./Assets/Scripts/LicenseManager.cs --out ./build/LicenseManager.cs --preset v2-quantum-rns
+
+# Protect Android (Kotlin / Java), iOS (Swift), or Flutter (Dart) source files
+syferit protect ./app/src/main/java/com/example/BillingGuard.kt --preset v2-quantum-rns
+syferit protect ./ios/App/EnclaveSigner.swift --preset v2-quantum-rns
+syferit protect ./lib/license_bloc.dart --preset v2-quantum-rns
 
 # Protect an LLVM IR (.ll) module
 npx @syferit/cli protect ./build/module.ll --out ./build/module.protected.ll
