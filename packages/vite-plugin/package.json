@@ -1,6 +1,6 @@
 {
   "name": "@syferit/vite-plugin",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Zero-config Vite and Rollup plugin for Syferit code protection",
   "author": "Soltrix Studios",
   "license": "Apache-2.0",
@@ -19,8 +19,8 @@
     "clean": "node -e \"fs.rmSync('dist', { recursive: true, force: true })\""
   },
   "dependencies": {
-    "@syferit/core": "^2.0.0",
-    "@syferit/wasm": "^2.0.0"
+    "@syferit/core": "^2.0.1",
+    "@syferit/wasm": "^2.0.1"
   },
   "peerDependencies": {
     "vite": "^4.0.0 || ^5.0.0 || ^6.0.0"

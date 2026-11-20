@@ -12,7 +12,7 @@
 </p>
 
 <p align="center">
-  <img src="../assets/brand-identity.png" alt="Syferit Master Banner" width="100%" />
+  <img src="../assets/brand-identity-2.0.gif" alt="Syferit v2.0 Master Banner" width="100%" />
 </p>
 
 ---

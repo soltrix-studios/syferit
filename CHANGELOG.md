@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.1] - 2026-11-20
+
+### Fixed
+- **@syferit/webpack-plugin Post-Minification Hook Stage (`Stage 700`):**
+  - Moved Webpack asset hardening from `PROCESS_ASSETS_STAGE_OPTIMIZE` (100) to `PROCESS_ASSETS_STAGE_OPTIMIZE_INLINE` (700), executing strictly after SWC/Terser minification so bundler minifiers cannot re-mangle protected ASTs or strip statutory notices.
+  - Updated published `@syferit/webpack-plugin` TypeScript declarations to expose `AssetFilter` (string, RegExp, array, or predicate) and `quiet?: boolean`.
+- **@syferit/next Framework Runtime Auto-Exclusions:**
+  - Automatically excludes standard Next.js/React runtime chunks (`framework-`, `polyfills-`, `webpack-`, `main-`, manifests, `next/dist/client/`, and App Router 8-hex `react-dom` chunks) when `test` is not explicitly provided, eliminating SWC/React synthetic event collisions (`Uncaught TypeError: m is not a constructor`) and accelerating production Next.js builds while keeping 100% of proprietary application chunks hardened.
+  - Forwarded the `quiet` option cleanly from `withSyferit(...)` to `SyferitWebpackPlugin`.
+
+### Release Synchronization
+- Aligned all 10 `@syferit/*` npm workspace packages (`@syferit/core`, `@syferit/cli`, `@syferit/wasm`, `@syferit/llvm`, `@syferit/python`, `@syferit/electron`, `@syferit/vite-plugin`, `@syferit/webpack-plugin`, `@syferit/next`, `@syferit/benchmarks`), CLI banners, and cross-platform Zero-Node SEA standalone binaries (`syferit.exe`, `syferit-linux-x64`, `syferit-macos-arm64`, `syferit`) to `v2.0.1`.
+
 ## [2.0.0] - 2026-11-20
 
 ### Milestone

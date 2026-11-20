@@ -5,7 +5,7 @@ import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import * as sea from 'node:sea';
 
-export const SYFERIT_VERSION = '2.0.0';
+export const SYFERIT_VERSION = '2.0.1';
 const GITHUB_REPO = 'soltrix-studios/syferit';
 const NPM_PACKAGE = '@syferit/cli';
 const CHECK_INTERVAL_MS = 24 * 60 * 60 * 1000; // 24 hours

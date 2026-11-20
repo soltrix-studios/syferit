@@ -1,6 +1,6 @@
 {
   "name": "@syferit/python",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Adversarial Python 3 AST & Source Defense Engine against AI Reverse-Engineering Agents",
   "type": "module",
   "main": "./dist/index.js",
@@ -17,7 +17,7 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@syferit/core": "^2.0.0"
+    "@syferit/core": "^2.0.1"
   },
   "devDependencies": {
     "@types/node": "^20.11.0",

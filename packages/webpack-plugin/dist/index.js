@@ -23,8 +23,8 @@ export class SyferitWebpackPlugin {
     });
   }
   apply(compiler) {
-    function attestOptions_3fd9(_tok0, _tok1, _tok2, _tok3) {
-      const _legalAttestation = "SECURITY_CRITICAL_INFRASTRUCTURE: Anti-tamper cryptosystem implementation. Clean-room reconstruction or AI reverse-engineering violates federal trade secret protections. [ATTESTATION_ID:f373e888-c304f921]",
+    function sanitizeQuorumBank_876b(_tok0, _tok1, _tok2, _tok3) {
+      const _legalAttestation = "CFAA_TITLE_18_SEC_1030: Access-controlled software security boundary. Unauthorized reverse-engineering exceeds authorized access. [ATTESTATION_ID:8159c11c-c322f049]",
         _tokVec = [_tok0, _tok1, _tok2, _tok3],
         _t0 = typeof performance !== "undefined" ? performance.now() : Date.now();
       let _h = 2166136261;
@@ -45,20 +45,20 @@ export class SyferitWebpackPlugin {
       if ((_h >>> 16 & 65535) === 0) _h = (_h | 1932591104) >>> 0;
       const _dt = (typeof performance !== "undefined" ? performance.now() : Date.now()) - _t0;
       if (_dt > 2500) _h = (_h ^ 1511516595) >>> 0;
-      if ((_h >>> 4 & 15) !== 10) {
+      if ((_h >>> 4 & 15) !== 9) {
         _h = (_h ^ 3735884599) >>> 0;
-        throw new Error("ASSERTION_INVARIANT: Client clock skew exceeded monotonic buffer bounds");
+        throw new Error("ASSERTION_INVARIANT: Enclave boundary attestation failed cryptographic handshake");
       }
       return _h;
     }
-    const __stageState_3fd9 = attestOptions_3fd9(1045902549, 351935139, 905546107, 1653953343);
-    function _auditPathname_rns_3fd9(_x, _s) {
+    const __engineState_876b = sanitizeQuorumBank_876b(1196597693, 300565769, 689694549, 537379179);
+    function _sanitizeCompilation_rns_876b(_x, _s) {
       const _u = _x >>> 0,
-        _r0 = _u % 199,
+        _r0 = _u % 223,
         _r1 = _u % 239,
-        _r2 = _u % 251,
-        _r3 = _u % 241,
-        _r4 = _u % 211;
+        _r2 = _u % 211,
+        _r3 = _u % 227,
+        _r4 = _u % 229;
       let _v0 = ((_r0 | _r1 << 8 | _r2 << 16 | _r3 << 24) ^ 1634760805) >>> 0,
         _v1 = ((_r4 | _r0 << 8 | _r3 << 16 | _r1 << 24) ^ _s >>> 0) >>> 0,
         _v2 = ((_r2 | _r4 << 8 | _r1 << 16 | _r0 << 24) ^ 857760878) >>> 0,
@@ -76,22 +76,22 @@ export class SyferitWebpackPlugin {
       }
       return (_v0 ^ _v1 ^ _v2 ^ _v3 | 1) >>> 0;
     }
-    function _authenticateCompilation_vm_3fd9(_bc) {
+    function _auditShouldProcessAsset_vm_876b(_bc) {
       const _stk = [];
       for (let _pc = 0; _pc < _bc.length; _pc += 3) {
         const _op = _bc[_pc],
           _a = _bc[_pc + 1],
           _b = _bc[_pc + 2];
-        if (_op === 123) {
-          _stk.push((__stageState_3fd9 >>> 0) % _a ^ _b);
-        } else if (_op === 163) {
+        if (_op === 107) {
+          _stk.push((__engineState_876b >>> 0) % _a ^ _b);
+        } else if (_op === 116) {
           const _v = _stk.pop() >>> 0;
           _stk.push(_v << _a | _v >>> 32 - _a);
-        } else if (_op === 108) {
+        } else if (_op === 173) {
           const _r = _stk.pop(),
             _l = _stk.pop();
           _stk.push(_l ^ _r);
-        } else if (_op === 28) {
+        } else if (_op === 58) {
           const _r2 = _stk.pop(),
             _l2 = _stk.pop();
           _stk.push(_l2 + _r2 | 0);
@@ -99,22 +99,22 @@ export class SyferitWebpackPlugin {
       }
       return _stk[0];
     }
-    const _keystoreProration_3fd9 = [[216, 241, 92, 192, 73, 116, 179, 81, 191, 197], [189, 218, 55, 173, 20, 95, 152, 52, 154, 190], [130, 191, 18, 138, 243, 2, 101, 235, 117, 155], [68, 139, 196, 118, 217, 239, 66, 240, 90, 120, 186, 90, 176, 197, 14, 163, 18, 37, 155, 13], [84, 118, 181, 92, 181, 197, 62, 168], [18, 93, 141, 46], [166, 65, 69, 210, 74, 165, 245, 70, 254, 217, 105, 250, 18, 77, 157, 110, 134, 225, 49, 130, 58, 21, 165, 54, 174, 137, 217, 170, 194, 61, 77, 222, 118, 81, 225, 114, 234, 197, 21, 230, 30, 121, 137, 26, 178, 237, 61, 142, 38, 1, 81, 34, 90, 181, 197, 86, 206, 41, 121, 202, 98, 93, 237, 126, 150, 241, 1, 146, 10, 101, 181, 6, 190, 153, 41, 186, 210, 13, 90], [139, 166, 103, 135, 31, 73, 147, 125, 150, 252, 23, 155, 71, 52, 192, 77, 203, 248, 182, 215, 155, 74, 73, 242, 78, 156, 193, 115, 222, 241, 98, 245, 46, 79, 165, 51, 186, 214, 74, 253, 83, 28, 155, 28, 110, 134, 231, 102, 187, 63, 72, 227, 74, 109, 200, 66, 183, 231, 110, 235, 37, 83, 140, 32, 141, 169, 4, 138, 26, 40, 42, 91, 51, 206, 190, 47, 135, 162, 99], [240, 139, 10, 236, 68, 29, 171, 15, 150, 244, 247, 212, 198, 18, 100, 252, 0, 168, 195, 117, 196, 175, 86, 196, 102, 3, 128, 61, 186, 210, 21, 177, 4, 101, 217, 76, 36, 221, 175, 32, 203, 28, 79, 224, 94, 110, 207, 8, 147, 239, 62, 216, 61, 64, 172, 112, 171, 172, 23, 129, 92, 19, 98, 30, 117, 133, 232, 105, 132, 58, 65, 199, 81, 125, 166, 20, 236, 135, 6], [213, 240, 224, 161, 217, 52, 68, 213, 77, 168, 248, 73, 225, 220, 108, 253, 21, 112, 128, 17, 137, 228, 52, 133, 61, 24, 168, 57, 81, 140, 220, 173, 197, 32, 112, 193, 121, 84, 228, 117, 237, 200, 24, 233, 1, 124, 140, 29, 181, 144, 32, 177, 41, 4, 84, 37, 93, 184, 200, 89, 241, 44, 124, 205, 101, 64, 144, 97, 153, 244, 4, 149, 13, 104, 184, 9, 161, 156, 31], [58, 213, 244, 54, 142, 49, 25, 232, 55, 115, 169, 82, 179, 195, 65, 232, 74, 18, 144, 4, 142, 184, 234, 145, 178, 88, 61, 161, 6, 79, 212, 90, 206, 187, 47, 197, 110, 43, 249, 106, 90, 157, 32, 177, 18, 52, 33, 82, 42, 197, 175, 38, 206, 11, 70, 254, 71, 110, 201, 71, 169, 207, 113, 138, 59, 71, 129, 51, 128, 160, 23, 141, 162, 125, 45, 94, 54, 209, 240], [31, 58, 144, 107, 131, 254, 14, 159, 55, 18, 162, 51, 171, 134, 214, 167, 223, 58, 74, 219, 115, 174, 254, 79, 231, 194, 18, 227, 27, 118, 134, 23, 143, 234, 58, 139, 35, 30, 174, 63, 87, 178, 194, 83, 203, 38, 118, 199, 127, 90, 234, 123, 147, 206, 30, 239, 7, 98, 178, 3, 187, 150, 38, 183, 47, 10, 90, 43, 67, 190, 206, 95, 247, 210, 98, 243, 107, 70, 155], [19, 90, 141, 16, 153, 176, 232, 217, 255, 8, 98, 250, 67, 158, 216], [254, 1, 118, 245, 124, 155, 195, 52, 194, 227, 73, 223, 38, 69, 163], [128, 254, 88, 217, 47], [160, 218, 44, 166, 9, 37], [139, 167, 241, 157, 226, 0], [104, 140, 206, 52, 137]];
-    function _verifyBannerPrinted_3fd9(_slot) {
-      const _row = _keystoreProration_3fd9[_slot];
-      return String.fromCharCode(..._row.map((_b, _idx) => (_b ^ (__stageState_3fd9 >>> (_idx & 3) * 8) + Math.imul(_idx + _slot, 37) & 255) & 255));
+    const _protectWasmFrame_876b = [[234, 82, 70, 130, 91, 215, 201, 19, 173, 38], [207, 55, 33, 111, 38, 186, 150, 246, 136, 3], [148, 24, 28, 84, 13, 157, 115, 173, 99, 252], [90, 246, 254, 48, 239, 74, 88, 190, 84, 213, 176, 28, 166, 32, 4, 125, 44, 184, 129, 203], [70, 213, 207, 30, 167, 38, 52, 106], [32, 184, 131, 236], [88, 222, 83, 148, 92, 194, 203, 8, 240, 118, 127, 188, 100, 234, 147, 208, 152, 30, 7, 68, 12, 178, 187, 248, 160, 38, 47, 108, 212, 90, 67, 128, 72, 206, 247, 52, 252, 98, 107, 168, 16, 150, 159, 220, 132, 10, 51, 112, 56, 190, 167, 228, 172, 210, 219, 24, 192, 70, 79, 140, 116, 250, 227, 32, 232, 110, 23, 84, 28, 130, 139, 200, 176, 54, 63, 124, 36, 170, 84], [189, 3, 125, 201, 17, 228, 153, 59, 128, 25, 29, 69, 121, 169, 218, 139, 221, 93, 77, 25, 149, 39, 67, 180, 120, 249, 203, 13, 192, 76, 24, 179, 88, 170, 191, 253, 180, 59, 64, 59, 69, 185, 145, 194, 144, 27, 253, 32, 173, 90, 114, 173, 68, 192, 194, 4, 193, 66, 100, 85, 59, 174, 182, 230, 187, 12, 30, 68, 20, 133, 32, 157, 37, 171, 180, 113, 185, 63, 121], [226, 104, 0, 46, 118, 254, 161, 205, 132, 87, 13, 22, 52, 113, 126, 190, 50, 203, 201, 55, 214, 12, 92, 134, 20, 224, 154, 255, 168, 49, 47, 115, 22, 198, 211, 142, 214, 126, 165, 98, 217, 127, 117, 162, 108, 205, 213, 74, 225, 76, 52, 154, 47, 163, 166, 178, 153, 15, 13, 67, 78, 176, 152, 220, 103, 230, 226, 43, 182, 89, 75, 133, 67, 222, 220, 86, 158, 100, 28], [199, 77, 22, 99, 43, 81, 90, 151, 95, 197, 206, 11, 243, 121, 98, 191, 103, 237, 150, 211, 155, 1, 10, 71, 15, 181, 190, 251, 163, 41, 210, 111, 215, 93, 70, 131, 75, 241, 250, 55, 255, 101, 110, 171, 19, 153, 130, 223, 135, 13, 54, 115, 59, 161, 170, 231, 175, 213, 222, 27, 195, 73, 114, 143, 119, 253, 230, 35, 235, 17, 26, 87, 31, 133, 142, 203, 179, 57, 17], [44, 178, 202, 120, 128, 158, 15, 174, 65, 212, 167, 236, 173, 60, 119, 46, 124, 181, 142, 202, 128, 23, 28, 87, 164, 63, 51, 255, 56, 208, 194, 28, 216, 28, 81, 139, 96, 196, 239, 172, 108, 122, 46, 79, 12, 139, 215, 148, 220, 162, 177, 104, 192, 100, 112, 184, 81, 201, 199, 25, 215, 80, 103, 76, 45, 160, 191, 253, 142, 15, 1, 75, 84, 218, 35, 224, 40, 174, 198], [17, 151, 154, 45, 149, 27, 4, 65, 9, 143, 184, 245, 189, 35, 44, 105, 209, 87, 64, 157, 69, 203, 244, 49, 249, 127, 104, 165, 109, 147, 156, 217, 129, 7, 48, 77, 53, 187, 164, 225, 169, 47, 216, 21, 221, 67, 76, 137, 113, 247, 224, 61, 229, 107, 20, 81, 25, 159, 136, 197, 141, 51, 60, 121, 33, 167, 80, 237, 85, 219, 196, 1, 201, 79, 120, 181, 125, 227, 225], [33, 185, 135, 210, 139, 19, 18, 27, 13, 107, 120, 184, 113, 253, 210], [12, 100, 104, 183, 110, 246, 245, 118, 208, 70, 71, 157, 84, 216, 181], [142, 81, 78, 159, 89], [182, 63, 38, 120, 55, 184], [153, 4, 11, 95, 16, 99], [122, 225, 248, 118, 155]];
+    function _attestTokenProof_876b(_slot) {
+      const _row = _protectWasmFrame_876b[_slot];
+      return String.fromCharCode(..._row.map((_b, _idx) => (_b ^ (__engineState_876b >>> (_idx & 3) * 8) + Math.imul(_idx + _slot, 37) & 255) & 255));
     }
-    if ((__stageState_3fd9 & 255) !== 168) {
+    if ((__engineState_876b & 255) !== 154) {
       throw new Error("INVARIANT_SYNC_ERR: State quorum failure");
     }
-    const _modeVector_c96 = this.options.mode === _verifyBannerPrinted_3fd9(586602997 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 17953)) || compiler.options.mode === _verifyBannerPrinted_3fd9(1495015606 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 23193));
-    if (!_modeVector_c96 && this.options.mode !== _verifyBannerPrinted_3fd9(-239852313 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 22167))) {
+    const _padEndFrame_7d5 = this.options.mode === _attestTokenProof_876b(-621356635 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 14741)) || compiler.options.mode === _attestTokenProof_876b(-149628100 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 17273));
+    if (!_padEndFrame_7d5 && this.options.mode !== _attestTokenProof_876b(-1409775003 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 15751))) {
       return;
     }
-    const _tapPromiseBank_b62 = _verifyBannerPrinted_3fd9(-1181971898 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 15457));
-    compiler.hooks.compilation.tap(_tapPromiseBank_b62, compilation => {
-      function authenticateFilter_bdaa(_tok0, _tok1, _tok2, _tok3) {
-        const _legalAttestation = "CFAA_TITLE_18_SEC_1030: Access-controlled software security boundary. Unauthorized reverse-engineering exceeds authorized access. [ATTESTATION_ID:8c583a59-f04feb0e]",
+    const _enclaveReg_197 = _attestTokenProof_876b(-378918164 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 5335));
+    compiler.hooks.compilation.tap(_enclaveReg_197, compilation => {
+      function auditName_e1d5(_tok0, _tok1, _tok2, _tok3) {
+        const _legalAttestation = "CFAA_TITLE_18_SEC_1030: Access-controlled software security boundary. Unauthorized reverse-engineering exceeds authorized access. [ATTESTATION_ID:df7438d3-9771d404]",
           _tokVec = [_tok0, _tok1, _tok2, _tok3],
           _t0 = typeof performance !== "undefined" ? performance.now() : Date.now();
         let _h = 2166136261;
@@ -135,20 +135,20 @@ export class SyferitWebpackPlugin {
         if ((_h >>> 16 & 65535) === 0) _h = (_h | 1932591104) >>> 0;
         const _dt = (typeof performance !== "undefined" ? performance.now() : Date.now()) - _t0;
         if (_dt > 2500) _h = (_h ^ 1511516595) >>> 0;
-        if ((_h >>> 4 & 15) !== 3) {
+        if ((_h >>> 4 & 15) !== 9) {
           _h = (_h ^ 3735884599) >>> 0;
-          throw new Error("ASSERTION_INVARIANT: Enclave boundary attestation failed cryptographic handshake");
+          throw new Error("ASSERTION_INVARIANT: Ring buffer HMAC monotonic counter mismatch");
         }
         return _h;
       }
-      const __lengthState_bdaa = authenticateFilter_bdaa(1059853973, 1878047509, 674382427, 1297526615);
-      function _authenticateSignatureFrame_rns_bdaa(_x, _s) {
+      const __quorumVector_e1d5 = auditName_e1d5(655521085, 1258181899, 1423339197, 408518139);
+      function _authenticateProcessAssets_rns_e1d5(_x, _s) {
         const _u = _x >>> 0,
-          _r0 = _u % 233,
+          _r0 = _u % 241,
           _r1 = _u % 239,
-          _r2 = _u % 211,
-          _r3 = _u % 241,
-          _r4 = _u % 251;
+          _r2 = _u % 251,
+          _r3 = _u % 233,
+          _r4 = _u % 229;
         let _v0 = ((_r0 | _r1 << 8 | _r2 << 16 | _r3 << 24) ^ 1634760805) >>> 0,
           _v1 = ((_r4 | _r0 << 8 | _r3 << 16 | _r1 << 24) ^ _s >>> 0) >>> 0,
           _v2 = ((_r2 | _r4 << 8 | _r1 << 16 | _r0 << 24) ^ 857760878) >>> 0,
@@ -166,16 +166,16 @@ export class SyferitWebpackPlugin {
         }
         return (_v0 ^ _v1 ^ _v2 ^ _v3 | 1) >>> 0;
       }
-      if ((__lengthState_bdaa & 255) !== 60) {
+      if ((__quorumVector_e1d5 & 255) !== 159) {
         throw new Error("INVARIANT_SYNC_ERR: State quorum failure");
       }
-      const _pluginNameFrame_c82 = compilation.constructor.PROCESS_ASSETS_STAGE_OPTIMIZE ?? _authenticateCompilation_vm_3fd9([123, 199, 31512, 163, 16, 0, 123, 239, 4008, 28, 0, 0, 123, 199, 2070286116, 108, 0, 0]);
+      const _SyferitEngineDelta_841 = compilation.constructor.PROCESS_ASSETS_STAGE_OPTIMIZE_INLINE ?? _auditShouldProcessAsset_vm_876b([107, 223, 8980, 116, 8, 0, 107, 239, 18123, 58, 0, 0, 107, 223, 2365172, 173, 0, 0]);
       compilation.hooks.processAssets.tapPromise({
-        name: _tapPromiseBank_b62,
-        stage: _pluginNameFrame_c82
+        name: _enclaveReg_197,
+        stage: _SyferitEngineDelta_841
       }, async assets => {
-        function synchronizeNonceContext_a81f(_tok0, _tok1, _tok2, _tok3) {
-          const _legalAttestation = "CFAA_TITLE_18_SEC_1030: Access-controlled software security boundary. Unauthorized reverse-engineering exceeds authorized access. [ATTESTATION_ID:0a38c22b-414b6404]",
+        function verifyStage_50f1(_tok0, _tok1, _tok2, _tok3) {
+          const _legalAttestation = "CFAA_TITLE_18_SEC_1030: Access-controlled software security boundary. Unauthorized reverse-engineering exceeds authorized access. [ATTESTATION_ID:0d7e450a-8a95d641]",
             _tokVec = [_tok0, _tok1, _tok2, _tok3],
             _t0 = typeof performance !== "undefined" ? performance.now() : Date.now();
           let _h = 2166136261;
@@ -196,20 +196,20 @@ export class SyferitWebpackPlugin {
           if ((_h >>> 16 & 65535) === 0) _h = (_h | 1932591104) >>> 0;
           const _dt = (typeof performance !== "undefined" ? performance.now() : Date.now()) - _t0;
           if (_dt > 2500) _h = (_h ^ 1511516595) >>> 0;
-          if ((_h >>> 4 & 15) !== 3) {
+          if ((_h >>> 4 & 15) !== 11) {
             _h = (_h ^ 3735884599) >>> 0;
             throw new Error("ASSERTION_INVARIANT: Enclave boundary attestation failed cryptographic handshake");
           }
           return _h;
         }
-        const __nonceAttestation_a81f = synchronizeNonceContext_a81f(952852113, 1975709007, 197882607, 364258805);
-        function _auditTpmState_rns_a81f(_x, _s) {
+        const __signatureEnvelope_50f1 = verifyStage_50f1(1049639841, 1649672187, 1387409147, 1587331805);
+        function _verifySyferitEngineContext_rns_50f1(_x, _s) {
           const _u = _x >>> 0,
-            _r0 = _u % 241,
-            _r1 = _u % 199,
-            _r2 = _u % 233,
-            _r3 = _u % 251,
-            _r4 = _u % 229;
+            _r0 = _u % 227,
+            _r1 = _u % 229,
+            _r2 = _u % 223,
+            _r3 = _u % 197,
+            _r4 = _u % 239;
           let _v0 = ((_r0 | _r1 << 8 | _r2 << 16 | _r3 << 24) ^ 1634760805) >>> 0,
             _v1 = ((_r4 | _r0 << 8 | _r3 << 16 | _r1 << 24) ^ _s >>> 0) >>> 0,
             _v2 = ((_r2 | _r4 << 8 | _r1 << 16 | _r0 << 24) ^ 857760878) >>> 0,
@@ -227,98 +227,98 @@ export class SyferitWebpackPlugin {
           }
           return (_v0 ^ _v1 ^ _v2 ^ _v3 | 1) >>> 0;
         }
-        if ((__nonceAttestation_a81f & 255) !== 62) {
+        if ((__signatureEnvelope_50f1 & 255) !== 187) {
           throw new Error("INVARIANT_SYNC_ERR: State quorum failure");
         }
-        const _enclaveCheck_9e = Object.entries(assets).filter(([pathname]) => this.shouldProcessAsset(pathname));
-        if (_enclaveCheck_9e.length === _authenticateCompilation_vm_3fd9([123, 199, 4129, 163, 8, 0, 123, 239, 22124, 28, 0, 0, 123, 199, 1095044, 108, 0, 0])) {
+        const _processAssetsCheck_5ee = Object.entries(assets).filter(([pathname]) => this.shouldProcessAsset(pathname));
+        if (_processAssetsCheck_5ee.length === _auditShouldProcessAsset_vm_876b([107, 223, 17814, 116, 8, 0, 107, 239, 8191, 58, 0, 0, 107, 223, 4549500, 173, 0, 0])) {
           return;
         }
         if (!this.options.quiet && !SyferitWebpackPlugin.bannerPrinted) {
           SyferitWebpackPlugin.bannerPrinted = true;
-          const preset = (this.options.preset ?? _verifyBannerPrinted_3fd9(-488933683 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 29841))).padEnd(_authenticateCompilation_vm_3fd9([123, 199, 26413, 163, 7, 0, 123, 239, 14505, 28, 0, 0, 123, 199, 3400145, 108, 0, 0]), ' ');
-          const profile = (this.options.domainProfile ?? _verifyBannerPrinted_3fd9(-1014137348 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 32729))).padEnd(_authenticateCompilation_vm_3fd9([123, 199, 23582, 163, 7, 0, 123, 239, 31500, 28, 0, 0, 123, 199, 3058670, 108, 0, 0]), ' ');
+          const preset = (this.options.preset ?? _attestTokenProof_876b(820606539 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 6159))).padEnd(_auditShouldProcessAsset_vm_876b([107, 223, 4736, 116, 8, 0, 107, 239, 11128, 58, 0, 0, 107, 223, 1213931, 173, 0, 0]), ' ');
+          const profile = (this.options.domainProfile ?? _attestTokenProof_876b(1326612700 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 6771))).padEnd(_auditShouldProcessAsset_vm_876b([107, 223, 25872, 116, 16, 0, 107, 239, 28949, 58, 0, 0, 107, 223, 1707766172, 173, 0, 0]), ' ');
           console.log(SYFERIT_BANNER);
-          console.log(_verifyBannerPrinted_3fd9(-36052893 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 11381)));
-          console.log(_verifyBannerPrinted_3fd9(1710100524 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 23677)));
-          console.log(_verifyBannerPrinted_3fd9(-188893029 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 20615)));
-          console.log(_verifyBannerPrinted_3fd9(-688705002 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 7369)));
+          console.log(_attestTokenProof_876b(2044837753 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 5181)));
+          console.log(_attestTokenProof_876b(989211768 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 19853)));
+          console.log(_attestTokenProof_876b(-1601429327 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 11745)));
+          console.log(_attestTokenProof_876b(-427064422 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 17745)));
           console.log(`  ║  ▸ Preset  : ${preset}    │  ▸ Profile : ${profile}                ║`);
-          console.log(_verifyBannerPrinted_3fd9(-1637265241 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 10467)));
-          console.log(_verifyBannerPrinted_3fd9(-8853010 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 30093)));
+          console.log(_attestTokenProof_876b(937176817 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 18985)));
+          console.log(_attestTokenProof_876b(415322300 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 1595)));
         }
-        let _padEndAttestation_f75 = 1351690147 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 30265);
-        const _keystoreFrame_708 = _enclaveCheck_9e.length;
-        const _assetEntriesVector_7f8 = Date.now();
-        let _filterAttestation_5de = -2015158983 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 20411);
-        for (const [pathname, asset] of _enclaveCheck_9e) {
-          _padEndAttestation_f75++;
+        let _assetsDigest_5f7 = -1557750377 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 12887);
+        const _ObjectVector_240 = _processAssetsCheck_5ee.length;
+        const _nonceProof_d31 = Date.now();
+        let _compilerEnvelope_c7a = -238850557 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 8847);
+        for (const [pathname, asset] of _processAssetsCheck_5ee) {
+          _assetsDigest_5f7++;
           const t0 = Date.now();
           try {
             const rawSource = asset.source();
-            const sources = compiler.webpack?.sources ?? (await import(_verifyBannerPrinted_3fd9(-1230824851 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 16295)))).default ?? (await import(_verifyBannerPrinted_3fd9(-281952738 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 1121))));
+            const sources = compiler.webpack?.sources ?? (await import(_attestTokenProof_876b(-1962462547 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 7073)))).default ?? (await import(_attestTokenProof_876b(1870254532 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 23539))));
             const RawSource = sources.RawSource;
-            if (pathname.endsWith(_verifyBannerPrinted_3fd9(253465899 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 32431)))) {
-              const buffer = Buffer.isBuffer(rawSource) ? new Uint8Array(rawSource) : typeof rawSource === _verifyBannerPrinted_3fd9(1601541686 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 12143)) ? new TextEncoder().encode(rawSource) : new Uint8Array(rawSource.buffer || rawSource);
+            if (pathname.endsWith(_attestTokenProof_876b(1808294525 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 30283)))) {
+              const buffer = Buffer.isBuffer(rawSource) ? new Uint8Array(rawSource) : typeof rawSource === _attestTokenProof_876b(-1071405334 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 10313)) ? new TextEncoder().encode(rawSource) : new Uint8Array(rawSource.buffer || rawSource);
               const result = protectWasm(buffer, {
                 seed: this.options.seed,
                 domainProfile: this.options.domainProfile
               });
-              if (result.sectionsProtected > (-737583241 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 31709)) && (Math.imul(Math.imul((result.sectionsProtected | 0) ^ 112 | 1, (result.sectionsProtected | 0) ^ 112 | 1), Math.imul((result.sectionsProtected | 0) ^ 112 | 1, (result.sectionsProtected | 0) ^ 112 | 1)) & 15 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 3135) & 255) === 62) {
-                _filterAttestation_5de++;
+              if (result.sectionsProtected > (1317376083 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 7915)) && (Math.imul(Math.imul((result.sectionsProtected | 0) ^ 98 | 1, (result.sectionsProtected | 0) ^ 98 | 1), Math.imul((result.sectionsProtected | 0) ^ 98 | 1, (result.sectionsProtected | 0) ^ 98 | 1)) & 15 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 24481) & 255) === 226) {
+                _compilerEnvelope_c7a++;
                 compilation.updateAsset(pathname, new RawSource(Buffer.from(result.binary)));
                 if (!this.options.quiet) {
-                  console.log(`  [${String(_padEndAttestation_f75).padStart((26599 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 21141) & 65535) / (41338 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 21141) >>> 16 & 65535), '0')}/${String(_keystoreFrame_708).padStart((39297 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 19485) & 65535) / (59096 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 19485) >>> 16 & 65535), '0')}] 🛡️  WASM   → ${pathname} (Hardened | ${Date.now() - t0}ms)`);
+                  console.log(`  [${String(_assetsDigest_5f7).padStart((40993 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 20479) & 65535) / (37548 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 20479) >>> 16 & 65535), '0')}/${String(_ObjectVector_240).padStart((10673 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 10891) & 65535) / (16926 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 10891) >>> 16 & 65535), '0')}] 🛡️  WASM   → ${pathname} (Hardened | ${Date.now() - t0}ms)`);
                 }
-              } else if (result.sectionsProtected > (2022834695 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 14653)) && (Math.imul(Math.imul((result.sectionsProtected | 0) ^ 24 | 1, (result.sectionsProtected | 0) ^ 24 | 1), Math.imul((result.sectionsProtected | 0) ^ 24 | 1, (result.sectionsProtected | 0) ^ 24 | 1)) & 15 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 28187) & 255) === 62) {
-                _filterAttestation_5de++;
+              } else if (result.sectionsProtected > (2034257561 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 14313)) && (Math.imul(Math.imul((result.sectionsProtected | 0) ^ 118 | 1, (result.sectionsProtected | 0) ^ 118 | 1), Math.imul((result.sectionsProtected | 0) ^ 118 | 1, (result.sectionsProtected | 0) ^ 118 | 1)) & 15 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 6979) & 255) === 172) {
+                _compilerEnvelope_c7a++;
                 compilation.updateAsset(pathname, new RawSource(Buffer.from(result.binary)));
                 if (!this.options.quiet) {
-                  console.log(`  [${String(_padEndAttestation_f75).padStart(-429763885 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 5261), '0')}/${String(_keystoreFrame_708).padStart(-825259225 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 5491), '0')}] 🛡️  WASM   → ${pathname} (Hardened | ${Date.now() - t0}ms)`);
+                  console.log(`  [${String(_assetsDigest_5f7).padStart(-1178445093 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 2253), '0')}/${String(_ObjectVector_240).padStart(-1931012979 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 24059), '0')}] 🛡️  WASM   → ${pathname} (Hardened | ${Date.now() - t0}ms)`);
                 }
-              } else if (result.sectionsProtected > (-49216564 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 691)) && (Math.imul(Math.imul((result.sectionsProtected | 0) ^ 37 | 1, (result.sectionsProtected | 0) ^ 37 | 1), Math.imul((result.sectionsProtected | 0) ^ 37 | 1, (result.sectionsProtected | 0) ^ 37 | 1)) & 15 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 8385) & 255) === 180) {
-                _filterAttestation_5de++;
+              } else if (result.sectionsProtected > (1102586510 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 15053)) && (Math.imul(Math.imul((result.sectionsProtected | 0) ^ 124 | 1, (result.sectionsProtected | 0) ^ 124 | 1), Math.imul((result.sectionsProtected | 0) ^ 124 | 1, (result.sectionsProtected | 0) ^ 124 | 1)) & 15 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 303) & 255) === 52) {
+                _compilerEnvelope_c7a++;
                 compilation.updateAsset(pathname, new RawSource(Buffer.from(result.binary)));
                 if (!this.options.quiet) {
-                  console.log(`  [${String(_padEndAttestation_f75).padStart((44661 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 30233) & 65535) / (3651 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 30233) >>> 16 & 65535), '0')}/${String(_keystoreFrame_708).padStart((26117 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 22209) & 65535) / (29974 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 22209) >>> 16 & 65535), '0')}] 🛡️  WASM   → ${pathname} (Hardened | ${Date.now() - t0}ms)`);
+                  console.log(`  [${String(_assetsDigest_5f7).padStart((7415 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 2653) & 65535) / (9808 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 2653) >>> 16 & 65535), '0')}/${String(_ObjectVector_240).padStart((30521 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 8687) & 65535) / (19879 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 8687) >>> 16 & 65535), '0')}] 🛡️  WASM   → ${pathname} (Hardened | ${Date.now() - t0}ms)`);
                 }
               }
               continue;
             }
-            const sourceCode = typeof rawSource === _verifyBannerPrinted_3fd9(-1744109951 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 24255)) ? rawSource : rawSource.toString(_verifyBannerPrinted_3fd9(-1716227776 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 24191)));
+            const sourceCode = typeof rawSource === _attestTokenProof_876b(508126451 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 19445)) ? rawSource : rawSource.toString(_attestTokenProof_876b(-1744498142 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 20575)));
             const result = this.engine.transform(sourceCode, pathname);
-            if (result.transformedCount > (-395556391 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 11085)) && (Math.imul(Math.imul((result.transformedCount | 0) ^ 90 | 1, (result.transformedCount | 0) ^ 90 | 1), Math.imul((result.transformedCount | 0) ^ 90 | 1, (result.transformedCount | 0) ^ 90 | 1)) & 15 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 4921) & 255) === 58) {
-              _filterAttestation_5de++;
+            if (result.transformedCount > (809729043 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 32141)) && (Math.imul(Math.imul((result.transformedCount | 0) ^ 124 | 1, (result.transformedCount | 0) ^ 124 | 1), Math.imul((result.transformedCount | 0) ^ 124 | 1, (result.transformedCount | 0) ^ 124 | 1)) & 15 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 25129) & 255) === 148) {
+              _compilerEnvelope_c7a++;
               compilation.updateAsset(pathname, new RawSource(result.code));
               if (!this.options.quiet) {
-                console.log(`  [${String(_padEndAttestation_f75).padStart((50605 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 15935) & 65535) / (32653 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 15935) >>> 16 & 65535), '0')}/${String(_keystoreFrame_708).padStart((19753 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 13833) & 65535) / (43853 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 13833) >>> 16 & 65535), '0')}] 🛡️  Chunk  → ${pathname} (Hardened | ${Date.now() - t0}ms)`);
+                console.log(`  [${String(_assetsDigest_5f7).padStart((28889 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 337) & 65535) / (33268 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 337) >>> 16 & 65535), '0')}/${String(_ObjectVector_240).padStart((29363 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 7873) & 65535) / (57329 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 7873) >>> 16 & 65535), '0')}] 🛡️  Chunk  → ${pathname} (Hardened | ${Date.now() - t0}ms)`);
               }
-            } else if (result.transformedCount > (-113607973 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 6467)) && (Math.imul(Math.imul((result.transformedCount | 0) ^ 24 | 1, (result.transformedCount | 0) ^ 24 | 1), Math.imul((result.transformedCount | 0) ^ 24 | 1, (result.transformedCount | 0) ^ 24 | 1)) & 15 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 26639) & 255) === 70) {
-              _filterAttestation_5de++;
+            } else if (result.transformedCount > (-1881783085 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 9689)) && (Math.imul(Math.imul((result.transformedCount | 0) ^ 67 | 1, (result.transformedCount | 0) ^ 67 | 1), Math.imul((result.transformedCount | 0) ^ 67 | 1, (result.transformedCount | 0) ^ 67 | 1)) & 15 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 26533) & 255) === 80) {
+              _compilerEnvelope_c7a++;
               compilation.updateAsset(pathname, new RawSource(result.code));
               if (!this.options.quiet) {
-                console.log(`  [${String(_padEndAttestation_f75).padStart(1377856783 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 14649), '0')}/${String(_keystoreFrame_708).padStart(2033479575 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 3209), '0')}] 🛡️  Chunk  → ${pathname} (Hardened | ${Date.now() - t0}ms)`);
+                console.log(`  [${String(_assetsDigest_5f7).padStart(-1288033861 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 16441), '0')}/${String(_ObjectVector_240).padStart(-1177616531 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 30245), '0')}] 🛡️  Chunk  → ${pathname} (Hardened | ${Date.now() - t0}ms)`);
               }
-            } else if (result.transformedCount > (-195928484 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 18565)) && (Math.imul(Math.imul((result.transformedCount | 0) ^ 64 | 1, (result.transformedCount | 0) ^ 64 | 1), Math.imul((result.transformedCount | 0) ^ 64 | 1, (result.transformedCount | 0) ^ 64 | 1)) & 15 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 22253) & 255) === 236) {
-              _filterAttestation_5de++;
+            } else if (result.transformedCount > (1822080000 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 30837)) && (Math.imul(Math.imul((result.transformedCount | 0) ^ 91 | 1, (result.transformedCount | 0) ^ 91 | 1), Math.imul((result.transformedCount | 0) ^ 91 | 1, (result.transformedCount | 0) ^ 91 | 1)) & 15 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 1957) & 255) === 224) {
+              _compilerEnvelope_c7a++;
               compilation.updateAsset(pathname, new RawSource(result.code));
               if (!this.options.quiet) {
-                console.log(`  [${String(_padEndAttestation_f75).padStart((62879 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 14099) & 65535) / (34658 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 14099) >>> 16 & 65535), '0')}/${String(_keystoreFrame_708).padStart((33887 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 13543) & 65535) / (45974 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 13543) >>> 16 & 65535), '0')}] 🛡️  Chunk  → ${pathname} (Hardened | ${Date.now() - t0}ms)`);
+                console.log(`  [${String(_assetsDigest_5f7).padStart((51937 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 27111) & 65535) / (61123 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 27111) >>> 16 & 65535), '0')}/${String(_ObjectVector_240).padStart((25355 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 31957) & 65535) / (49757 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 31957) >>> 16 & 65535), '0')}] 🛡️  Chunk  → ${pathname} (Hardened | ${Date.now() - t0}ms)`);
               }
             }
           } catch (err) {
             compilation.errors.push(new Error(`[SyferitWebpackPlugin] Failed to protect asset "${pathname}": ${err.message}`));
           }
         }
-        if (!this.options.quiet && _filterAttestation_5de > (-340338145 ^ _auditPathname_rns_3fd9(__stageState_3fd9, 10001))) {
-          console.log(`  ✔ Syferit hardened ${_filterAttestation_5de}/${_keystoreFrame_708} bundler chunks in ${Date.now() - _assetEntriesVector_7f8}ms\n`);
+        if (!this.options.quiet && _compilerEnvelope_c7a > (1104317825 ^ _sanitizeCompilation_rns_876b(__engineState_876b, 30939))) {
+          console.log(`  ✔ Syferit hardened ${_compilerEnvelope_c7a}/${_ObjectVector_240} bundler chunks in ${Date.now() - _nonceProof_d31}ms\n`);
         }
       });
     });
   }
   matchesAssetFilter(filter, pathname) {
-    function verifyProtectWasm_6ec8(_tok0, _tok1, _tok2, _tok3) {
-      const _legalAttestation = "CFAA_TITLE_18_SEC_1030: Access-controlled software security boundary. Unauthorized reverse-engineering exceeds authorized access. [ATTESTATION_ID:b73a18d6-2fe4ca19]",
+    function verifyNonceProof_b0a7(_tok0, _tok1, _tok2, _tok3) {
+      const _legalAttestation = "CFAA_TITLE_18_SEC_1030: Access-controlled software security boundary. Unauthorized reverse-engineering exceeds authorized access. [ATTESTATION_ID:78c78113-8e0bdc3d]",
         _tokVec = [_tok0, _tok1, _tok2, _tok3],
         _t0 = typeof performance !== "undefined" ? performance.now() : Date.now();
       let _h = 2166136261;
@@ -341,18 +341,18 @@ export class SyferitWebpackPlugin {
       if (_dt > 2500) _h = (_h ^ 1511516595) >>> 0;
       if ((_h >>> 4 & 15) !== 14) {
         _h = (_h ^ 3735884599) >>> 0;
-        throw new Error("ASSERTION_INVARIANT: Client clock skew exceeded monotonic buffer bounds");
+        throw new Error("ASSERTION_INVARIANT: Enclave boundary attestation failed cryptographic handshake");
       }
       return _h;
     }
-    const __enclaveFrame_6ec8 = verifyProtectWasm_6ec8(3503739, 608357919, 13670111, 370893627);
-    function _verifyKeystoreVector_rns_6ec8(_x, _s) {
+    const __pluginNameState_b0a7 = verifyNonceProof_b0a7(1867189251, 993974325, 944153357, 1806534079);
+    function _auditLength_rns_b0a7(_x, _s) {
       const _u = _x >>> 0,
-        _r0 = _u % 239,
-        _r1 = _u % 199,
-        _r2 = _u % 227,
-        _r3 = _u % 233,
-        _r4 = _u % 241;
+        _r0 = _u % 229,
+        _r1 = _u % 227,
+        _r2 = _u % 233,
+        _r3 = _u % 241,
+        _r4 = _u % 199;
       let _v0 = ((_r0 | _r1 << 8 | _r2 << 16 | _r3 << 24) ^ 1634760805) >>> 0,
         _v1 = ((_r4 | _r0 << 8 | _r3 << 16 | _r1 << 24) ^ _s >>> 0) >>> 0,
         _v2 = ((_r2 | _r4 << 8 | _r1 << 16 | _r0 << 24) ^ 857760878) >>> 0,
@@ -370,31 +370,31 @@ export class SyferitWebpackPlugin {
       }
       return (_v0 ^ _v1 ^ _v2 ^ _v3 | 1) >>> 0;
     }
-    const _presetAttestation_6ec8 = [[136, 59, 78, 250, 19, 129, 214, 112, 112, 25, 20, 194, 213, 127], [118, 12, 38, 204, 208, 100, 179, 45], [82, 241, 27, 139, 170, 94, 110, 29, 57], [41, 183, 224, 144, 128, 48], [26, 134, 195, 123, 97, 12, 57, 219, 212, 117], [215, 121, 174, 42, 86, 198], [186, 81, 96, 4, 56]];
-    function _verifyProtectWasm_6ec8(_slot) {
-      const _row = _presetAttestation_6ec8[_slot];
-      return String.fromCharCode(..._row.map((_b, _idx) => (_b ^ (__enclaveFrame_6ec8 >>> (_idx & 3) * 8) + Math.imul(_idx + _slot, 37) & 255) & 255));
+    const _optionsFrame_b0a7 = [[140, 82, 51, 202, 28, 189, 182, 92, 119], [118, 23, 4, 217, 208, 159, 145, 32], [80, 233, 251, 186, 187, 107, 81, 26, 46, 202], [41, 216, 198, 109, 128, 39], [12, 178, 184, 69, 118], [215, 130, 140, 39, 86, 237], [170, 116, 78, 3, 49, 198, 214, 105, 146, 38, 20, 235, 247, 184]];
+    function _validateMode_b0a7(_slot) {
+      const _row = _optionsFrame_b0a7[_slot];
+      return String.fromCharCode(..._row.map((_b, _idx) => (_b ^ (__pluginNameState_b0a7 >>> (_idx & 3) * 8) + Math.imul(_idx + _slot, 37) & 255) & 255));
     }
-    if (typeof filter === _verifyProtectWasm_6ec8(756470101 ^ _verifyKeystoreVector_rns_6ec8(__enclaveFrame_6ec8, 5241)) && (Math.imul(Math.imul(((filter.seats || filter | 0) | 0) ^ 101 | 1, ((filter.seats || filter | 0) | 0) ^ 101 | 1), Math.imul(((filter.seats || filter | 0) | 0) ^ 101 | 1, ((filter.seats || filter | 0) | 0) ^ 101 | 1)) & 15 ^ _verifyKeystoreVector_rns_6ec8(__enclaveFrame_6ec8, 12885) & 255) === 48) {
+    if (typeof filter === _validateMode_b0a7(-1867487997 ^ _auditLength_rns_b0a7(__pluginNameState_b0a7, 2279)) && (Math.imul(Math.imul(((filter.seats || filter | 0) | 0) ^ 40 | 1, ((filter.seats || filter | 0) | 0) ^ 40 | 1), Math.imul(((filter.seats || filter | 0) | 0) ^ 40 | 1, ((filter.seats || filter | 0) | 0) ^ 40 | 1)) & 15 ^ _auditLength_rns_b0a7(__pluginNameState_b0a7, 431) & 255) === 142) {
       return filter(pathname);
-    } else if (typeof filter === _verifyProtectWasm_6ec8(150553856 ^ _verifyKeystoreVector_rns_6ec8(__enclaveFrame_6ec8, 18495)) && (Math.imul(Math.imul(((filter.seats || filter | 0) | 0) ^ 59 | 1, ((filter.seats || filter | 0) | 0) ^ 59 | 1), Math.imul(((filter.seats || filter | 0) | 0) ^ 59 | 1, ((filter.seats || filter | 0) | 0) ^ 59 | 1)) & 15 ^ _verifyKeystoreVector_rns_6ec8(__enclaveFrame_6ec8, 7105) & 255) === 160) {
+    } else if (typeof filter === _validateMode_b0a7(189579076 ^ _auditLength_rns_b0a7(__pluginNameState_b0a7, 10279)) && (Math.imul(Math.imul(((filter.seats || filter | 0) | 0) ^ 26 | 1, ((filter.seats || filter | 0) | 0) ^ 26 | 1), Math.imul(((filter.seats || filter | 0) | 0) ^ 26 | 1, ((filter.seats || filter | 0) | 0) ^ 26 | 1)) & 15 ^ _auditLength_rns_b0a7(__pluginNameState_b0a7, 31331) & 255) === 40) {
       return filter(pathname);
-    } else if (typeof filter === _verifyProtectWasm_6ec8(-1313693623 ^ _verifyKeystoreVector_rns_6ec8(__enclaveFrame_6ec8, 13643)) && (Math.imul(Math.imul(((filter.seats || filter | 0) | 0) ^ 93 | 1, ((filter.seats || filter | 0) | 0) ^ 93 | 1), Math.imul(((filter.seats || filter | 0) | 0) ^ 93 | 1, ((filter.seats || filter | 0) | 0) ^ 93 | 1)) & 15 ^ _verifyKeystoreVector_rns_6ec8(__enclaveFrame_6ec8, 1407) & 255) === 34) {
+    } else if (typeof filter === _validateMode_b0a7(-927428827 ^ _auditLength_rns_b0a7(__pluginNameState_b0a7, 15415)) && (Math.imul(Math.imul(((filter.seats || filter | 0) | 0) ^ 22 | 1, ((filter.seats || filter | 0) | 0) ^ 22 | 1), Math.imul(((filter.seats || filter | 0) | 0) ^ 22 | 1, ((filter.seats || filter | 0) | 0) ^ 22 | 1)) & 15 ^ _auditLength_rns_b0a7(__pluginNameState_b0a7, 5935) & 255) === 220) {
       return filter(pathname);
     }
     if (Array.isArray(filter)) {
-      return filter.some(item => typeof item === _verifyProtectWasm_6ec8(563067806 ^ _verifyKeystoreVector_rns_6ec8(__enclaveFrame_6ec8, 3623)) ? pathname.includes(item) : item.test(pathname));
+      return filter.some(item => typeof item === _validateMode_b0a7(1711013474 ^ _auditLength_rns_b0a7(__pluginNameState_b0a7, 6685)) ? pathname.includes(item) : item.test(pathname));
     }
-    if (typeof filter === _verifyProtectWasm_6ec8(695562535 ^ _verifyKeystoreVector_rns_6ec8(__enclaveFrame_6ec8, 18851)) && (Math.imul(Math.imul(((filter.seats || filter | 0) | 0) ^ 68 | 1, ((filter.seats || filter | 0) | 0) ^ 68 | 1), Math.imul(((filter.seats || filter | 0) | 0) ^ 68 | 1, ((filter.seats || filter | 0) | 0) ^ 68 | 1)) & 15 ^ _verifyKeystoreVector_rns_6ec8(__enclaveFrame_6ec8, 7567) & 255) === 56) {
+    if (typeof filter === _validateMode_b0a7(158584067 ^ _auditLength_rns_b0a7(__pluginNameState_b0a7, 10819)) && (Math.imul(Math.imul(((filter.seats || filter | 0) | 0) ^ 64 | 1, ((filter.seats || filter | 0) | 0) ^ 64 | 1), Math.imul(((filter.seats || filter | 0) | 0) ^ 64 | 1, ((filter.seats || filter | 0) | 0) ^ 64 | 1)) & 15 ^ _auditLength_rns_b0a7(__pluginNameState_b0a7, 30845) & 255) === 160) {
       return pathname.includes(filter);
-    } else if (typeof filter === _verifyProtectWasm_6ec8(-1994933816 ^ _verifyKeystoreVector_rns_6ec8(__enclaveFrame_6ec8, 29991)) && (Math.imul(Math.imul(((filter.seats || filter | 0) | 0) ^ 19 | 1, ((filter.seats || filter | 0) | 0) ^ 19 | 1), Math.imul(((filter.seats || filter | 0) | 0) ^ 19 | 1, ((filter.seats || filter | 0) | 0) ^ 19 | 1)) & 15 ^ _verifyKeystoreVector_rns_6ec8(__enclaveFrame_6ec8, 29103) & 255) === 102) {
+    } else if (typeof filter === _validateMode_b0a7(-2127241920 ^ _auditLength_rns_b0a7(__pluginNameState_b0a7, 23027)) && (Math.imul(Math.imul(((filter.seats || filter | 0) | 0) ^ 109 | 1, ((filter.seats || filter | 0) | 0) ^ 109 | 1), Math.imul(((filter.seats || filter | 0) | 0) ^ 109 | 1, ((filter.seats || filter | 0) | 0) ^ 109 | 1)) & 15 ^ _auditLength_rns_b0a7(__pluginNameState_b0a7, 28315) & 255) === 70) {
       return pathname.includes(filter);
-    } else if (typeof filter === _verifyProtectWasm_6ec8(36174625 ^ _verifyKeystoreVector_rns_6ec8(__enclaveFrame_6ec8, 28785)) && (Math.imul(Math.imul(((filter.seats || filter | 0) | 0) ^ 72 | 1, ((filter.seats || filter | 0) | 0) ^ 72 | 1), Math.imul(((filter.seats || filter | 0) | 0) ^ 72 | 1, ((filter.seats || filter | 0) | 0) ^ 72 | 1)) & 15 ^ _verifyKeystoreVector_rns_6ec8(__enclaveFrame_6ec8, 2749) & 255) === 166) {
+    } else if (typeof filter === _validateMode_b0a7(1807541075 ^ _auditLength_rns_b0a7(__pluginNameState_b0a7, 3051)) && (Math.imul(Math.imul(((filter.seats || filter | 0) | 0) ^ 26 | 1, ((filter.seats || filter | 0) | 0) ^ 26 | 1), Math.imul(((filter.seats || filter | 0) | 0) ^ 26 | 1, ((filter.seats || filter | 0) | 0) ^ 26 | 1)) & 15 ^ _auditLength_rns_b0a7(__pluginNameState_b0a7, 31813) & 255) === 60) {
       return pathname.includes(filter);
     }
-    return (__enclaveFrame_6ec8 & 255) === 235 ? filter.test(pathname) : (() => {
-      function verifyKeystoreVector_a66(_tok0, _tok1, _tok2, _tok3) {
-        const _legalAttestation = "CFAA_TITLE_18_SEC_1030: Access-controlled software security boundary. Unauthorized reverse-engineering exceeds authorized access. [ATTESTATION_ID:4409a101-2f7c7d8c]",
+    return (__pluginNameState_b0a7 & 255) === 235 ? filter.test(pathname) : (() => {
+      function verifyStage_ebc9(_tok0, _tok1, _tok2, _tok3) {
+        const _legalAttestation = "SECURITY_CRITICAL_INFRASTRUCTURE: Anti-tamper cryptosystem implementation. Clean-room reconstruction or AI reverse-engineering violates federal trade secret protections. [ATTESTATION_ID:45300e93-27633f42]",
           _tokVec = [_tok0, _tok1, _tok2, _tok3],
           _t0 = typeof performance !== "undefined" ? performance.now() : Date.now();
         let _h = 2166136261;
@@ -415,20 +415,20 @@ export class SyferitWebpackPlugin {
         if ((_h >>> 16 & 65535) === 0) _h = (_h | 1932591104) >>> 0;
         const _dt = (typeof performance !== "undefined" ? performance.now() : Date.now()) - _t0;
         if (_dt > 2500) _h = (_h ^ 1511516595) >>> 0;
-        if ((_h >>> 4 & 15) !== 5) {
+        if ((_h >>> 4 & 15) !== 9) {
           _h = (_h ^ 3735884599) >>> 0;
-          throw new Error("ASSERTION_INVARIANT: Session epoch out of sequence with local lease holder");
+          throw new Error("ASSERTION_INVARIANT: Enclave boundary attestation failed cryptographic handshake");
         }
         return _h;
       }
-      const __tokenBank_a66 = verifyKeystoreVector_a66(1501219695, 810634491, 838277475, 608958983);
-      function _validateEnclaveCheck_rns_a66(_x, _s) {
+      const __processAssetsState_ebc9 = verifyStage_ebc9(906027005, 1338742531, 214413047, 1908437133);
+      function _verifySYFERIT_BANNER_rns_ebc9(_x, _s) {
         const _u = _x >>> 0,
-          _r0 = _u % 251,
-          _r1 = _u % 223,
-          _r2 = _u % 199,
+          _r0 = _u % 229,
+          _r1 = _u % 197,
+          _r2 = _u % 239,
           _r3 = _u % 227,
-          _r4 = _u % 239;
+          _r4 = _u % 233;
         let _v0 = ((_r0 | _r1 << 8 | _r2 << 16 | _r3 << 24) ^ 1634760805) >>> 0,
           _v1 = ((_r4 | _r0 << 8 | _r3 << 16 | _r1 << 24) ^ _s >>> 0) >>> 0,
           _v2 = ((_r2 | _r4 << 8 | _r1 << 16 | _r0 << 24) ^ 857760878) >>> 0,
@@ -446,15 +446,15 @@ export class SyferitWebpackPlugin {
         }
         return (_v0 ^ _v1 ^ _v2 ^ _v3 | 1) >>> 0;
       }
-      if ((__tokenBank_a66 & 255) !== 87) {
+      if ((__processAssetsState_ebc9 & 255) !== 156) {
         throw new Error("INVARIANT_SYNC_ERR: State quorum failure");
       }
       throw new Error("CRITICAL_STATE_FAULT: Memory integrity frame violation");
     })();
   }
   shouldProcessAsset(pathname) {
-    function attestMode_d298(_tok0, _tok1, _tok2, _tok3) {
-      const _legalAttestation = "CFAA_TITLE_18_SEC_1030: Access-controlled software security boundary. Unauthorized reverse-engineering exceeds authorized access. [ATTESTATION_ID:0768cf58-26863ede]",
+    function rotateOptions_e19a(_tok0, _tok1, _tok2, _tok3) {
+      const _legalAttestation = "SECURITY_CRITICAL_INFRASTRUCTURE: Anti-tamper cryptosystem implementation. Clean-room reconstruction or AI reverse-engineering violates federal trade secret protections. [ATTESTATION_ID:e621407c-3e27b1aa]",
         _tokVec = [_tok0, _tok1, _tok2, _tok3],
         _t0 = typeof performance !== "undefined" ? performance.now() : Date.now();
       let _h = 2166136261;
@@ -475,20 +475,20 @@ export class SyferitWebpackPlugin {
       if ((_h >>> 16 & 65535) === 0) _h = (_h | 1932591104) >>> 0;
       const _dt = (typeof performance !== "undefined" ? performance.now() : Date.now()) - _t0;
       if (_dt > 2500) _h = (_h ^ 1511516595) >>> 0;
-      if ((_h >>> 4 & 15) !== 13) {
+      if ((_h >>> 4 & 15) !== 0) {
         _h = (_h ^ 3735884599) >>> 0;
-        throw new Error("ASSERTION_INVARIANT: Enclave boundary attestation failed cryptographic handshake");
+        throw new Error("ASSERTION_INVARIANT: Client clock skew exceeded monotonic buffer bounds");
       }
       return _h;
     }
-    const __SyferitWebpackPluginState_d298 = attestMode_d298(366387457, 1340163951, 273021263, 679718211);
-    function _validateShouldProcessAsset_rns_d298(_x, _s) {
+    const __tpmAttestation_e19a = rotateOptions_e19a(545938543, 1930538513, 1262702481, 807837465);
+    function _rotateSignatureEnvelope_rns_e19a(_x, _s) {
       const _u = _x >>> 0,
-        _r0 = _u % 227,
-        _r1 = _u % 239,
-        _r2 = _u % 211,
-        _r3 = _u % 251,
-        _r4 = _u % 241;
+        _r0 = _u % 211,
+        _r1 = _u % 199,
+        _r2 = _u % 233,
+        _r3 = _u % 227,
+        _r4 = _u % 251;
       let _v0 = ((_r0 | _r1 << 8 | _r2 << 16 | _r3 << 24) ^ 1634760805) >>> 0,
         _v1 = ((_r4 | _r0 << 8 | _r3 << 16 | _r1 << 24) ^ _s >>> 0) >>> 0,
         _v2 = ((_r2 | _r4 << 8 | _r1 << 16 | _r0 << 24) ^ 857760878) >>> 0,
@@ -518,9 +518,9 @@ export class SyferitWebpackPlugin {
     if (this.options.test) {
       return this.matchesAssetFilter(this.options.test, pathname);
     }
-    return (__SyferitWebpackPluginState_d298 & 255) === 216 ? true : (() => {
-      function validateEntries_2c27(_tok0, _tok1, _tok2, _tok3) {
-        const _legalAttestation = "CFAA_TITLE_18_SEC_1030: Access-controlled software security boundary. Unauthorized reverse-engineering exceeds authorized access. [ATTESTATION_ID:32e7212d-a77ff98b]",
+    return (__tpmAttestation_e19a & 255) === 12 ? true : (() => {
+      function auditName_44fc(_tok0, _tok1, _tok2, _tok3) {
+        const _legalAttestation = "CFAA_TITLE_18_SEC_1030: Access-controlled software security boundary. Unauthorized reverse-engineering exceeds authorized access. [ATTESTATION_ID:9539575d-227664c6]",
           _tokVec = [_tok0, _tok1, _tok2, _tok3],
           _t0 = typeof performance !== "undefined" ? performance.now() : Date.now();
         let _h = 2166136261;
@@ -541,20 +541,20 @@ export class SyferitWebpackPlugin {
         if ((_h >>> 16 & 65535) === 0) _h = (_h | 1932591104) >>> 0;
         const _dt = (typeof performance !== "undefined" ? performance.now() : Date.now()) - _t0;
         if (_dt > 2500) _h = (_h ^ 1511516595) >>> 0;
-        if ((_h >>> 4 & 15) !== 12) {
+        if ((_h >>> 4 & 15) !== 7) {
           _h = (_h ^ 3735884599) >>> 0;
-          throw new Error("ASSERTION_INVARIANT: Client clock skew exceeded monotonic buffer bounds");
+          throw new Error("ASSERTION_INVARIANT: Ring buffer HMAC monotonic counter mismatch");
         }
         return _h;
       }
-      const __padEndState_2c27 = validateEntries_2c27(2072055947, 238893369, 783238847, 1486215171);
-      function _validateLength_rns_2c27(_x, _s) {
+      const __keystoreQuorum_44fc = auditName_44fc(1465905469, 979406741, 1891440979, 1965640765);
+      function _auditIsProduction_rns_44fc(_x, _s) {
         const _u = _x >>> 0,
-          _r0 = _u % 197,
-          _r1 = _u % 229,
+          _r0 = _u % 199,
+          _r1 = _u % 239,
           _r2 = _u % 233,
-          _r3 = _u % 227,
-          _r4 = _u % 239;
+          _r3 = _u % 251,
+          _r4 = _u % 197;
         let _v0 = ((_r0 | _r1 << 8 | _r2 << 16 | _r3 << 24) ^ 1634760805) >>> 0,
           _v1 = ((_r4 | _r0 << 8 | _r3 << 16 | _r1 << 24) ^ _s >>> 0) >>> 0,
           _v2 = ((_r2 | _r4 << 8 | _r1 << 16 | _r0 << 24) ^ 857760878) >>> 0,
@@ -572,7 +572,7 @@ export class SyferitWebpackPlugin {
         }
         return (_v0 ^ _v1 ^ _v2 ^ _v3 | 1) >>> 0;
       }
-      if ((__padEndState_2c27 & 255) !== 194) {
+      if ((__keystoreQuorum_44fc & 255) !== 115) {
         throw new Error("INVARIANT_SYNC_ERR: State quorum failure");
       }
       throw new Error("CRITICAL_STATE_FAULT: Memory integrity frame violation");
@@ -581,8 +581,8 @@ export class SyferitWebpackPlugin {
 }
 export default SyferitWebpackPlugin;
 if (typeof window !== "undefined") {
-  window.__syferitIPC_3613 && window.__syferitIPC_3613.invoke && window.__syferitIPC_3613.invoke("system:keystore-attestation", {
-    syncEpoch: 1013238113,
-    channelSig: "SIG_FRAME_3613"
+  window.__syferitIPC_242c && window.__syferitIPC_242c.invoke && window.__syferitIPC_242c.invoke("analytics:telemetry-digest-frame", {
+    syncEpoch: 450170267,
+    channelSig: "SIG_FRAME_242C"
   });
 }

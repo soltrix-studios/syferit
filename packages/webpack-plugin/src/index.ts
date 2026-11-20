@@ -49,7 +49,7 @@ export class SyferitWebpackPlugin {
     const pluginName = 'SyferitWebpackPlugin';
 
     compiler.hooks.compilation.tap(pluginName, (compilation: any) => {
-      const stage = compilation.constructor.PROCESS_ASSETS_STAGE_OPTIMIZE ?? 100;
+      const stage = compilation.constructor.PROCESS_ASSETS_STAGE_OPTIMIZE_INLINE ?? 700;
 
       compilation.hooks.processAssets.tapPromise(
         {
@@ -68,7 +68,7 @@ export class SyferitWebpackPlugin {
             const profile = (this.options.domainProfile ?? 'saas').padEnd(10, ' ');
             console.log(SYFERIT_BANNER);
             console.log('  ╔═══════════════════════════════════════════════════════════════════════════╗');
-            console.log('  ║  SYFERIT v2.0.0 — Symbolic Feistel & Residue Integrity Transformer        ║');
+            console.log('  ║  SYFERIT v2.0.1 — Symbolic Feistel & Residue Integrity Transformer        ║');
             console.log('  ║  "Don\'t Just Ship it. Syferit."  │  Soltrix Studios Code Defense Engine   ║');
             console.log('  ╠═══════════════════════════════════════════════════════════════════════════╣');
             console.log(`  ║  ▸ Preset  : ${preset}    │  ▸ Profile : ${profile}                ║`);

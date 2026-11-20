@@ -91,7 +91,7 @@ program
         if (dryRun) {
           console.log(`  ✔ SYFERIT DRY-RUN COMPLETE (${totalMs}ms) — ${res.filesProcessed} files matched (0 files modified)`);
         } else {
-          console.log(`  ✔ SYFERIT v2.0.0 PROTECTION COMPLETE (${totalMs}ms) — ${res.filesTransformed}/${res.filesProcessed} Artifacts Hardened`);
+          console.log(`  ✔ SYFERIT v${SYFERIT_VERSION} PROTECTION COMPLETE (${totalMs}ms) — ${res.filesTransformed}/${res.filesProcessed} Artifacts Hardened`);
         }
         console.log('  ─────────────────────────────────────────────────────────────────────────────\n');
       }
@@ -112,7 +112,7 @@ program
         if (dryRun) {
           console.log(`  ✔ SYFERIT DRY-RUN COMPLETE (${totalMs}ms) — 1 file matched (0 modified)`);
         } else {
-          console.log(`  ✔ SYFERIT v2.0.0 PROTECTION COMPLETE (${totalMs}ms)`);
+          console.log(`  ✔ SYFERIT v${SYFERIT_VERSION} PROTECTION COMPLETE (${totalMs}ms)`);
         }
         console.log('  ─────────────────────────────────────────────────────────────────────────────\n');
       }

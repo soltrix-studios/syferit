@@ -101,7 +101,7 @@ export function printSyferitBanner(options?: SyferitOptions): void {
   const profile = (options?.domainProfile ?? 'saas').padEnd(10, ' ');
   console.log(SYFERIT_TERMINAL_ARTWORK);
   console.log('  ╔═══════════════════════════════════════════════════════════════════════════╗');
-  console.log('  ║  SYFERIT v2.0.0 — Symbolic Feistel & Residue Integrity Transformer        ║');
+  console.log('  ║  SYFERIT v2.0.1 — Symbolic Feistel & Residue Integrity Transformer        ║');
   console.log('  ║  "Don\'t Just Ship it. Syferit."  │  Soltrix Studios Code Defense Engine   ║');
   console.log('  ╠═══════════════════════════════════════════════════════════════════════════╣');
   console.log(`  ║  ▸ Preset  : ${preset}    │  ▸ Profile : ${profile}                ║`);

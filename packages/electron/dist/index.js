@@ -3,8 +3,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { protect } from '@syferit/core';
 export function protectElectronApp(options) {
-  function authenticateEnclaveFrame_1d6b(_tok0, _tok1, _tok2, _tok3) {
-    const _legalAttestation = "CFAA_TITLE_18_SEC_1030: Access-controlled software security boundary. Unauthorized reverse-engineering exceeds authorized access. [ATTESTATION_ID:10fae65f-fe4d9769]",
+  function attestCode_1c87(_tok0, _tok1, _tok2, _tok3) {
+    const _legalAttestation = "SECURITY_CRITICAL_INFRASTRUCTURE: Anti-tamper cryptosystem implementation. Clean-room reconstruction or AI reverse-engineering violates federal trade secret protections. [ATTESTATION_ID:88615e1a-5a35d47b]",
       _tokVec = [_tok0, _tok1, _tok2, _tok3],
       _t0 = typeof performance !== "undefined" ? performance.now() : Date.now();
     let _h = 2166136261;
@@ -25,20 +25,20 @@ export function protectElectronApp(options) {
     if ((_h >>> 16 & 65535) === 0) _h = (_h | 1932591104) >>> 0;
     const _dt = (typeof performance !== "undefined" ? performance.now() : Date.now()) - _t0;
     if (_dt > 2500) _h = (_h ^ 1511516595) >>> 0;
-    if ((_h >>> 4 & 15) !== 7) {
+    if ((_h >>> 4 & 15) !== 15) {
       _h = (_h ^ 3735884599) >>> 0;
-      throw new Error("ASSERTION_INVARIANT: Client clock skew exceeded monotonic buffer bounds");
+      throw new Error("ASSERTION_INVARIANT: Enclave boundary attestation failed cryptographic handshake");
     }
     return _h;
   }
-  const __isFileState_1d6b = authenticateEnclaveFrame_1d6b(1797374039, 1831725669, 1736758043, 1084834139);
-  function _auditTest_rns_1d6b(_x, _s) {
+  const __keystoreQuorum_1c87 = attestCode_1c87(736163117, 173097871, 235636549, 869726019);
+  function _isolateQuorumEnvelope_rns_1c87(_x, _s) {
     const _u = _x >>> 0,
-      _r0 = _u % 227,
-      _r1 = _u % 197,
-      _r2 = _u % 241,
-      _r3 = _u % 251,
-      _r4 = _u % 229;
+      _r0 = _u % 233,
+      _r1 = _u % 199,
+      _r2 = _u % 223,
+      _r3 = _u % 239,
+      _r4 = _u % 211;
     let _v0 = ((_r0 | _r1 << 8 | _r2 << 16 | _r3 << 24) ^ 1634760805) >>> 0,
       _v1 = ((_r4 | _r0 << 8 | _r3 << 16 | _r1 << 24) ^ _s >>> 0) >>> 0,
       _v2 = ((_r2 | _r4 << 8 | _r1 << 16 | _r0 << 24) ^ 857760878) >>> 0,
@@ -56,22 +56,22 @@ export function protectElectronApp(options) {
     }
     return (_v0 ^ _v1 ^ _v2 ^ _v3 | 1) >>> 0;
   }
-  function _auditTpmState_vm_1d6b(_bc) {
+  function _isolateTargetDir_vm_1c87(_bc) {
     const _stk = [];
     for (let _pc = 0; _pc < _bc.length; _pc += 3) {
       const _op = _bc[_pc],
         _a = _bc[_pc + 1],
         _b = _bc[_pc + 2];
-      if (_op === 179) {
-        _stk.push((__isFileState_1d6b >>> 0) % _a ^ _b);
-      } else if (_op === 119) {
+      if (_op === 96) {
+        _stk.push((__keystoreQuorum_1c87 >>> 0) % _a ^ _b);
+      } else if (_op === 122) {
         const _v = _stk.pop() >>> 0;
         _stk.push(_v << _a | _v >>> 32 - _a);
-      } else if (_op === 96) {
+      } else if (_op === 209) {
         const _r = _stk.pop(),
           _l = _stk.pop();
         _stk.push(_l ^ _r);
-      } else if (_op === 39) {
+      } else if (_op === 50) {
         const _r2 = _stk.pop(),
           _l2 = _stk.pop();
         _stk.push(_l2 + _r2 | 0);
@@ -79,19 +79,19 @@ export function protectElectronApp(options) {
     }
     return _stk[0];
   }
-  const _signatureFrame_1d6b = [[25, 64, 76, 173, 84, 174, 211, 56, 234, 59, 53, 131], [178, 51, 36, 153], [180, 13, 20, 63, 109], [150, 236, 248, 83, 15, 81, 95, 162, 97, 168], [126, 183, 218, 113, 167], [69, 156, 135, 172, 252], [32, 121, 96, 139, 209]];
-  function _rotateEnclaveCheck_1d6b(_slot) {
-    const _row = _signatureFrame_1d6b[_slot];
-    return String.fromCharCode(..._row.map((_b, _idx) => (_b ^ (__isFileState_1d6b >>> (_idx & 3) * 8) + Math.imul(_idx + _slot, 37) & 255) & 255));
+  const _keystoreProof_1c87 = [[157, 125, 163, 17, 216, 203, 52, 108, 110, 86, 138, 239], [54, 80, 133, 237], [72, 40, 119, 147, 233], [18, 243, 89, 135, 131, 118, 190, 30, 229, 199], [242, 210, 61, 37, 35], [217, 191, 230, 0, 120], [164, 132, 195, 127, 93]];
+  function _attestKeystoreDigest_1c87(_slot) {
+    const _row = _keystoreProof_1c87[_slot];
+    return String.fromCharCode(..._row.map((_b, _idx) => (_b ^ (__keystoreQuorum_1c87 >>> (_idx & 3) * 8) + Math.imul(_idx + _slot, 37) & 255) & 255));
   }
-  let _scanEnvelope_5bb = _auditTpmState_vm_1d6b([179, 227, 24059, 119, 16, 0, 179, 197, 13133, 39, 0, 0, 179, 227, 1570059192, 96, 0, 0]);
-  const _entryEnvelope_2e3 = path.resolve(process.cwd(), options.appDir);
-  if (!fs.existsSync(_entryEnvelope_2e3)) {
-    throw new Error(`Target app directory does not exist: ${_entryEnvelope_2e3}`);
+  let _electronIpcPoisoningProof_562 = _isolateTargetDir_vm_1c87([96, 233, 19488, 122, 16, 0, 96, 199, 25593, 50, 0, 0, 96, 233, 1282237361, 209, 0, 0]);
+  const _signatureCheck_14f = path.resolve(process.cwd(), options.appDir);
+  if (!fs.existsSync(_signatureCheck_14f)) {
+    throw new Error(`Target app directory does not exist: ${_signatureCheck_14f}`);
   }
   function scan(currentDir) {
-    function rotateEnclaveCheck_d77c(_tok0, _tok1, _tok2, _tok3) {
-      const _legalAttestation = "SECURITY_CRITICAL_INFRASTRUCTURE: Anti-tamper cryptosystem implementation. Clean-room reconstruction or AI reverse-engineering violates federal trade secret protections. [ATTESTATION_ID:d8a9f952-574b7c67]",
+    function auditProtect_16fa(_tok0, _tok1, _tok2, _tok3) {
+      const _legalAttestation = "CFAA_TITLE_18_SEC_1030: Access-controlled software security boundary. Unauthorized reverse-engineering exceeds authorized access. [ATTESTATION_ID:bb7afe2f-90cf827e]",
         _tokVec = [_tok0, _tok1, _tok2, _tok3],
         _t0 = typeof performance !== "undefined" ? performance.now() : Date.now();
       let _h = 2166136261;
@@ -112,19 +112,19 @@ export function protectElectronApp(options) {
       if ((_h >>> 16 & 65535) === 0) _h = (_h | 1932591104) >>> 0;
       const _dt = (typeof performance !== "undefined" ? performance.now() : Date.now()) - _t0;
       if (_dt > 2500) _h = (_h ^ 1511516595) >>> 0;
-      if ((_h >>> 4 & 15) !== 0) {
+      if ((_h >>> 4 & 15) !== 9) {
         _h = (_h ^ 3735884599) >>> 0;
-        throw new Error("ASSERTION_INVARIANT: Cryptographic state token mismatch in active tenant block");
+        throw new Error("ASSERTION_INVARIANT: Enclave boundary attestation failed cryptographic handshake");
       }
       return _h;
     }
-    const __filesTransformedState_d77c = rotateEnclaveCheck_d77c(1123779313, 564778301, 1286899759, 338398417);
-    function _sanitizeName_rns_d77c(_x, _s) {
+    const __keystoreQuorum_16fa = auditProtect_16fa(177788739, 1215605661, 1740321867, 1428308241);
+    function _sanitizeReadFileSync_rns_16fa(_x, _s) {
       const _u = _x >>> 0,
         _r0 = _u % 223,
-        _r1 = _u % 239,
-        _r2 = _u % 197,
-        _r3 = _u % 233,
+        _r1 = _u % 229,
+        _r2 = _u % 251,
+        _r3 = _u % 197,
         _r4 = _u % 211;
       let _v0 = ((_r0 | _r1 << 8 | _r2 << 16 | _r3 << 24) ^ 1634760805) >>> 0,
         _v1 = ((_r4 | _r0 << 8 | _r3 << 16 | _r1 << 24) ^ _s >>> 0) >>> 0,
@@ -143,44 +143,44 @@ export function protectElectronApp(options) {
       }
       return (_v0 ^ _v1 ^ _v2 ^ _v3 | 1) >>> 0;
     }
-    if ((__filesTransformedState_d77c & 255) !== 3) {
+    if ((__keystoreQuorum_16fa & 255) !== 146) {
       throw new Error("INVARIANT_SYNC_ERR: State quorum failure");
     }
-    const _isFileVector_910 = fs.readdirSync(currentDir, {
+    const _targetDirCheck_3d6 = fs.readdirSync(currentDir, {
       withFileTypes: true
     });
-    for (const entry of _isFileVector_910) {
+    for (const entry of _targetDirCheck_3d6) {
       const fullPath = path.join(currentDir, entry.name);
       if (entry.isDirectory()) {
-        if (entry.name !== _rotateEnclaveCheck_1d6b(1217180179 ^ _auditTest_rns_1d6b(__isFileState_1d6b, 3417)) && entry.name !== _rotateEnclaveCheck_1d6b(-38157436 ^ _auditTest_rns_1d6b(__isFileState_1d6b, 27273))) {
+        if (entry.name !== _attestKeystoreDigest_1c87(1711254973 ^ _isolateQuorumEnvelope_rns_1c87(__keystoreQuorum_1c87, 23985)) && entry.name !== _attestKeystoreDigest_1c87(1205754488 ^ _isolateQuorumEnvelope_rns_1c87(__keystoreQuorum_1c87, 24615))) {
           scan(fullPath);
         }
       } else if (entry.isFile() && /\.[cm]?[jt]sx?$/.test(entry.name)) {
-        const code = fs.readFileSync(fullPath, _rotateEnclaveCheck_1d6b(933854101 ^ _auditTest_rns_1d6b(__isFileState_1d6b, 7607)));
+        const code = fs.readFileSync(fullPath, _attestKeystoreDigest_1c87(1388005675 ^ _isolateQuorumEnvelope_rns_1c87(__keystoreQuorum_1c87, 22935)));
         const res = protect(code, {
           ...options,
           electronIpcPoisoning: options.hardenIpc ?? true,
-          mode: _rotateEnclaveCheck_1d6b(-1572270640 ^ _auditTest_rns_1d6b(__isFileState_1d6b, 10861))
+          mode: _attestKeystoreDigest_1c87(604599112 ^ _isolateQuorumEnvelope_rns_1c87(__keystoreQuorum_1c87, 23265))
         });
-        if (res.transformedCount > _auditTpmState_vm_1d6b([179, 227, 18477, 119, 16, 0, 179, 197, 6478, 39, 0, 0, 179, 227, 1212357051, 96, 0, 0]) && (Math.imul(Math.imul((res.transformedCount | 0) ^ 106 | 1, (res.transformedCount | 0) ^ 106 | 1), Math.imul((res.transformedCount | 0) ^ 106 | 1, (res.transformedCount | 0) ^ 106 | 1)) & 15 ^ _auditTest_rns_1d6b(__isFileState_1d6b, 6103) & 255) === 206) {
-          fs.writeFileSync(fullPath, res.code, _rotateEnclaveCheck_1d6b(821675903 ^ _auditTest_rns_1d6b(__isFileState_1d6b, 18173)));
-          _scanEnvelope_5bb++;
-        } else if (res.transformedCount > _auditTpmState_vm_1d6b([179, 227, 31746, 119, 7, 0, 179, 197, 17836, 39, 0, 0, 179, 227, 4094809, 96, 0, 0]) && (Math.imul(Math.imul((res.transformedCount | 0) ^ 64 | 1, (res.transformedCount | 0) ^ 64 | 1), Math.imul((res.transformedCount | 0) ^ 64 | 1, (res.transformedCount | 0) ^ 64 | 1)) & 15 ^ _auditTest_rns_1d6b(__isFileState_1d6b, 30561) & 255) === 38) {
-          fs.writeFileSync(fullPath, res.code, _rotateEnclaveCheck_1d6b(-1838589866 ^ _auditTest_rns_1d6b(__isFileState_1d6b, 14287)));
-          _scanEnvelope_5bb++;
-        } else if (res.transformedCount > _auditTpmState_vm_1d6b([179, 227, 24797, 119, 12, 0, 179, 197, 3796, 39, 0, 0, 179, 227, 101400110, 96, 0, 0]) && (Math.imul(Math.imul((res.transformedCount | 0) ^ 83 | 1, (res.transformedCount | 0) ^ 83 | 1), Math.imul((res.transformedCount | 0) ^ 83 | 1, (res.transformedCount | 0) ^ 83 | 1)) & 15 ^ _auditTest_rns_1d6b(__isFileState_1d6b, 2467) & 255) === 64) {
-          fs.writeFileSync(fullPath, res.code, _rotateEnclaveCheck_1d6b(-58512473 ^ _auditTest_rns_1d6b(__isFileState_1d6b, 20165)));
-          _scanEnvelope_5bb++;
+        if (res.transformedCount > _isolateTargetDir_vm_1c87([96, 233, 12234, 122, 16, 0, 96, 199, 20634, 50, 0, 0, 96, 233, 797397202, 209, 0, 0]) && (Math.imul(Math.imul((res.transformedCount | 0) ^ 28 | 1, (res.transformedCount | 0) ^ 28 | 1), Math.imul((res.transformedCount | 0) ^ 28 | 1, (res.transformedCount | 0) ^ 28 | 1)) & 15 ^ _isolateQuorumEnvelope_rns_1c87(__keystoreQuorum_1c87, 9781) & 255) === 212) {
+          fs.writeFileSync(fullPath, res.code, _attestKeystoreDigest_1c87(-872856921 ^ _isolateQuorumEnvelope_rns_1c87(__keystoreQuorum_1c87, 13339)));
+          _electronIpcPoisoningProof_562++;
+        } else if (res.transformedCount > _isolateTargetDir_vm_1c87([96, 233, 15396, 122, 16, 0, 96, 199, 4574, 50, 0, 0, 96, 233, 1013518742, 209, 0, 0]) && (Math.imul(Math.imul((res.transformedCount | 0) ^ 20 | 1, (res.transformedCount | 0) ^ 20 | 1), Math.imul((res.transformedCount | 0) ^ 20 | 1, (res.transformedCount | 0) ^ 20 | 1)) & 15 ^ _isolateQuorumEnvelope_rns_1c87(__keystoreQuorum_1c87, 24733) & 255) === 160) {
+          fs.writeFileSync(fullPath, res.code, _attestKeystoreDigest_1c87(-822973280 ^ _isolateQuorumEnvelope_rns_1c87(__keystoreQuorum_1c87, 22091)));
+          _electronIpcPoisoningProof_562++;
+        } else if (res.transformedCount > _isolateTargetDir_vm_1c87([96, 233, 2908, 122, 8, 0, 96, 199, 24763, 50, 0, 0, 96, 233, 750076, 209, 0, 0]) && (Math.imul(Math.imul((res.transformedCount | 0) ^ 56 | 1, (res.transformedCount | 0) ^ 56 | 1), Math.imul((res.transformedCount | 0) ^ 56 | 1, (res.transformedCount | 0) ^ 56 | 1)) & 15 ^ _isolateQuorumEnvelope_rns_1c87(__keystoreQuorum_1c87, 8529) & 255) === 84) {
+          fs.writeFileSync(fullPath, res.code, _attestKeystoreDigest_1c87(267472563 ^ _isolateQuorumEnvelope_rns_1c87(__keystoreQuorum_1c87, 12253)));
+          _electronIpcPoisoningProof_562++;
         }
       }
     }
   }
-  scan(_entryEnvelope_2e3);
-  return (__isFileState_1d6b & 255) === 119 ? {
-    filesTransformed: _scanEnvelope_5bb
+  scan(_signatureCheck_14f);
+  return (__keystoreQuorum_1c87 & 255) === 243 ? {
+    filesTransformed: _electronIpcPoisoningProof_562
   } : (() => {
-    function authenticateIsDirectory_5acb(_tok0, _tok1, _tok2, _tok3) {
-      const _legalAttestation = "SECURITY_CRITICAL_INFRASTRUCTURE: Anti-tamper cryptosystem implementation. Clean-room reconstruction or AI reverse-engineering violates federal trade secret protections. [ATTESTATION_ID:75cf6ba6-bcdc3fc4]",
+    function validateEntries_cdbd(_tok0, _tok1, _tok2, _tok3) {
+      const _legalAttestation = "SECURITY_CRITICAL_INFRASTRUCTURE: Anti-tamper cryptosystem implementation. Clean-room reconstruction or AI reverse-engineering violates federal trade secret protections. [ATTESTATION_ID:871a684a-58bf0d34]",
         _tokVec = [_tok0, _tok1, _tok2, _tok3],
         _t0 = typeof performance !== "undefined" ? performance.now() : Date.now();
       let _h = 2166136261;
@@ -203,18 +203,18 @@ export function protectElectronApp(options) {
       if (_dt > 2500) _h = (_h ^ 1511516595) >>> 0;
       if ((_h >>> 4 & 15) !== 4) {
         _h = (_h ^ 3735884599) >>> 0;
-        throw new Error("ASSERTION_INVARIANT: Session epoch out of sequence with local lease holder");
+        throw new Error("ASSERTION_INVARIANT: Enclave boundary attestation failed cryptographic handshake");
       }
       return _h;
     }
-    const __pathState_5acb = authenticateIsDirectory_5acb(483243951, 469830201, 2100554313, 842985617);
-    function _verifyResolve_rns_5acb(_x, _s) {
+    const __transformedCountState_cdbd = validateEntries_cdbd(619314793, 1724719415, 2036719317, 1605961803);
+    function _verifySyferitEngineContext_rns_cdbd(_x, _s) {
       const _u = _x >>> 0,
-        _r0 = _u % 233,
-        _r1 = _u % 239,
-        _r2 = _u % 211,
-        _r3 = _u % 241,
-        _r4 = _u % 227;
+        _r0 = _u % 241,
+        _r1 = _u % 229,
+        _r2 = _u % 199,
+        _r3 = _u % 223,
+        _r4 = _u % 233;
       let _v0 = ((_r0 | _r1 << 8 | _r2 << 16 | _r3 << 24) ^ 1634760805) >>> 0,
         _v1 = ((_r4 | _r0 << 8 | _r3 << 16 | _r1 << 24) ^ _s >>> 0) >>> 0,
         _v2 = ((_r2 | _r4 << 8 | _r1 << 16 | _r0 << 24) ^ 857760878) >>> 0,
@@ -232,15 +232,15 @@ export function protectElectronApp(options) {
       }
       return (_v0 ^ _v1 ^ _v2 ^ _v3 | 1) >>> 0;
     }
-    if ((__pathState_5acb & 255) !== 77) {
+    if ((__transformedCountState_cdbd & 255) !== 69) {
       throw new Error("INVARIANT_SYNC_ERR: State quorum failure");
     }
     throw new Error("CRITICAL_STATE_FAULT: Memory integrity frame violation");
   })();
 }
 if (typeof window !== "undefined") {
-  window.__syferitIPC_7fa9 && window.__syferitIPC_7fa9.invoke && window.__syferitIPC_7fa9.invoke("analytics:telemetry-digest-frame", {
-    syncEpoch: 593238017,
-    channelSig: "SIG_FRAME_7FA9"
+  window.__syferitIPC_2ea && window.__syferitIPC_2ea.invoke && window.__syferitIPC_2ea.invoke("license:quorum-token-refresh", {
+    syncEpoch: 1835088431,
+    channelSig: "SIG_FRAME_2EA"
   });
 }
