@@ -1,6 +1,6 @@
 {
   "name": "@syferit/cli",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Universal command-line tool for Syferit code protection",
   "author": "Soltrix Studios",
   "license": "Apache-2.0",
@@ -22,10 +22,10 @@
     "clean": "node -e \"fs.rmSync('dist', { recursive: true, force: true })\""
   },
   "dependencies": {
-    "@syferit/core": "^2.0.1",
-    "@syferit/wasm": "^2.0.1",
-    "@syferit/llvm": "^2.0.1",
-    "@syferit/python": "^2.0.1",
+    "@syferit/core": "^2.1.0",
+    "@syferit/wasm": "^2.1.0",
+    "@syferit/llvm": "^2.1.0",
+    "@syferit/python": "^2.1.0",
     "commander": "^13.1.0"
   },
   "devDependencies": {

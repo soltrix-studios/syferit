@@ -1,6 +1,6 @@
 {
   "name": "@syferit/webpack-plugin",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Syferit adversarial code protection plugin for Webpack 5",
   "author": "Soltrix Studios",
   "license": "Apache-2.0",
@@ -19,8 +19,8 @@
     "clean": "node -e \"fs.rmSync('dist', { recursive: true, force: true })\""
   },
   "dependencies": {
-    "@syferit/core": "^2.0.1",
-    "@syferit/wasm": "^2.0.1"
+    "@syferit/core": "^2.1.0",
+    "@syferit/wasm": "^2.1.0"
   },
   "peerDependencies": {
     "webpack": "^5.0.0"

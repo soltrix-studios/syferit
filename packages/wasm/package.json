@@ -1,6 +1,6 @@
 {
   "name": "@syferit/wasm",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Adversarial WebAssembly binary transformer and anti-disassembler for Syferit",
   "author": "Soltrix Studios",
   "license": "Apache-2.0",
@@ -19,7 +19,7 @@
     "clean": "node -e \"fs.rmSync('dist', { recursive: true, force: true })\""
   },
   "dependencies": {
-    "@syferit/core": "^2.0.1"
+    "@syferit/core": "^2.1.0"
   },
   "repository": {
     "type": "git",

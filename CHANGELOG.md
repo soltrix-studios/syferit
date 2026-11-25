@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.1.0] - 2026-11-25
+
+### Changed
+- **Zero-Config `v2-quantum-rns` Default Preset:**
+  - Upgraded the default protection preset from `'hardened'` to `'v2-quantum-rns'` across `@syferit/core`, `@syferit/cli`, `@syferit/webpack-plugin`, `@syferit/vite-plugin`, `@syferit/next`, and `soltrix-studios/syferit-action@v2`.
+  - Users running `syferit protect ./dist` or `withSyferit(nextConfig)` without specifying a `--preset` flag now automatically receive the full v2 non-linear RNS-ARX and polymorphic Micro-VM defense pipeline out of the box (while `standard`, `hardened`, and `maximum` remain available when explicitly specified).
+- **Synchronized v2.1.0 Release:**
+  - Aligned all 10 `@syferit/*` npm workspace packages, terminal banners, and cross-platform Zero-Node SEA standalone binaries (`syferit.exe`, `syferit-linux-x64`, `syferit-macos-arm64`, `syferit`) to `v2.1.0`.
+
 ## [2.0.1] - 2026-11-20
 
 ### Fixed

@@ -50,7 +50,7 @@ export function withSyferit(
         config.plugins.push(
           new SyferitWebpackPlugin({
             mode: 'production',
-            preset: syferitOptions.preset,
+            preset: syferitOptions.preset ?? 'v2-quantum-rns',
             rnsArxEntanglement: syferitOptions.rnsArxEntanglement,
             domainProfile: syferitOptions.domainProfile ?? 'saas',
             seed: syferitOptions.seed ?? null,

@@ -97,11 +97,11 @@ export const SYFERIT_TERMINAL_ARTWORK = `
 `;
 
 export function printSyferitBanner(options?: SyferitOptions): void {
-  const preset = (options?.preset ?? 'hardened').padEnd(16, ' ');
+  const preset = (options?.preset ?? 'v2-quantum-rns').padEnd(16, ' ');
   const profile = (options?.domainProfile ?? 'saas').padEnd(10, ' ');
   console.log(SYFERIT_TERMINAL_ARTWORK);
   console.log('  ╔═══════════════════════════════════════════════════════════════════════════╗');
-  console.log('  ║  SYFERIT v2.0.1 — Symbolic Feistel & Residue Integrity Transformer        ║');
+  console.log('  ║  SYFERIT v2.1.0 — Symbolic Feistel & Residue Integrity Transformer        ║');
   console.log('  ║  "Don\'t Just Ship it. Syferit."  │  Soltrix Studios Code Defense Engine   ║');
   console.log('  ╠═══════════════════════════════════════════════════════════════════════════╣');
   console.log(`  ║  ▸ Preset  : ${preset}    │  ▸ Profile : ${profile}                ║`);

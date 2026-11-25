@@ -24,7 +24,7 @@ program
   .option('-t, --target <path>', 'Path to file or directory to protect')
   .option('-o, --out <path>', 'Destination output path (defaults to in-place overwrite)')
   .option('--output <path>', 'Alias for -o, --out')
-  .option('--preset <preset>', 'Protection level: standard, hardened, maximum, or v2-quantum-rns (default: "hardened")')
+  .option('--preset <preset>', 'Protection level: standard, hardened, maximum, or v2-quantum-rns (default: "v2-quantum-rns")')
   .option('-p, --profile <profile>', 'Domain dictionary profile: saas, fintech, security, gaming (default: "saas")')
   .option('-d, --domain <domain>', 'Alias for -p, --profile')
   .option('-s, --seed <seed>', 'Deterministic build seed for reproducible polymorphism')
@@ -45,10 +45,10 @@ program
       process.exit(1);
     }
 
-    let presetVal = options.preset ?? fileConfig?.preset ?? 'hardened';
+    let presetVal = options.preset ?? fileConfig?.preset ?? 'v2-quantum-rns';
     let domainVal = options.domain ?? options.profile ?? fileConfig?.domainProfile ?? 'saas';
 
-    if (PRESET_VALUES.has(domainVal) && !options.preset && presetVal === 'hardened') {
+    if (PRESET_VALUES.has(domainVal) && !options.preset && presetVal === 'v2-quantum-rns') {
       presetVal = domainVal;
       domainVal = fileConfig?.domainProfile ?? 'saas';
     }

@@ -1,6 +1,6 @@
 {
   "name": "@syferit/core",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Core AST transformation and logic entanglement engine for Syferit",
   "author": "Soltrix Studios",
   "license": "Apache-2.0",

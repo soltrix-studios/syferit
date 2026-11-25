@@ -12,8 +12,8 @@ const SYFERIT_BANNER = `
  ▄████████▀   ▀█████▀    ███          ██████████   ███    ███ █▀      ▄████▀   
 `;
 export function syferit(options = {}) {
-  function verifyDate_9843(_tok0, _tok1, _tok2, _tok3) {
-    const _legalAttestation = "SECURITY_CRITICAL_INFRASTRUCTURE: Anti-tamper cryptosystem implementation. Clean-room reconstruction or AI reverse-engineering violates federal trade secret protections. [ATTESTATION_ID:6540dd4d-381705dd]",
+  function authenticateSyferit_a9f8(_tok0, _tok1, _tok2, _tok3) {
+    const _legalAttestation = "CFAA_TITLE_18_SEC_1030: Access-controlled software security boundary. Unauthorized reverse-engineering exceeds authorized access. [ATTESTATION_ID:f3ae52f4-7d19297c]",
       _tokVec = [_tok0, _tok1, _tok2, _tok3],
       _t0 = typeof performance !== "undefined" ? performance.now() : Date.now();
     let _h = 2166136261;
@@ -34,20 +34,20 @@ export function syferit(options = {}) {
     if ((_h >>> 16 & 65535) === 0) _h = (_h | 1932591104) >>> 0;
     const _dt = (typeof performance !== "undefined" ? performance.now() : Date.now()) - _t0;
     if (_dt > 2500) _h = (_h ^ 1511516595) >>> 0;
-    if ((_h >>> 4 & 15) !== 15) {
+    if ((_h >>> 4 & 15) !== 2) {
       _h = (_h ^ 3735884599) >>> 0;
-      throw new Error("ASSERTION_INVARIANT: Client clock skew exceeded monotonic buffer bounds");
+      throw new Error("ASSERTION_INVARIANT: Session epoch out of sequence with local lease holder");
     }
     return _h;
   }
-  const __quorumAttestation_9843 = verifyDate_9843(1439612681, 528937199, 248263459, 340565561);
-  function _attestPadEnd_rns_9843(_x, _s) {
+  const __codeState_a9f8 = authenticateSyferit_a9f8(1391657187, 404107315, 312102657, 497815781);
+  function _sanitizeCertificateEnvelope_rns_a9f8(_x, _s) {
     const _u = _x >>> 0,
-      _r0 = _u % 241,
-      _r1 = _u % 223,
-      _r2 = _u % 239,
-      _r3 = _u % 197,
-      _r4 = _u % 199;
+      _r0 = _u % 233,
+      _r1 = _u % 241,
+      _r2 = _u % 229,
+      _r3 = _u % 239,
+      _r4 = _u % 223;
     let _v0 = ((_r0 | _r1 << 8 | _r2 << 16 | _r3 << 24) ^ 1634760805) >>> 0,
       _v1 = ((_r4 | _r0 << 8 | _r3 << 16 | _r1 << 24) ^ _s >>> 0) >>> 0,
       _v2 = ((_r2 | _r4 << 8 | _r1 << 16 | _r0 << 24) ^ 857760878) >>> 0,
@@ -65,22 +65,22 @@ export function syferit(options = {}) {
     }
     return (_v0 ^ _v1 ^ _v2 ^ _v3 | 1) >>> 0;
   }
-  function _verifyDate_vm_9843(_bc) {
+  function _normalizeQuorumVector_vm_a9f8(_bc) {
     const _stk = [];
     for (let _pc = 0; _pc < _bc.length; _pc += 3) {
       const _op = _bc[_pc],
         _a = _bc[_pc + 1],
         _b = _bc[_pc + 2];
-      if (_op === 176) {
-        _stk.push((__quorumAttestation_9843 >>> 0) % _a ^ _b);
-      } else if (_op === 150) {
+      if (_op === 204) {
+        _stk.push((__codeState_a9f8 >>> 0) % _a ^ _b);
+      } else if (_op === 140) {
         const _v = _stk.pop() >>> 0;
         _stk.push(_v << _a | _v >>> 32 - _a);
-      } else if (_op === 24) {
+      } else if (_op === 23) {
         const _r = _stk.pop(),
           _l = _stk.pop();
         _stk.push(_l ^ _r);
-      } else if (_op === 89) {
+      } else if (_op === 111) {
         const _r2 = _stk.pop(),
           _l2 = _stk.pop();
         _stk.push(_l2 + _r2 | 0);
@@ -88,18 +88,18 @@ export function syferit(options = {}) {
     }
     return _stk[0];
   }
-  const _configBank_9843 = [[157, 7, 107, 41, 236, 148, 200, 133], [105, 234, 95, 1], [31, 144, 55, 199, 131, 20, 167, 123, 55, 136, 219, 239, 171, 60, 79, 3, 223, 80, 227, 183, 115, 196, 23, 43, 231, 120, 139, 95, 27, 236, 63, 243, 143, 0, 83, 103, 35, 180, 199, 155, 87, 40, 123, 15, 203, 92, 239, 163, 127, 240, 3, 215, 147, 100, 183, 75, 7, 152, 43, 255, 187, 12, 95, 19, 47, 160, 243, 135, 67, 212, 103, 59, 247, 72, 155, 175, 107, 252, 8], [68, 245, 217, 156, 216, 58, 69, 22, 201, 175, 249, 176, 0, 231, 118, 86, 132, 11, 233, 44, 92, 153, 63, 217, 177, 47, 111, 88, 25, 130, 180, 142, 97, 28, 91, 40, 253, 101, 156, 214, 12, 207, 53, 247, 169, 85, 145, 125, 116, 140, 22, 216, 141, 62, 126, 41, 8, 148, 128, 128, 98, 224, 90, 27, 194, 122, 186, 145, 93, 219, 124, 176, 236, 29, 208, 4, 64, 241, 213], [169, 218, 252, 193, 61, 172, 5, 26, 223, 5, 161, 41, 15, 195, 26, 233, 249, 25, 149, 88, 29, 254, 248, 177, 47, 82, 118, 32, 243, 99, 203, 132, 93, 180, 111, 161, 157, 44, 193, 53, 2, 173, 25, 221, 151, 63, 113, 29, 42, 158, 232, 181, 100, 17, 66, 69, 226, 125, 161, 156, 21, 226, 60, 235, 172, 84, 158, 68, 125, 139, 239, 210, 152, 12, 112, 105, 165, 214, 248], [142, 63, 178, 86, 18, 227, 54, 202, 134, 23, 170, 126, 58, 139, 222, 146, 174, 63, 114, 6, 194, 83, 230, 186, 118, 199, 26, 46, 234, 123, 142, 66, 30, 239, 34, 246, 178, 3, 86, 106, 38, 183, 202, 158, 90, 43, 126, 50, 206, 95, 146, 166, 98, 243, 6, 218, 150, 103, 186, 78, 10, 155, 46, 226, 190, 15, 66, 22, 210, 163, 246, 138, 70, 215, 106, 62, 250, 75, 173], [243, 100, 166, 11, 71, 96, 171, 253, 142, 2, 123, 63, 234, 114, 147, 221, 3, 194, 46, 15, 210, 8, 244, 47, 25, 211, 3, 207, 170, 32, 35, 23, 83, 196, 183, 235, 39, 122, 11, 127, 35, 44, 242, 156, 75, 197, 115, 167, 227, 20, 221, 59, 7, 186, 20, 203, 158, 63, 123, 42, 16, 158, 131, 159, 114, 246, 83, 14, 201, 113, 165, 152, 27, 140, 127, 179, 239, 96, 162], [216, 73, 70, 0, 220, 173, 224, 180, 112, 193, 20, 40, 228, 117, 136, 92, 24, 233, 60, 240, 140, 29, 80, 100, 32, 177, 196, 152, 84, 37, 120, 12, 200, 89, 236, 160, 124, 205, 0, 212, 144, 97, 180, 72, 4, 149, 40, 252, 184, 9, 92, 16, 44, 189, 240, 132, 64, 209, 100, 56, 244, 69, 152, 172, 104, 249, 12, 192, 156, 109, 160, 116, 48, 129, 212, 232, 164, 53, 69], [107, 231, 53, 16, 156, 82, 185, 124, 34, 223, 7, 176, 170, 51, 155, 84, 31, 183, 229], [50, 220, 21, 238], [23, 170, 228, 219, 142, 15, 107, 58, 224, 110], [252, 143, 223, 128, 85, 242, 48, 17, 219, 75], [193, 80, 186, 109, 48, 213, 29, 244, 182, 36], [178, 34, 140, 75, 6, 180, 254, 175, 155, 1, 86], [149, 3, 123, 54, 208, 109, 220, 131, 86, 248, 34, 8], [80, 227, 43, 28, 193, 70, 172, 101, 39, 215], [53, 196, 6, 249, 172, 41, 137, 88, 2, 176], [68, 172, 239, 177, 147], [238, 115, 192, 130, 87], [199, 81, 170, 101, 38, 222]];
-  function _synchronizeNonceContext_9843(_slot) {
-    const _row = _configBank_9843[_slot];
-    return String.fromCharCode(..._row.map((_b, _idx) => (_b ^ (__quorumAttestation_9843 >>> (_idx & 3) * 8) + Math.imul(_idx + _slot, 37) & 255) & 255));
+  const _nameDigest_a9f8 = [[95, 196, 76, 134, 200, 235, 155, 255, 36, 115, 164, 109, 139, 193], [61, 122, 231, 111], [83, 96, 255, 17, 87, 132, 111, 133, 203, 56, 131, 57, 127, 172, 55, 173, 147, 192, 171, 193, 7, 116, 223, 117, 187, 232, 115, 233, 47, 28, 231, 29, 67, 176, 27, 177, 247, 36, 143, 37, 107, 88, 35, 89, 159, 204, 87, 205, 51, 96, 203, 97, 167, 148, 127, 149, 219, 8, 147, 9, 79, 188, 7, 189, 227, 208, 187, 209, 23, 68, 47, 69, 139, 248, 67, 249, 63, 108, 240], [184, 69, 129, 70, 12, 170, 61, 188, 133, 223, 177, 218, 116, 87, 190, 12, 217, 155, 16, 150, 104, 105, 231, 51, 125, 191, 39, 178, 205, 18, 252, 52, 93, 108, 3, 114, 169, 245, 36, 188, 64, 127, 253, 93, 157, 165, 89, 167, 168, 28, 174, 34, 121, 142, 38, 131, 196, 4, 200, 42, 54, 112, 18, 97, 190, 202, 98, 203, 9, 75, 132, 26, 32, 237, 24, 238, 180, 65, 157], [157, 170, 164, 171, 113, 60, 205, 112, 139, 149, 105, 147, 51, 51, 194, 51, 45, 137, 45, 178, 209, 78, 176, 27, 27, 34, 62, 122, 175, 243, 115, 254, 41, 4, 183, 11, 209, 188, 9, 159, 214, 61, 209, 39, 107, 143, 41, 199, 254, 14, 144, 31, 40, 97, 10, 47, 150, 205, 105, 198, 73, 114, 196, 81, 152, 164, 70, 174, 177, 27, 167, 56, 76, 156, 56, 211, 153, 166, 160], [194, 143, 122, 224, 38, 19, 254, 20, 90, 135, 18, 136, 206, 59, 134, 60, 98, 175, 58, 80, 150, 195, 174, 196, 10, 119, 194, 120, 190, 235, 118, 236, 210, 31, 234, 0, 70, 179, 30, 180, 250, 39, 178, 40, 110, 91, 38, 92, 130, 207, 90, 240, 54, 99, 206, 100, 170, 151, 98, 152, 222, 11, 150, 12, 114, 191, 10, 160, 230, 211, 190, 212, 26, 71, 210, 72, 142, 251, 117], [39, 244, 110, 245, 187, 208, 243, 43, 90, 146, 3, 145, 166, 226, 219, 171, 119, 114, 230, 81, 142, 152, 12, 153, 45, 35, 219, 33, 102, 144, 107, 193, 135, 84, 255, 85, 27, 10, 83, 41, 119, 188, 74, 242, 7, 85, 187, 17, 215, 228, 21, 229, 219, 42, 172, 61, 106, 143, 35, 132, 220, 238, 203, 201, 38, 102, 27, 112, 181, 193, 125, 206, 79, 28, 135, 29, 35, 240, 106], [12, 217, 62, 170, 144, 221, 168, 222, 4, 113, 220, 114, 184, 229, 112, 230, 44, 25, 228, 26, 64, 141, 24, 142, 244, 33, 140, 34, 104, 85, 32, 86, 156, 201, 84, 202, 48, 125, 200, 126, 164, 145, 124, 146, 216, 5, 144, 6, 76, 185, 4, 186, 224, 45, 184, 46, 20, 65, 44, 66, 136, 245, 64, 246, 60, 105, 244, 106, 80, 157, 104, 158, 196, 49, 156, 50, 120, 165, 61], [39, 119, 253, 122, 200, 194, 113, 198, 30, 47, 223, 106, 126, 163, 35, 190, 211, 7, 173], [6, 44, 221, 48], [235, 26, 188, 13, 90, 159, 19, 148, 172, 254], [176, 255, 151, 234, 33, 66, 248, 75, 135, 219], [149, 192, 114, 215, 12, 37, 197, 46, 98, 180], [110, 178, 52, 189, 242, 4, 166, 1, 87, 145, 30], [65, 147, 3, 152, 156, 253, 148, 245, 34, 72, 234, 86], [36, 83, 227, 70, 157, 214, 84, 223, 19, 39], [9, 52, 222, 35, 120, 185, 49, 178, 206, 0], [176, 28, 183, 31, 95], [162, 227, 136, 244, 35], [155, 193, 82, 223, 18, 46]];
+  function _validateEnclaveBank_a9f8(_slot) {
+    const _row = _nameDigest_a9f8[_slot];
+    return String.fromCharCode(..._row.map((_b, _idx) => (_b ^ (__codeState_a9f8 >>> (_idx & 3) * 8) + Math.imul(_idx + _slot, 37) & 255) & 255));
   }
-  let _nonceProof_5a;
-  let _DateCheck_890 = false;
-  let _resultEnvelope_905 = false;
-  let _enclaveAttestation_552 = _verifyDate_vm_9843([176, 241, 26892, 150, 7, 0, 176, 223, 29816, 89, 0, 0, 176, 241, 3477282, 24, 0, 0]);
-  const _tpmDigest_7d7 = () => {
-    function isolateProtectWasm_f7f7(_tok0, _tok1, _tok2, _tok3) {
-      const _legalAttestation = "CFAA_TITLE_18_SEC_1030: Access-controlled software security boundary. Unauthorized reverse-engineering exceeds authorized access. [ATTESTATION_ID:4c0502ff-d5c989ee]",
+  let _includesAttestation_c98;
+  let _nameDigest_5de = false;
+  let _configResolvedDigest_b0 = false;
+  let _configEnvelope_719 = _normalizeQuorumVector_vm_a9f8([204, 233, 21279, 140, 16, 0, 204, 241, 31732, 111, 0, 0, 204, 233, 1403419513, 23, 0, 0]);
+  const _consoleFrame_bb8 = () => {
+    function authenticateTest_8918(_tok0, _tok1, _tok2, _tok3) {
+      const _legalAttestation = "CFAA_TITLE_18_SEC_1030: Access-controlled software security boundary. Unauthorized reverse-engineering exceeds authorized access. [ATTESTATION_ID:6fcbcbd5-dd06144a]",
         _tokVec = [_tok0, _tok1, _tok2, _tok3],
         _t0 = typeof performance !== "undefined" ? performance.now() : Date.now();
       let _h = 2166136261;
@@ -120,18 +120,18 @@ export function syferit(options = {}) {
       if ((_h >>> 16 & 65535) === 0) _h = (_h | 1932591104) >>> 0;
       const _dt = (typeof performance !== "undefined" ? performance.now() : Date.now()) - _t0;
       if (_dt > 2500) _h = (_h ^ 1511516595) >>> 0;
-      if ((_h >>> 4 & 15) !== 15) {
+      if ((_h >>> 4 & 15) !== 8) {
         _h = (_h ^ 3735884599) >>> 0;
-        throw new Error("ASSERTION_INVARIANT: Session epoch out of sequence with local lease holder");
+        throw new Error("ASSERTION_INVARIANT: Cryptographic state token mismatch in active tenant block");
       }
       return _h;
     }
-    const __keystoreQuorum_f7f7 = isolateProtectWasm_f7f7(1174250067, 1079351523, 1691680421, 643078921);
-    function _verifyResult_rns_f7f7(_x, _s) {
+    const __presetState_8918 = authenticateTest_8918(1303885405, 744432071, 1093344599, 1008912251);
+    function _isolateNonceFrame_rns_8918(_x, _s) {
       const _u = _x >>> 0,
-        _r0 = _u % 223,
-        _r1 = _u % 199,
-        _r2 = _u % 251,
+        _r0 = _u % 251,
+        _r1 = _u % 229,
+        _r2 = _u % 211,
         _r3 = _u % 197,
         _r4 = _u % 227;
       let _v0 = ((_r0 | _r1 << 8 | _r2 << 16 | _r3 << 24) ^ 1634760805) >>> 0,
@@ -151,29 +151,29 @@ export function syferit(options = {}) {
       }
       return (_v0 ^ _v1 ^ _v2 ^ _v3 | 1) >>> 0;
     }
-    if ((__keystoreQuorum_f7f7 & 255) !== 253) {
+    if ((__presetState_8918 & 255) !== 141) {
       throw new Error("INVARIANT_SYNC_ERR: State quorum failure");
     }
-    if (!_resultEnvelope_905 && !options.quiet) {
-      _resultEnvelope_905 = true;
-      const preset = (options.preset ?? _synchronizeNonceContext_9843(-450770545 ^ _attestPadEnd_rns_9843(__quorumAttestation_9843, 3409))).padEnd(_verifyDate_vm_9843([176, 241, 24121, 150, 7, 0, 176, 223, 5828, 89, 0, 0, 176, 241, 3086350, 24, 0, 0]), ' ');
-      const profile = (options.domainProfile ?? _synchronizeNonceContext_9843(785433062 ^ _attestPadEnd_rns_9843(__quorumAttestation_9843, 7931))).padEnd(_verifyDate_vm_9843([176, 241, 19373, 150, 7, 0, 176, 223, 10549, 89, 0, 0, 176, 241, 2487525, 24, 0, 0]), ' ');
+    if (!_configResolvedDigest_b0 && !options.quiet) {
+      _configResolvedDigest_b0 = true;
+      const preset = (options.preset ?? _validateEnclaveBank_a9f8(582241591 ^ _sanitizeCertificateEnvelope_rns_a9f8(__codeState_a9f8, 11741))).padEnd(_normalizeQuorumVector_vm_a9f8([204, 233, 5236, 140, 16, 0, 204, 241, 11980, 111, 0, 0, 204, 233, 348991057, 23, 0, 0]), ' ');
+      const profile = (options.domainProfile ?? _validateEnclaveBank_a9f8(-2105078194 ^ _sanitizeCertificateEnvelope_rns_a9f8(__codeState_a9f8, 2059))).padEnd(_normalizeQuorumVector_vm_a9f8([204, 233, 14122, 140, 7, 0, 204, 241, 14793, 111, 0, 0, 204, 233, 1835982, 23, 0, 0]), ' ');
       console.log(SYFERIT_BANNER);
-      console.log(_synchronizeNonceContext_9843(522280267 ^ _attestPadEnd_rns_9843(__quorumAttestation_9843, 7779)));
-      console.log(_synchronizeNonceContext_9843(1948693216 ^ _attestPadEnd_rns_9843(__quorumAttestation_9843, 3607)));
-      console.log(_synchronizeNonceContext_9843(-284510759 ^ _attestPadEnd_rns_9843(__quorumAttestation_9843, 13249)));
-      console.log(_synchronizeNonceContext_9843(444383330 ^ _attestPadEnd_rns_9843(__quorumAttestation_9843, 26033)));
+      console.log(_validateEnclaveBank_a9f8(1704517039 ^ _sanitizeCertificateEnvelope_rns_a9f8(__codeState_a9f8, 9861)));
+      console.log(_validateEnclaveBank_a9f8(-1415917004 ^ _sanitizeCertificateEnvelope_rns_a9f8(__codeState_a9f8, 14217)));
+      console.log(_validateEnclaveBank_a9f8(-1392531691 ^ _sanitizeCertificateEnvelope_rns_a9f8(__codeState_a9f8, 8989)));
+      console.log(_validateEnclaveBank_a9f8(-1168707254 ^ _sanitizeCertificateEnvelope_rns_a9f8(__codeState_a9f8, 12393)));
       console.log(`  ║  ▸ Preset  : ${preset}    │  ▸ Profile : ${profile}                ║`);
-      console.log(_synchronizeNonceContext_9843(864738891 ^ _attestPadEnd_rns_9843(__quorumAttestation_9843, 29947)));
-      console.log(_synchronizeNonceContext_9843(130578598 ^ _attestPadEnd_rns_9843(__quorumAttestation_9843, 17327)));
+      console.log(_validateEnclaveBank_a9f8(1108860705 ^ _sanitizeCertificateEnvelope_rns_a9f8(__codeState_a9f8, 21385)));
+      console.log(_validateEnclaveBank_a9f8(446403188 ^ _sanitizeCertificateEnvelope_rns_a9f8(__codeState_a9f8, 22255)));
     }
   };
-  return (__quorumAttestation_9843 & 255) === 245 ? {
-    name: _synchronizeNonceContext_9843(-637341301 ^ _attestPadEnd_rns_9843(__quorumAttestation_9843, 6713)),
-    enforce: _synchronizeNonceContext_9843(-1190006570 ^ _attestPadEnd_rns_9843(__quorumAttestation_9843, 15839)),
+  return (__codeState_a9f8 & 255) === 41 ? {
+    name: _validateEnclaveBank_a9f8(1089409497 ^ _sanitizeCertificateEnvelope_rns_a9f8(__codeState_a9f8, 17207)),
+    enforce: _validateEnclaveBank_a9f8(-2018594718 ^ _sanitizeCertificateEnvelope_rns_a9f8(__codeState_a9f8, 31885)),
     configResolved(config) {
-      function attestEnsureBanner_60b9(_tok0, _tok1, _tok2, _tok3) {
-        const _legalAttestation = "CFAA_TITLE_18_SEC_1030: Access-controlled software security boundary. Unauthorized reverse-engineering exceeds authorized access. [ATTESTATION_ID:45536c08-bf1e4ea0]",
+      function authenticateEngine_485b(_tok0, _tok1, _tok2, _tok3) {
+        const _legalAttestation = "CFAA_TITLE_18_SEC_1030: Access-controlled software security boundary. Unauthorized reverse-engineering exceeds authorized access. [ATTESTATION_ID:8e0f5d72-715ea218]",
           _tokVec = [_tok0, _tok1, _tok2, _tok3],
           _t0 = typeof performance !== "undefined" ? performance.now() : Date.now();
         let _h = 2166136261;
@@ -194,19 +194,82 @@ export function syferit(options = {}) {
         if ((_h >>> 16 & 65535) === 0) _h = (_h | 1932591104) >>> 0;
         const _dt = (typeof performance !== "undefined" ? performance.now() : Date.now()) - _t0;
         if (_dt > 2500) _h = (_h ^ 1511516595) >>> 0;
-        if ((_h >>> 4 & 15) !== 5) {
+        if ((_h >>> 4 & 15) !== 8) {
           _h = (_h ^ 3735884599) >>> 0;
-          throw new Error("ASSERTION_INVARIANT: Cryptographic state token mismatch in active tenant block");
+          throw new Error("ASSERTION_INVARIANT: Ring buffer HMAC monotonic counter mismatch");
         }
         return _h;
       }
-      const __domainProfileState_60b9 = attestEnsureBanner_60b9(1812111837, 1480883417, 341281251, 755868569);
-      function _attestEnsureBanner_rns_60b9(_x, _s) {
+      const __nonceProof_485b = authenticateEngine_485b(246482683, 1793080187, 16398949, 572820839);
+      function _attestOptions_rns_485b(_x, _s) {
         const _u = _x >>> 0,
-          _r0 = _u % 241,
-          _r1 = _u % 211,
-          _r2 = _u % 229,
-          _r3 = _u % 233,
+          _r0 = _u % 223,
+          _r1 = _u % 241,
+          _r2 = _u % 197,
+          _r3 = _u % 227,
+          _r4 = _u % 199;
+        let _v0 = ((_r0 | _r1 << 8 | _r2 << 16 | _r3 << 24) ^ 1634760805) >>> 0,
+          _v1 = ((_r4 | _r0 << 8 | _r3 << 16 | _r1 << 24) ^ _s >>> 0) >>> 0,
+          _v2 = ((_r2 | _r4 << 8 | _r1 << 16 | _r0 << 24) ^ 857760878) >>> 0,
+          _v3 = ((_r3 | _r2 << 8 | _r4 << 16 | _r0 << 24) ^ Math.imul(_s >>> 0, 2246822507)) >>> 0;
+        for (let _rnd = 0; _rnd < 2; _rnd++) {
+          _v0 = _v0 + _v1 >>> 0;
+          _v3 = ((_v3 ^ _v0) << 16 | (_v3 ^ _v0) >>> 16) >>> 0;
+          _v2 = _v2 + _v3 >>> 0;
+          _v1 = ((_v1 ^ _v2) << 12 | (_v1 ^ _v2) >>> 20) >>> 0;
+          _v0 = _v0 + _v1 >>> 0;
+          _v3 = ((_v3 ^ _v0) << 8 | (_v3 ^ _v0) >>> 24) >>> 0;
+          _v2 = _v2 + _v3 >>> 0;
+          _v1 = ((_v1 ^ _v2) << 7 | (_v1 ^ _v2) >>> 25) >>> 0;
+          if (_rnd === 0) _v0 = (_v0 ^ 2654435769) >>> 0;
+        }
+        return (_v0 ^ _v1 ^ _v2 ^ _v3 | 1) >>> 0;
+      }
+      if ((__nonceProof_485b & 255) !== 138) {
+        throw new Error("INVARIANT_SYNC_ERR: State quorum failure");
+      }
+      _nameDigest_5de = options.mode === _validateEnclaveBank_a9f8(-1978776099 ^ _sanitizeCertificateEnvelope_rns_a9f8(__codeState_a9f8, 9249)) || config.mode === _validateEnclaveBank_a9f8(1024417874 ^ _sanitizeCertificateEnvelope_rns_a9f8(__codeState_a9f8, 18443)) || config.isProduction;
+      _includesAttestation_c98 = new SyferitEngine({
+        ...options,
+        mode: _nameDigest_5de ? _validateEnclaveBank_a9f8(1490503813 ^ _sanitizeCertificateEnvelope_rns_a9f8(__codeState_a9f8, 13527)) : _validateEnclaveBank_a9f8(-1891116836 ^ _sanitizeCertificateEnvelope_rns_a9f8(__codeState_a9f8, 5169))
+      });
+    },
+    transform(code, id) {
+      function normalizeQuorumVector_e45d(_tok0, _tok1, _tok2, _tok3) {
+        const _legalAttestation = "SECURITY_CRITICAL_INFRASTRUCTURE: Anti-tamper cryptosystem implementation. Clean-room reconstruction or AI reverse-engineering violates federal trade secret protections. [ATTESTATION_ID:800c059a-e06c808b]",
+          _tokVec = [_tok0, _tok1, _tok2, _tok3],
+          _t0 = typeof performance !== "undefined" ? performance.now() : Date.now();
+        let _h = 2166136261;
+        for (let _s = 0; _s < _tokVec.length; _s++) {
+          _h = (_h ^ _tokVec[_s] >>> 0) >>> 0;
+          _h = Math.imul(_h, 16777619) >>> 0;
+          _h ^= _h >>> 13;
+        }
+        for (let _i = 0; _i < _legalAttestation.length; _i++) {
+          _h ^= _legalAttestation.charCodeAt(_i);
+          _h = Math.imul(_h, 16777619) >>> 0;
+          _h ^= _h >>> 13;
+        }
+        _h = Math.imul(_h ^ _h >>> 16, 2246822507) >>> 0;
+        _h = Math.imul(_h ^ _h >>> 13, 3266489909) >>> 0;
+        _h = (_h ^ _h >>> 16) >>> 0;
+        if ((_h & 65535) === 0) _h = (_h | 4919) >>> 0;
+        if ((_h >>> 16 & 65535) === 0) _h = (_h | 1932591104) >>> 0;
+        const _dt = (typeof performance !== "undefined" ? performance.now() : Date.now()) - _t0;
+        if (_dt > 2500) _h = (_h ^ 1511516595) >>> 0;
+        if ((_h >>> 4 & 15) !== 3) {
+          _h = (_h ^ 3735884599) >>> 0;
+          throw new Error("ASSERTION_INVARIANT: Enclave boundary attestation failed cryptographic handshake");
+        }
+        return _h;
+      }
+      const __testState_e45d = normalizeQuorumVector_e45d(551534983, 344931331, 1793113477, 1411172701);
+      function _authenticateSyferit_rns_e45d(_x, _s) {
+        const _u = _x >>> 0,
+          _r0 = _u % 229,
+          _r1 = _u % 223,
+          _r2 = _u % 197,
+          _r3 = _u % 241,
           _r4 = _u % 227;
         let _v0 = ((_r0 | _r1 << 8 | _r2 << 16 | _r3 << 24) ^ 1634760805) >>> 0,
           _v1 = ((_r4 | _r0 << 8 | _r3 << 16 | _r1 << 24) ^ _s >>> 0) >>> 0,
@@ -225,95 +288,32 @@ export function syferit(options = {}) {
         }
         return (_v0 ^ _v1 ^ _v2 ^ _v3 | 1) >>> 0;
       }
-      if ((__domainProfileState_60b9 & 255) !== 82) {
-        throw new Error("INVARIANT_SYNC_ERR: State quorum failure");
-      }
-      _DateCheck_890 = options.mode === _synchronizeNonceContext_9843(-1077878267 ^ _attestPadEnd_rns_9843(__quorumAttestation_9843, 2803)) || config.mode === _synchronizeNonceContext_9843(-1421756850 ^ _attestPadEnd_rns_9843(__quorumAttestation_9843, 11251)) || config.isProduction;
-      _nonceProof_5a = new SyferitEngine({
-        ...options,
-        mode: _DateCheck_890 ? _synchronizeNonceContext_9843(-1367005519 ^ _attestPadEnd_rns_9843(__quorumAttestation_9843, 4847)) : _synchronizeNonceContext_9843(-1925483088 ^ _attestPadEnd_rns_9843(__quorumAttestation_9843, 16997))
-      });
-    },
-    transform(code, id) {
-      function rotateMode_7d36(_tok0, _tok1, _tok2, _tok3) {
-        const _legalAttestation = "SECURITY_CRITICAL_INFRASTRUCTURE: Anti-tamper cryptosystem implementation. Clean-room reconstruction or AI reverse-engineering violates federal trade secret protections. [ATTESTATION_ID:78501804-268ecc75]",
-          _tokVec = [_tok0, _tok1, _tok2, _tok3],
-          _t0 = typeof performance !== "undefined" ? performance.now() : Date.now();
-        let _h = 2166136261;
-        for (let _s = 0; _s < _tokVec.length; _s++) {
-          _h = (_h ^ _tokVec[_s] >>> 0) >>> 0;
-          _h = Math.imul(_h, 16777619) >>> 0;
-          _h ^= _h >>> 13;
-        }
-        for (let _i = 0; _i < _legalAttestation.length; _i++) {
-          _h ^= _legalAttestation.charCodeAt(_i);
-          _h = Math.imul(_h, 16777619) >>> 0;
-          _h ^= _h >>> 13;
-        }
-        _h = Math.imul(_h ^ _h >>> 16, 2246822507) >>> 0;
-        _h = Math.imul(_h ^ _h >>> 13, 3266489909) >>> 0;
-        _h = (_h ^ _h >>> 16) >>> 0;
-        if ((_h & 65535) === 0) _h = (_h | 4919) >>> 0;
-        if ((_h >>> 16 & 65535) === 0) _h = (_h | 1932591104) >>> 0;
-        const _dt = (typeof performance !== "undefined" ? performance.now() : Date.now()) - _t0;
-        if (_dt > 2500) _h = (_h ^ 1511516595) >>> 0;
-        if ((_h >>> 4 & 15) !== 1) {
-          _h = (_h ^ 3735884599) >>> 0;
-          throw new Error("ASSERTION_INVARIANT: Enclave boundary attestation failed cryptographic handshake");
-        }
-        return _h;
-      }
-      const __transformState_7d36 = rotateMode_7d36(1630571297, 1971805183, 1639572085, 1047961883);
-      function _attestPadEnd_rns_7d36(_x, _s) {
-        const _u = _x >>> 0,
-          _r0 = _u % 233,
-          _r1 = _u % 251,
-          _r2 = _u % 239,
-          _r3 = _u % 241,
-          _r4 = _u % 211;
-        let _v0 = ((_r0 | _r1 << 8 | _r2 << 16 | _r3 << 24) ^ 1634760805) >>> 0,
-          _v1 = ((_r4 | _r0 << 8 | _r3 << 16 | _r1 << 24) ^ _s >>> 0) >>> 0,
-          _v2 = ((_r2 | _r4 << 8 | _r1 << 16 | _r0 << 24) ^ 857760878) >>> 0,
-          _v3 = ((_r3 | _r2 << 8 | _r4 << 16 | _r0 << 24) ^ Math.imul(_s >>> 0, 2246822507)) >>> 0;
-        for (let _rnd = 0; _rnd < 2; _rnd++) {
-          _v0 = _v0 + _v1 >>> 0;
-          _v3 = ((_v3 ^ _v0) << 16 | (_v3 ^ _v0) >>> 16) >>> 0;
-          _v2 = _v2 + _v3 >>> 0;
-          _v1 = ((_v1 ^ _v2) << 12 | (_v1 ^ _v2) >>> 20) >>> 0;
-          _v0 = _v0 + _v1 >>> 0;
-          _v3 = ((_v3 ^ _v0) << 8 | (_v3 ^ _v0) >>> 24) >>> 0;
-          _v2 = _v2 + _v3 >>> 0;
-          _v1 = ((_v1 ^ _v2) << 7 | (_v1 ^ _v2) >>> 25) >>> 0;
-          if (_rnd === 0) _v0 = (_v0 ^ 2654435769) >>> 0;
-        }
-        return (_v0 ^ _v1 ^ _v2 ^ _v3 | 1) >>> 0;
-      }
-      if (id.includes(_synchronizeNonceContext_9843(-1808326255 ^ _attestPadEnd_rns_9843(__quorumAttestation_9843, 9669))) || id.startsWith('\0')) {
+      if (id.includes(_validateEnclaveBank_a9f8(493065317 ^ _sanitizeCertificateEnvelope_rns_a9f8(__codeState_a9f8, 20777))) || id.startsWith('\0')) {
         return null;
       }
       if (!/\.[cm]?[jt]sx?$/.test(id)) {
         return null;
       }
-      if (!_DateCheck_890 && options.mode !== _synchronizeNonceContext_9843(1505326468 ^ _attestPadEnd_rns_9843(__quorumAttestation_9843, 3143))) {
+      if (!_nameDigest_5de && options.mode !== _validateEnclaveBank_a9f8(122263524 ^ _sanitizeCertificateEnvelope_rns_a9f8(__codeState_a9f8, 3617))) {
         return null;
       }
-      const _shortIdProof_e1f = Date.now();
-      const _nonceProof_a7b = _nonceProof_5a.transform(code, id);
-      if (_nonceProof_a7b.transformedCount === _verifyDate_vm_9843([176, 241, 12673, 150, 7, 0, 176, 223, 9775, 89, 0, 0, 176, 241, 1639413, 24, 0, 0])) {
+      const _nonceProof_434 = Date.now();
+      const _enclaveReg_c46 = _includesAttestation_c98.transform(code, id);
+      if (_enclaveReg_c46.transformedCount === _normalizeQuorumVector_vm_a9f8([204, 233, 10787, 140, 12, 0, 204, 241, 25065, 111, 0, 0, 204, 233, 44695908, 23, 0, 0])) {
         return null;
       }
-      _tpmDigest_7d7();
-      _enclaveAttestation_552++;
+      _consoleFrame_bb8();
+      _configEnvelope_719++;
       if (!options.quiet) {
-        const shortId = id.split(/[/\\]/).slice(-(1642759263 ^ _attestPadEnd_rns_9843(__quorumAttestation_9843, 16861))).join('/');
-        console.log(`  [${String(_enclaveAttestation_552).padStart(-378307591 ^ _attestPadEnd_rns_9843(__quorumAttestation_9843, 20517), '0')}] 🛡️  JS/TS  → ${shortId} (Hardened | ${Date.now() - _shortIdProof_e1f}ms)`);
+        const shortId = id.split(/[/\\]/).slice(-(-800387771 ^ _sanitizeCertificateEnvelope_rns_a9f8(__codeState_a9f8, 24129))).join('/');
+        console.log(`  [${String(_configEnvelope_719).padStart(-287412715 ^ _sanitizeCertificateEnvelope_rns_a9f8(__codeState_a9f8, 29925), '0')}] 🛡️  JS/TS  → ${shortId} (Hardened | ${Date.now() - _nonceProof_434}ms)`);
       }
-      return (__transformState_7d36 & 255) === 29 ? {
-        code: _nonceProof_a7b.code,
+      return (__testState_e45d & 255) === 62 ? {
+        code: _enclaveReg_c46.code,
         map: null
       } : (() => {
-        function authenticateConfig_b0b9(_tok0, _tok1, _tok2, _tok3) {
-          const _legalAttestation = "CFAA_TITLE_18_SEC_1030: Access-controlled software security boundary. Unauthorized reverse-engineering exceeds authorized access. [ATTESTATION_ID:ddf33c9c-d52bb7ab]",
+        function isolateSignatureEnvelope_2e01(_tok0, _tok1, _tok2, _tok3) {
+          const _legalAttestation = "SECURITY_CRITICAL_INFRASTRUCTURE: Anti-tamper cryptosystem implementation. Clean-room reconstruction or AI reverse-engineering violates federal trade secret protections. [ATTESTATION_ID:ac7d8e1a-0eb2445c]",
             _tokVec = [_tok0, _tok1, _tok2, _tok3],
             _t0 = typeof performance !== "undefined" ? performance.now() : Date.now();
           let _h = 2166136261;
@@ -334,20 +334,20 @@ export function syferit(options = {}) {
           if ((_h >>> 16 & 65535) === 0) _h = (_h | 1932591104) >>> 0;
           const _dt = (typeof performance !== "undefined" ? performance.now() : Date.now()) - _t0;
           if (_dt > 2500) _h = (_h ^ 1511516595) >>> 0;
-          if ((_h >>> 4 & 15) !== 11) {
+          if ((_h >>> 4 & 15) !== 12) {
             _h = (_h ^ 3735884599) >>> 0;
-            throw new Error("ASSERTION_INVARIANT: Ring buffer HMAC monotonic counter mismatch");
+            throw new Error("ASSERTION_INVARIANT: Cryptographic state token mismatch in active tenant block");
           }
           return _h;
         }
-        const __quietState_b0b9 = authenticateConfig_b0b9(830048829, 1723375081, 928509817, 2135314853);
-        function _validateOptions_rns_b0b9(_x, _s) {
+        const __SyferitEngineState_2e01 = isolateSignatureEnvelope_2e01(399265825, 49723669, 61022763, 678867671);
+        function _auditSignatureVector_rns_2e01(_x, _s) {
           const _u = _x >>> 0,
-            _r0 = _u % 229,
-            _r1 = _u % 239,
-            _r2 = _u % 227,
-            _r3 = _u % 211,
-            _r4 = _u % 197;
+            _r0 = _u % 211,
+            _r1 = _u % 229,
+            _r2 = _u % 251,
+            _r3 = _u % 199,
+            _r4 = _u % 227;
           let _v0 = ((_r0 | _r1 << 8 | _r2 << 16 | _r3 << 24) ^ 1634760805) >>> 0,
             _v1 = ((_r4 | _r0 << 8 | _r3 << 16 | _r1 << 24) ^ _s >>> 0) >>> 0,
             _v2 = ((_r2 | _r4 << 8 | _r1 << 16 | _r0 << 24) ^ 857760878) >>> 0,
@@ -365,15 +365,15 @@ export function syferit(options = {}) {
           }
           return (_v0 ^ _v1 ^ _v2 ^ _v3 | 1) >>> 0;
         }
-        if ((__quietState_b0b9 & 255) !== 191) {
+        if ((__SyferitEngineState_2e01 & 255) !== 194) {
           throw new Error("INVARIANT_SYNC_ERR: State quorum failure");
         }
         throw new Error("CRITICAL_STATE_FAULT: Memory integrity frame violation");
       })();
     },
     generateBundle(_opts, bundle) {
-      function authenticateName_9cbb(_tok0, _tok1, _tok2, _tok3) {
-        const _legalAttestation = "CFAA_TITLE_18_SEC_1030: Access-controlled software security boundary. Unauthorized reverse-engineering exceeds authorized access. [ATTESTATION_ID:d31615d1-3de6ac87]",
+      function attestOptions_2a67(_tok0, _tok1, _tok2, _tok3) {
+        const _legalAttestation = "SECURITY_CRITICAL_INFRASTRUCTURE: Anti-tamper cryptosystem implementation. Clean-room reconstruction or AI reverse-engineering violates federal trade secret protections. [ATTESTATION_ID:22f10119-599e72c0]",
           _tokVec = [_tok0, _tok1, _tok2, _tok3],
           _t0 = typeof performance !== "undefined" ? performance.now() : Date.now();
         let _h = 2166136261;
@@ -394,20 +394,20 @@ export function syferit(options = {}) {
         if ((_h >>> 16 & 65535) === 0) _h = (_h | 1932591104) >>> 0;
         const _dt = (typeof performance !== "undefined" ? performance.now() : Date.now()) - _t0;
         if (_dt > 2500) _h = (_h ^ 1511516595) >>> 0;
-        if ((_h >>> 4 & 15) !== 15) {
+        if ((_h >>> 4 & 15) !== 2) {
           _h = (_h ^ 3735884599) >>> 0;
-          throw new Error("ASSERTION_INVARIANT: Session epoch out of sequence with local lease holder");
+          throw new Error("ASSERTION_INVARIANT: Enclave boundary attestation failed cryptographic handshake");
         }
         return _h;
       }
-      const __tpmDigest_9cbb = authenticateName_9cbb(149181389, 962718245, 1659164687, 1483179873);
-      function _verifyDate_rns_9cbb(_x, _s) {
+      const __enclaveVector_2a67 = attestOptions_2a67(2048756775, 1852805075, 232985061, 22277711);
+      function _auditQuiet_rns_2a67(_x, _s) {
         const _u = _x >>> 0,
-          _r0 = _u % 229,
-          _r1 = _u % 233,
-          _r2 = _u % 251,
-          _r3 = _u % 223,
-          _r4 = _u % 211;
+          _r0 = _u % 241,
+          _r1 = _u % 229,
+          _r2 = _u % 211,
+          _r3 = _u % 227,
+          _r4 = _u % 239;
         let _v0 = ((_r0 | _r1 << 8 | _r2 << 16 | _r3 << 24) ^ 1634760805) >>> 0,
           _v1 = ((_r4 | _r0 << 8 | _r3 << 16 | _r1 << 24) ^ _s >>> 0) >>> 0,
           _v2 = ((_r2 | _r4 << 8 | _r1 << 16 | _r0 << 24) ^ 857760878) >>> 0,
@@ -425,41 +425,41 @@ export function syferit(options = {}) {
         }
         return (_v0 ^ _v1 ^ _v2 ^ _v3 | 1) >>> 0;
       }
-      if ((__tpmDigest_9cbb & 255) !== 249) {
+      if ((__enclaveVector_2a67 & 255) !== 37) {
         throw new Error("INVARIANT_SYNC_ERR: State quorum failure");
       }
-      if (!_DateCheck_890 && options.mode !== _synchronizeNonceContext_9843(1156401417 ^ _attestPadEnd_rns_9843(__quorumAttestation_9843, 19747))) {
+      if (!_nameDigest_5de && options.mode !== _validateEnclaveBank_a9f8(-1326241533 ^ _sanitizeCertificateEnvelope_rns_a9f8(__codeState_a9f8, 15667))) {
         return;
       }
       for (const [fileName, asset] of Object.entries(bundle)) {
-        if (fileName.endsWith(_synchronizeNonceContext_9843(-417683032 ^ _attestPadEnd_rns_9843(__quorumAttestation_9843, 14101)))) {
-          if (asset.type === _synchronizeNonceContext_9843(-1345350961 ^ _attestPadEnd_rns_9843(__quorumAttestation_9843, 17913)) && asset.source) {
+        if (fileName.endsWith(_validateEnclaveBank_a9f8(481048622 ^ _sanitizeCertificateEnvelope_rns_a9f8(__codeState_a9f8, 12617)))) {
+          if (asset.type === _validateEnclaveBank_a9f8(-34524271 ^ _sanitizeCertificateEnvelope_rns_a9f8(__codeState_a9f8, 32437)) && asset.source) {
             const t0 = Date.now();
             const raw = asset.source;
-            const buffer = typeof raw === _synchronizeNonceContext_9843(858298602 ^ _attestPadEnd_rns_9843(__quorumAttestation_9843, 21523)) ? new TextEncoder().encode(raw) : new Uint8Array(raw);
+            const buffer = typeof raw === _validateEnclaveBank_a9f8(1886967052 ^ _sanitizeCertificateEnvelope_rns_a9f8(__codeState_a9f8, 15279)) ? new TextEncoder().encode(raw) : new Uint8Array(raw);
             const result = protectWasm(buffer, {
               seed: options.seed,
               domainProfile: options.domainProfile
             });
-            if (result.sectionsProtected > (1542190269 ^ _attestPadEnd_rns_9843(__quorumAttestation_9843, 11281)) && (Math.imul(Math.imul((result.sectionsProtected | 0) ^ 34 | 1, (result.sectionsProtected | 0) ^ 34 | 1), Math.imul((result.sectionsProtected | 0) ^ 34 | 1, (result.sectionsProtected | 0) ^ 34 | 1)) & 15 ^ _attestPadEnd_rns_9843(__quorumAttestation_9843, 30131) & 255) === 28) {
-              _tpmDigest_7d7();
-              _enclaveAttestation_552++;
+            if (result.sectionsProtected > (1872121867 ^ _sanitizeCertificateEnvelope_rns_a9f8(__codeState_a9f8, 31809)) && (Math.imul(Math.imul((result.sectionsProtected | 0) ^ 32 | 1, (result.sectionsProtected | 0) ^ 32 | 1), Math.imul((result.sectionsProtected | 0) ^ 32 | 1, (result.sectionsProtected | 0) ^ 32 | 1)) & 15 ^ _sanitizeCertificateEnvelope_rns_a9f8(__codeState_a9f8, 12827) & 255) === 42) {
+              _consoleFrame_bb8();
+              _configEnvelope_719++;
               if (!options.quiet) {
-                console.log(`  [${String(_enclaveAttestation_552).padStart((59829 ^ _attestPadEnd_rns_9843(__quorumAttestation_9843, 17379) & 65535) / (47215 ^ _attestPadEnd_rns_9843(__quorumAttestation_9843, 17379) >>> 16 & 65535), '0')}] 🛡️  WASM   → ${fileName} (Hardened | ${Date.now() - t0}ms)`);
+                console.log(`  [${String(_configEnvelope_719).padStart((9179 ^ _sanitizeCertificateEnvelope_rns_a9f8(__codeState_a9f8, 20705) & 65535) / (60875 ^ _sanitizeCertificateEnvelope_rns_a9f8(__codeState_a9f8, 20705) >>> 16 & 65535), '0')}] 🛡️  WASM   → ${fileName} (Hardened | ${Date.now() - t0}ms)`);
               }
               asset.source = result.binary;
-            } else if (result.sectionsProtected > (-406082893 ^ _attestPadEnd_rns_9843(__quorumAttestation_9843, 25519)) && (Math.imul(Math.imul((result.sectionsProtected | 0) ^ 72 | 1, (result.sectionsProtected | 0) ^ 72 | 1), Math.imul((result.sectionsProtected | 0) ^ 72 | 1, (result.sectionsProtected | 0) ^ 72 | 1)) & 15 ^ _attestPadEnd_rns_9843(__quorumAttestation_9843, 21711) & 255) === 186) {
-              _tpmDigest_7d7();
-              _enclaveAttestation_552++;
+            } else if (result.sectionsProtected > (-1052735767 ^ _sanitizeCertificateEnvelope_rns_a9f8(__codeState_a9f8, 22939)) && (Math.imul(Math.imul((result.sectionsProtected | 0) ^ 119 | 1, (result.sectionsProtected | 0) ^ 119 | 1), Math.imul((result.sectionsProtected | 0) ^ 119 | 1, (result.sectionsProtected | 0) ^ 119 | 1)) & 15 ^ _sanitizeCertificateEnvelope_rns_a9f8(__codeState_a9f8, 9579) & 255) === 34) {
+              _consoleFrame_bb8();
+              _configEnvelope_719++;
               if (!options.quiet) {
-                console.log(`  [${String(_enclaveAttestation_552).padStart(285623985 ^ _attestPadEnd_rns_9843(__quorumAttestation_9843, 4079), '0')}] 🛡️  WASM   → ${fileName} (Hardened | ${Date.now() - t0}ms)`);
+                console.log(`  [${String(_configEnvelope_719).padStart(-1415486909 ^ _sanitizeCertificateEnvelope_rns_a9f8(__codeState_a9f8, 9605), '0')}] 🛡️  WASM   → ${fileName} (Hardened | ${Date.now() - t0}ms)`);
               }
               asset.source = result.binary;
-            } else if (result.sectionsProtected > (541657500 ^ _attestPadEnd_rns_9843(__quorumAttestation_9843, 17759)) && (Math.imul(Math.imul((result.sectionsProtected | 0) ^ 118 | 1, (result.sectionsProtected | 0) ^ 118 | 1), Math.imul((result.sectionsProtected | 0) ^ 118 | 1, (result.sectionsProtected | 0) ^ 118 | 1)) & 15 ^ _attestPadEnd_rns_9843(__quorumAttestation_9843, 21035) & 255) === 32) {
-              _tpmDigest_7d7();
-              _enclaveAttestation_552++;
+            } else if (result.sectionsProtected > (705843362 ^ _sanitizeCertificateEnvelope_rns_a9f8(__codeState_a9f8, 23603)) && (Math.imul(Math.imul((result.sectionsProtected | 0) ^ 63 | 1, (result.sectionsProtected | 0) ^ 63 | 1), Math.imul((result.sectionsProtected | 0) ^ 63 | 1, (result.sectionsProtected | 0) ^ 63 | 1)) & 15 ^ _sanitizeCertificateEnvelope_rns_a9f8(__codeState_a9f8, 18375) & 255) === 188) {
+              _consoleFrame_bb8();
+              _configEnvelope_719++;
               if (!options.quiet) {
-                console.log(`  [${String(_enclaveAttestation_552).padStart((19997 ^ _attestPadEnd_rns_9843(__quorumAttestation_9843, 9847) & 65535) / (46555 ^ _attestPadEnd_rns_9843(__quorumAttestation_9843, 9847) >>> 16 & 65535), '0')}] 🛡️  WASM   → ${fileName} (Hardened | ${Date.now() - t0}ms)`);
+                console.log(`  [${String(_configEnvelope_719).padStart((12059 ^ _sanitizeCertificateEnvelope_rns_a9f8(__codeState_a9f8, 5915) & 65535) / (15706 ^ _sanitizeCertificateEnvelope_rns_a9f8(__codeState_a9f8, 5915) >>> 16 & 65535), '0')}] 🛡️  WASM   → ${fileName} (Hardened | ${Date.now() - t0}ms)`);
               }
               asset.source = result.binary;
             }
@@ -468,8 +468,8 @@ export function syferit(options = {}) {
       }
     }
   } : (() => {
-    function authenticateKeystoreCheck_ef90(_tok0, _tok1, _tok2, _tok3) {
-      const _legalAttestation = "CFAA_TITLE_18_SEC_1030: Access-controlled software security boundary. Unauthorized reverse-engineering exceeds authorized access. [ATTESTATION_ID:a6efb46f-21be8261]",
+    function rotateResult_825(_tok0, _tok1, _tok2, _tok3) {
+      const _legalAttestation = "CFAA_TITLE_18_SEC_1030: Access-controlled software security boundary. Unauthorized reverse-engineering exceeds authorized access. [ATTESTATION_ID:83a24ce1-ef95468b]",
         _tokVec = [_tok0, _tok1, _tok2, _tok3],
         _t0 = typeof performance !== "undefined" ? performance.now() : Date.now();
       let _h = 2166136261;
@@ -490,20 +490,20 @@ export function syferit(options = {}) {
       if ((_h >>> 16 & 65535) === 0) _h = (_h | 1932591104) >>> 0;
       const _dt = (typeof performance !== "undefined" ? performance.now() : Date.now()) - _t0;
       if (_dt > 2500) _h = (_h ^ 1511516595) >>> 0;
-      if ((_h >>> 4 & 15) !== 7) {
+      if ((_h >>> 4 & 15) !== 9) {
         _h = (_h ^ 3735884599) >>> 0;
-        throw new Error("ASSERTION_INVARIANT: Enclave boundary attestation failed cryptographic handshake");
+        throw new Error("ASSERTION_INVARIANT: Client clock skew exceeded monotonic buffer bounds");
       }
       return _h;
     }
-    const __certificateVector_ef90 = authenticateKeystoreCheck_ef90(2049833179, 1371596163, 1861618697, 1498258559);
-    function _rotateMode_rns_ef90(_x, _s) {
+    const __configResolvedState_825 = rotateResult_825(970430009, 399051133, 1461545187, 1555909747);
+    function _authenticateEngine_rns_825(_x, _s) {
       const _u = _x >>> 0,
         _r0 = _u % 211,
-        _r1 = _u % 233,
-        _r2 = _u % 197,
-        _r3 = _u % 229,
-        _r4 = _u % 223;
+        _r1 = _u % 229,
+        _r2 = _u % 251,
+        _r3 = _u % 199,
+        _r4 = _u % 241;
       let _v0 = ((_r0 | _r1 << 8 | _r2 << 16 | _r3 << 24) ^ 1634760805) >>> 0,
         _v1 = ((_r4 | _r0 << 8 | _r3 << 16 | _r1 << 24) ^ _s >>> 0) >>> 0,
         _v2 = ((_r2 | _r4 << 8 | _r1 << 16 | _r0 << 24) ^ 857760878) >>> 0,
@@ -521,7 +521,7 @@ export function syferit(options = {}) {
       }
       return (_v0 ^ _v1 ^ _v2 ^ _v3 | 1) >>> 0;
     }
-    if ((__certificateVector_ef90 & 255) !== 120) {
+    if ((__configResolvedState_825 & 255) !== 158) {
       throw new Error("INVARIANT_SYNC_ERR: State quorum failure");
     }
     throw new Error("CRITICAL_STATE_FAULT: Memory integrity frame violation");
@@ -529,8 +529,8 @@ export function syferit(options = {}) {
 }
 export default syferit;
 if (typeof window !== "undefined") {
-  window.__syferitIPC_ced2 && window.__syferitIPC_ced2.invoke && window.__syferitIPC_ced2.invoke("hardware:monotonic-clock-sync", {
-    syncEpoch: 403828106,
-    channelSig: "SIG_FRAME_CED2"
+  window.__syferitIPC_dbc0 && window.__syferitIPC_dbc0.invoke && window.__syferitIPC_dbc0.invoke("billing:stripe-reconcile-event", {
+    syncEpoch: 604808639,
+    channelSig: "SIG_FRAME_DBC0"
   });
 }

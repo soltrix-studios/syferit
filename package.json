@@ -1,6 +1,6 @@
 {
   "name": "syferit-monorepo",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "private": true,
   "description": "Syferit v2.0: RNS-ARX Entanglement & Symbolic Feistel Code Defense Engine by Soltrix Studios",
   "author": "Soltrix Studios",
