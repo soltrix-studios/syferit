@@ -85,6 +85,30 @@ function matchesExcludePattern(relPath: string, patterns?: string[]): boolean {
   return false;
 }
 
+export function isSkippedNextBuildPath(candidatePath: string, isDirectory: boolean): boolean {
+  const normFull = candidatePath.replace(/\\/g, '/');
+  const match = normFull.match(/(?:^|\/)\.next\/(.+)$/);
+  if (!match) {
+    return false;
+  }
+  const innerRel = match[1]!;
+
+  if (isDirectory) {
+    return /^(cache|server|types|diagnostics|trace|static\/development)(\/|$)/i.test(innerRel);
+  }
+
+  if (innerRel.endsWith('.wasm')) {
+    return false;
+  }
+
+  const isFirstPartyClientChunk =
+    /^static\/chunks\/app\//i.test(innerRel) ||
+    (/^static\/chunks\/pages\//i.test(innerRel) &&
+      !/^static\/chunks\/pages\/(_app|_document|_error)[.-]/i.test(innerRel));
+
+  return !isFirstPartyClientChunk;
+}
+
 export const SYFERIT_TERMINAL_ARTWORK = `
    ▄████████ ▄██   ▄      ▄████████    ▄████████    ▄████████  ▄█      ███     
   ███    ███ ███   ██▄   ███    ███   ███    ███   ███    ███ ███  ▀█████████▄ 
@@ -101,7 +125,7 @@ export function printSyferitBanner(options?: SyferitOptions): void {
   const profile = (options?.domainProfile ?? 'saas').padEnd(10, ' ');
   console.log(SYFERIT_TERMINAL_ARTWORK);
   console.log('  ╔═══════════════════════════════════════════════════════════════════════════╗');
-  console.log('  ║  SYFERIT v2.1.0 — Symbolic Feistel & Residue Integrity Transformer        ║');
+  console.log('  ║  SYFERIT v2.1.1 — Symbolic Feistel & Residue Integrity Transformer        ║');
   console.log('  ║  "Don\'t Just Ship it. Syferit."  │  Soltrix Studios Code Defense Engine   ║');
   console.log('  ╠═══════════════════════════════════════════════════════════════════════════╣');
   console.log(`  ║  ▸ Preset  : ${preset}    │  ▸ Profile : ${profile}                ║`);
@@ -214,6 +238,7 @@ export function protectDirectory(
       const fullPath = path.join(currentDir, entry.name);
       if (entry.isDirectory()) {
         if (DEFAULT_IGNORED_DIRS.has(entry.name)) continue;
+        if (isSkippedNextBuildPath(fullPath, true)) continue;
         if (resolvedOutDir && path.resolve(fullPath).toLowerCase() === resolvedOutDir.toLowerCase()) {
           continue;
         }
@@ -228,6 +253,7 @@ export function protectDirectory(
          entry.name.endsWith('.py') ||
          /\.(c|cpp|cc|cxx|m|mm|rs|cs|kt|java|swift|dart)$/i.test(entry.name))
       ) {
+        if (isSkippedNextBuildPath(fullPath, false)) continue;
         const relFile = path.relative(dirPath, fullPath);
         if (matchesExcludePattern(relFile, options?.exclude)) continue;
         candidateFiles.push(fullPath);

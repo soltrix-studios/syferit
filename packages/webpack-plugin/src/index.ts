@@ -1,4 +1,5 @@
 // [Protected by Soltrix Studios | Syferit Code Defense Engine | https://syferit.soltrixstudios.com]
+import v8 from 'node:v8';
 import { SyferitEngine, type SyferitOptions } from '@syferit/core';
 import { protectWasm } from '@syferit/wasm';
 
@@ -57,7 +58,15 @@ export class SyferitWebpackPlugin {
           stage
         },
         async (assets: Record<string, any>) => {
-          const assetEntries = Object.entries(assets).filter(([pathname]) => this.shouldProcessAsset(pathname));
+          const assetEntries = Object.entries(assets).filter(([pathname]) => {
+            if (!this.shouldProcessAsset(pathname)) {
+              return false;
+            }
+            if (!this.options.test && this.isPureNodeModulesChunk(compilation, pathname)) {
+              return false;
+            }
+            return true;
+          });
           if (assetEntries.length === 0) {
             return;
           }
@@ -68,7 +77,7 @@ export class SyferitWebpackPlugin {
             const profile = (this.options.domainProfile ?? 'saas').padEnd(10, ' ');
             console.log(SYFERIT_BANNER);
             console.log('  ╔═══════════════════════════════════════════════════════════════════════════╗');
-            console.log('  ║  SYFERIT v2.1.0 — Symbolic Feistel & Residue Integrity Transformer        ║');
+            console.log('  ║  SYFERIT v2.1.1 — Symbolic Feistel & Residue Integrity Transformer        ║');
             console.log('  ║  "Don\'t Just Ship it. Syferit."  │  Soltrix Studios Code Defense Engine   ║');
             console.log('  ╠═══════════════════════════════════════════════════════════════════════════╣');
             console.log(`  ║  ▸ Preset  : ${preset}    │  ▸ Profile : ${profile}                ║`);
@@ -82,6 +91,20 @@ export class SyferitWebpackPlugin {
           let hardenedCount = 0;
 
           for (const [pathname, asset] of assetEntries) {
+            const heap = v8.getHeapStatistics();
+            if (heap.heap_size_limit > 0 && heap.used_heap_size / heap.heap_size_limit > 0.85) {
+              if (typeof (globalThis as any).gc === 'function') {
+                try { (globalThis as any).gc(); } catch { /* ignore */ }
+              }
+              const afterGc = v8.getHeapStatistics();
+              if (afterGc.used_heap_size / afterGc.heap_size_limit > 0.85) {
+                if (!this.options.quiet) {
+                  console.warn(`  ⚠ [Syferit] V8 heap usage above 85% ceiling; pausing in-bundler pass at ${pathname} to prevent OOM. Run 'syferit protect .next' post-build for a fresh memory process.`);
+                }
+                break;
+              }
+            }
+
             idx++;
             const t0 = Date.now();
 
@@ -137,6 +160,44 @@ export class SyferitWebpackPlugin {
     });
   }
 
+  private isPureNodeModulesChunk(compilation: any, pathname: string): boolean {
+    const chunks = compilation?.chunks;
+    const chunkGraph = compilation?.chunkGraph;
+    if (!chunks || !chunkGraph?.getChunkModulesIterable) {
+      return false;
+    }
+
+    const normAsset = pathname.replace(/\\/g, '/');
+    for (const chunk of chunks) {
+      const files: Iterable<string> | undefined = chunk?.files;
+      if (!files) continue;
+      let ownsAsset = false;
+      for (const f of files) {
+        if (f.replace(/\\/g, '/') === normAsset) {
+          ownsAsset = true;
+          break;
+        }
+      }
+      if (!ownsAsset) continue;
+
+      let withResourceCount = 0;
+      let firstPartyCount = 0;
+      for (const mod of chunkGraph.getChunkModulesIterable(chunk)) {
+        const resPath: string | undefined = mod?.resource || mod?.rootModule?.resource;
+        if (!resPath) continue;
+        withResourceCount++;
+        const normRes = resPath.replace(/\\/g, '/');
+        if (!normRes.includes('/node_modules/')) {
+          firstPartyCount++;
+        }
+      }
+      if (withResourceCount > 0 && firstPartyCount === 0) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   private matchesAssetFilter(filter: AssetFilter, pathname: string): boolean {
     if (typeof filter === 'function') {
       return filter(pathname);
@@ -167,6 +228,13 @@ export class SyferitWebpackPlugin {
 
     if (this.options.test) {
       return this.matchesAssetFilter(this.options.test, pathname);
+    }
+
+    if (
+      /(^|[/\\])static[/\\]chunks[/\\]([0-9a-f]{8}|[0-9]+|framework|polyfills|webpack|main|main-app)[.-][0-9a-f]+\.js$/i.test(pathname) ||
+      /(_ssgManifest|_buildManifest)/i.test(pathname)
+    ) {
+      return false;
     }
 
     return true;

@@ -6,14 +6,16 @@ export interface SyferitNextOptions extends SyferitWebpackPluginOptions {
 }
 
 const DEFAULT_NEXT_EXCLUDES: RegExp[] = [
-  /framework-/,
-  /polyfills-/,
-  /webpack-/,
-  /main-/,
+  /framework[.-]/,
+  /polyfills[.-]/,
+  /webpack[.-]/,
+  /main[.-]/,
+  /main-app[.-]/,
   /_ssgManifest/,
   /_buildManifest/,
   /next[/\\]dist[/\\]client[/\\]/,
-  /static[/\\]chunks[/\\][0-9a-f]{8}-/
+  /static[/\\]chunks[/\\][0-9a-f]{8}[.-]/,
+  /static[/\\]chunks[/\\][0-9]+[.-][0-9a-f]+\.js$/
 ];
 
 function mergeNextExcludes(userExclude?: SyferitWebpackPluginOptions['exclude']): SyferitWebpackPluginOptions['exclude'] {

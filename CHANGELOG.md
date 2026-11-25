@@ -5,7 +5,17 @@ All notable changes to the Syferit Code Protection Framework will be documented 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [2.1.1] - 2026-11-25
+
+### Fixed & Improved
+- **Zero-Compromise AST Isolation & Flat Memory Usage (`@syferit/core`):**
+  - Prevented outer function traversals from descending into nested block-body functions so every nested function receives its own independent RNS-ARX key and Micro-VM without redundant $O(N \times \text{depth})$ AST passes, and added `traverse.cache.clear()` after every transform to keep V8 heap flat across 200+ chunk builds.
+  - Added a local scope rename guardrail for giant Webpack module factory wrappers (>64 bindings) while keeping full literal, Micro-VM, and RNS-ARX protection intact.
+- **Provenance Vendor Skipping & V8 Heap Circuit Breaker (`@syferit/webpack-plugin`, `@syferit/next`):**
+  - Expanded default Next.js exclusions and Webpack chunk rules to automatically skip dot-separated (`b055d1fb.*.js`) and numeric vendor split-chunks, plus pure `node_modules` chunks detected via `compilation.chunkGraph` provenance (without adding any arbitrary file-size cutoff on first-party code).
+  - Added an 85% V8 heap circuit breaker so unexpected memory pressure pauses gracefully instead of triggering an unrecoverable V8 OOM crash.
+- **Smart Post-Build `syferit protect .next` Mode (`@syferit/cli`):**
+  - Pointing `syferit protect` (CLI or Zero-Node SEA binary) at a `.next` directory now automatically scopes protection to first-party client chunks (`.next/static/chunks/app/`, `pages/`, and `.wasm`), enabling zero-config post-build hardening on both Turbopack and Webpack builds in a fresh process.
 
 ## [2.1.0] - 2026-11-25
 
